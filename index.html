@@ -14,29 +14,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 :root{
-  --bg:            #150810;
-  --bg-soft:       #1b0c15;
-  --surface:       #22111d;
-  --surface-2:     #2a1524;
-  --surface-3:     #34192c;
-  --line:          #3c2032;
-  --line-soft:     #2c1524;
-  --red-deep:      #5c1428;
+  --bg:            #fdf0f3;
+  --bg-soft:       #fff6f8;
+  --surface:       #ffffff;
+  --surface-2:     #fdedf1;
+  --surface-3:     #fbe1e8;
+  --line:          #f2ccd6;
+  --line-soft:     #f6dee5;
+  --red-deep:      #7a1530;
   --red:           #c22a41;
-  --red-bright:    #ef4f63;
-  --red-glow:      #ff6b7d;
-  --purple-deep:   #351a45;
+  --red-bright:    #d63a52;
+  --red-glow:      #c9314d;
+  --purple-deep:   #efe0f6;
   --purple:        #7d3fa3;
-  --purple-bright: #a466cf;
-  --purple-glow:   #c98bec;
-  --gold:          #d1a23f;
-  --text:          #f5e9f0;
-  --text-dim:      #cbaec0;
-  --text-faint:    #8d6c81;
+  --purple-bright: #8a48b3;
+  --purple-glow:   #7d3fa3;
+  --gold:          #a6742a;
+  --text:          #2b1420;
+  --text-dim:      #6b4a58;
+  --text-faint:    #a67f8c;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 22px;
-  --shadow-card: 0 8px 30px -12px rgba(0,0,0,0.55);
+  --shadow-card: 0 8px 30px -14px rgba(124,50,80,0.25);
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
@@ -47,8 +47,8 @@ html{ scroll-behavior:smooth; }
 body{
   margin:0;
   background:
-    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(125,63,163,0.20), transparent 60%),
-    radial-gradient(ellipse 700px 600px at 100% 0%, rgba(194,42,65,0.14), transparent 55%),
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(125,63,163,0.10), transparent 60%),
+    radial-gradient(ellipse 700px 600px at 100% 0%, rgba(194,42,65,0.08), transparent 55%),
     var(--bg);
   color:var(--text);
   font-family:var(--font-body);
@@ -86,11 +86,12 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .nav-link:hover{ background:var(--surface); color:var(--text); }
 .nav-link.active{ background:var(--surface-2); color:var(--text); }
 .nav-link .dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; background:var(--purple); }
+.nav-link.dot-red .dot{ background:var(--red); }
 .nav-link.active .dot{ background:var(--red-bright); box-shadow:0 0 8px var(--red-bright); }
 .sidebar-footer{ margin-top:22px; padding:14px 10px 4px; border-top:1px solid var(--line-soft); font-size:11px; color:var(--text-faint); line-height:1.5; }
 
 .main{ flex:1; min-width:0; }
-.topbar{ display:none; position:sticky; top:0; z-index:20; align-items:center; gap:10px; padding:12px 16px; background:rgba(21,8,16,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line-soft); }
+.topbar{ display:none; position:sticky; top:0; z-index:20; align-items:center; gap:10px; padding:12px 16px; background:rgba(253,240,243,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line-soft); }
 .topbar .brand{ margin:0; flex:1; }
 .topbar .brand svg{ width:26px; height:26px; }
 .topbar .brand-name{ font-size:16px; }
@@ -101,10 +102,10 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .search-input{ width:100%; background:var(--surface); border:1px solid var(--line); color:var(--text); border-radius:12px; padding:11px 14px 11px 38px; font-size:14px; font-family:var(--font-body); }
 .search-input::placeholder{ color:var(--text-faint); }
 .search-icon{ position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-faint); pointer-events:none; }
-.search-results{ position:absolute; left:0; right:0; top:calc(100% + 6px); background:var(--surface-2); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow-card); max-height:60vh; overflow-y:auto; z-index:40; }
+.search-results{ position:absolute; left:0; right:0; top:calc(100% + 6px); background:var(--surface); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow-card); max-height:60vh; overflow-y:auto; z-index:40; }
 .search-results .sr-item{ display:block; padding:10px 14px; text-decoration:none; border-bottom:1px solid var(--line-soft); }
 .search-results .sr-item:last-child{ border-bottom:none; }
-.search-results .sr-item:hover{ background:var(--surface-3); }
+.search-results .sr-item:hover{ background:var(--surface-2); }
 .sr-name{ font-size:13.5px; font-weight:600; color:var(--text); }
 .sr-cat{ font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--purple-bright); margin-bottom:2px; display:block; }
 .sr-snip{ font-size:12px; color:var(--text-faint); margin-top:2px; }
@@ -124,11 +125,15 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .cat-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:14px; }
 .cat-card{ position:relative; display:block; text-decoration:none; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:18px 18px 16px; overflow:hidden; transition:transform .18s ease, border-color .18s ease, background .18s ease; }
 .cat-card:hover{ transform:translateY(-2px); border-color:var(--purple); background:var(--surface-2); }
+.cat-card.acc-red:hover{ border-color:var(--red); }
 .cat-card .cat-icon{ width:30px; height:30px; margin-bottom:12px; color:var(--purple-bright); }
+.cat-card.acc-red .cat-icon{ color:var(--red-bright); }
 .cat-card h3{ font-size:16.5px; margin-bottom:6px; }
 .cat-card p{ font-size:12.8px; color:var(--text-faint); margin:0 0 10px; line-height:1.45; }
 .cat-count{ font-family:var(--font-mono); font-size:10.5px; color:var(--red-glow); letter-spacing:.05em; }
+.cat-card.acc-purple .cat-count{ color:var(--purple); }
 .cat-card .vessel{ position:absolute; right:-18px; top:-18px; width:100px; height:100px; opacity:.10; background:radial-gradient(circle, var(--purple-glow), transparent 70%); }
+.cat-card.acc-red .vessel{ background:radial-gradient(circle, var(--red-glow), transparent 70%); }
 .protocols-strip{ display:flex; flex-wrap:wrap; gap:10px; }
 .proto-chip{ display:flex; align-items:center; gap:8px; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:8px 14px 8px 10px; text-decoration:none; font-size:12.5px; color:var(--text-dim); }
 .proto-chip:hover{ border-color:var(--red); color:var(--text); }
@@ -143,10 +148,13 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .page-head .short{ color:var(--text-dim); font-size:15px; max-width:65ch; }
 .tag-row{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
 .tag{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; padding:4px 9px; border-radius:6px; border:1px solid var(--line); color:var(--text-faint); }
-.tag.urgent{ color:#2a1006; background:var(--gold); border-color:var(--gold); font-weight:600; }
+.tag.urgent{ color:#fff; background:var(--gold); border-color:var(--gold); font-weight:600; }
+.tag.cyanotic{ color:#fff; background:var(--purple); border-color:var(--purple); font-weight:600; }
+.tag.acyanotic{ color:#fff; background:var(--red); border-color:var(--red); font-weight:600; }
 .lesion-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:14px; }
 .lesion-card{ display:block; text-decoration:none; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:16px 18px; transition:border-color .15s, transform .15s, background .15s; }
 .lesion-card:hover{ border-color:var(--red); transform:translateY(-2px); background:var(--surface-2); }
+.lesion-card.acc-purple:hover{ border-color:var(--purple); }
 .lesion-card h4{ font-size:15.5px; margin-bottom:6px; }
 .lesion-card p{ font-size:12.6px; color:var(--text-faint); margin:0; line-height:1.5; }
 
@@ -161,11 +169,11 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .bullets li{ position:relative; padding-left:20px; font-size:14px; color:var(--text-dim); line-height:1.55; }
 .bullets li::before{ content:''; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:50%; background:var(--purple-bright); }
 .card.side-red .bullets li::before{ background:var(--red-bright); }
-.card.side-alert .bullets li::before{ background:var(--red-bright); box-shadow:0 0 6px var(--red-bright); }
+.card.side-alert .bullets li::before{ background:var(--red-bright); box-shadow:0 0 6px rgba(214,58,82,0.4); }
 .ref-inline{ margin-top:10px; padding:12px 14px; border-radius:10px; background:var(--surface-2); border:1px dashed var(--line); }
 .ref-inline .ref-title{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--purple-bright); margin-bottom:8px; }
-.link-chip{ display:inline-flex; align-items:center; gap:6px; margin-top:10px; background:var(--purple-deep); border:1px solid var(--purple); color:var(--text); padding:6px 12px; border-radius:999px; font-size:12.5px; text-decoration:none; }
-.link-chip:hover{ background:var(--purple); }
+.link-chip{ display:inline-flex; align-items:center; gap:6px; margin-top:10px; background:var(--purple-deep); border:1px solid var(--purple); color:var(--purple-deep-text, var(--purple)); padding:6px 12px; border-radius:999px; font-size:12.5px; text-decoration:none; }
+.link-chip:hover{ background:var(--purple); color:#fff; }
 
 .dt-widget{ background:linear-gradient(160deg, var(--surface-2), var(--surface)); border:1px solid var(--line); border-radius:var(--radius-lg); padding:22px 24px 24px; margin-bottom:18px; position:relative; overflow:hidden; }
 .dt-widget::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(180deg, var(--red), var(--purple)); }
@@ -192,11 +200,11 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .pulse{ animation:pulse-beat 2.6s ease-in-out infinite; transform-origin:50% 55%; }
 @media (prefers-reduced-motion: reduce){ .pulse{ animation:none; } }
 @keyframes pulse-beat{ 0%,100%{ transform:scale(1); } 8%{ transform:scale(1.06); } 16%{ transform:scale(0.99); } 24%{ transform:scale(1.03); } 32%{ transform:scale(1); } }
-.overlay{ position:fixed; inset:0; background:rgba(10,4,8,0.6); z-index:50; display:none; }
+.overlay{ position:fixed; inset:0; background:rgba(60,20,40,0.35); z-index:50; display:none; }
 .overlay.show{ display:block; }
 
 @media (max-width: 900px){
-  .sidebar{ position:fixed; left:0; top:0; height:100vh; z-index:60; transform:translateX(-100%); transition:transform .22s ease; box-shadow:20px 0 40px rgba(0,0,0,0.4); }
+  .sidebar{ position:fixed; left:0; top:0; height:100vh; z-index:60; transform:translateX(-100%); transition:transform .22s ease; box-shadow:20px 0 40px rgba(124,50,80,0.18); }
   .sidebar.open{ transform:translateX(0); }
   .topbar{ display:flex; }
   .content{ padding:24px 18px 70px; }
@@ -223,10 +231,10 @@ a:focus-visible, button:focus-visible, input:focus-visible{
           <rect x="0" y="0" width="100" height="230" fill="url(#redGradSm)"/>
           <rect x="100" y="0" width="100" height="230" fill="url(#purpleGradSm)"/>
         </g>
-        <path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z" fill="none" stroke="#f5e9f0" stroke-width="4"/>
+        <path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z" fill="none" stroke="#2b1420" stroke-width="4"/>
       </svg>
       <span>
-        <span class="brand-name">Cor<em style="font-style:normal;color:#ef4f63;">Path</em></span>
+        <span class="brand-name">Cor<em style="font-style:normal;color:#c22a41;">Path</em></span>
         <span class="brand-sub">CHD Perioperative Reference</span>
       </span>
     </a>
@@ -248,7 +256,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <a class="brand" href="#/">
-        <span class="brand-name">Cor<em style="font-style:normal;color:#ef4f63;">Path</em></span>
+        <span class="brand-name">Cor<em style="font-style:normal;color:#c22a41;">Path</em></span>
       </a>
     </div>
     <main class="content" id="content"></main>
@@ -1848,14 +1856,24 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   const catById = {};
   CATS.forEach(c => catById[c.id] = c);
 
+  // Categories considered clinically "cyanotic" — colored purple.
+  // Everything else is treated as non-cyanotic/acyanotic — colored red.
+  const CYANOTIC_CATS = new Set(['cyanotic', 'transposition', 'univentricular']);
+  function isCyanoticCat(catId){ return CYANOTIC_CATS.has(catId); }
+  function accentClass(catId){ return isCyanoticCat(catId) ? 'acc-purple' : 'acc-red'; }
+  function sectionSide(key, catId){
+    if(key === 'complications') return 'alert';
+    return isCyanoticCat(catId) ? 'purple' : 'red';
+  }
+
   const SECTION_META = {
-    overview:      { title: "Overview & Types",        side: "purple" },
-    preop:         { title: "Preoperative",            side: "purple" },
-    intraop:       { title: "Intraoperative",           side: "red" },
-    tee:           { title: "TEE / Echocardiography",   side: "purple" },
-    postop:        { title: "Postoperative",            side: "purple" },
-    complications: { title: "Complications",            side: "alert" },
-    associations:  { title: "Associations",             side: "purple" },
+    overview:      { title: "Overview & Types" },
+    preop:         { title: "Preoperative" },
+    intraop:       { title: "Intraoperative" },
+    tee:           { title: "TEE / Echocardiography" },
+    postop:        { title: "Postoperative" },
+    complications: { title: "Complications" },
+    associations:  { title: "Associations" },
   };
 
   const ICONS = {
@@ -1885,16 +1903,16 @@ a:focus-visible, button:focus-visible, input:focus-visible{
     <g clip-path="url(#heartClip)">
       <rect x="0" y="0" width="100" height="230" fill="url(#redGrad)"/>
       <rect x="100" y="0" width="100" height="230" fill="url(#purpleGrad)"/>
-      <path d="M100,80 C97,120 96,160 100,208" fill="none" stroke="#150810" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
-      <path d="M40,95 C60,105 70,120 72,140" fill="none" stroke="#150810" stroke-width="1.4" opacity="0.35"/>
-      <path d="M160,95 C140,105 130,120 128,140" fill="none" stroke="#150810" stroke-width="1.4" opacity="0.35"/>
+      <path d="M100,80 C97,120 96,160 100,208" fill="none" stroke="#fdf0f3" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+      <path d="M40,95 C60,105 70,120 72,140" fill="none" stroke="#fdf0f3" stroke-width="1.4" opacity="0.35"/>
+      <path d="M160,95 C140,105 130,120 128,140" fill="none" stroke="#fdf0f3" stroke-width="1.4" opacity="0.35"/>
     </g>
     <path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z"
-          fill="none" stroke="#f5e9f0" stroke-width="2.5" stroke-linejoin="round"/>
+          fill="none" stroke="#2b1420" stroke-width="2.5" stroke-linejoin="round"/>
     <path d="M108,52 C108,34 106,22 100,14 M100,14 C90,6 74,4 62,10 M100,14 C112,6 130,6 142,14"
-          fill="none" stroke="#c98bec" stroke-width="7" stroke-linecap="round"/>
+          fill="none" stroke="#8a48b3" stroke-width="7" stroke-linecap="round"/>
     <path d="M92,50 C92,30 96,16 108,8 C 122,0 140,2 150,12"
-          fill="none" stroke="#ef4f63" stroke-width="7" stroke-linecap="round"/>
+          fill="none" stroke="#d63a52" stroke-width="7" stroke-linecap="round"/>
     <circle cx="44" cy="70" r="8.5" fill="#e35468" opacity="0.95"/>
     <circle cx="156" cy="70" r="8.5" fill="#a466cf" opacity="0.95"/>
   </svg>`;
@@ -1972,310 +1990,4 @@ a:focus-visible, button:focus-visible, input:focus-visible{
       }
 
       if(this.path.length){
-        const reset = document.createElement('button');
-        reset.className = 'dt-reset';
-        reset.textContent = '\u21ba Start over';
-        reset.onclick = () => this.reset();
-        wrap.appendChild(reset);
-
-        const crumbs = document.createElement('div');
-        crumbs.className = 'dt-crumbs';
-        this.path.forEach((step, i) => {
-          const c = document.createElement('button');
-          c.className = 'dt-crumb';
-          c.style.cursor = 'pointer';
-          c.innerHTML = `<span class="n">${i+1}</span> ${esc(step.label)}`;
-          c.onclick = () => this.jumpTo(i);
-          crumbs.appendChild(c);
-        });
-        wrap.appendChild(crumbs);
-      }
-
-      const last = this.path[this.path.length - 1];
-      if(last && last.leaf){
-        wrap.appendChild(this.renderLeaf(last.leaf));
-      } else {
-        const node = this.path.length ? last.nextNode : this.root;
-        if(!node){
-        } else {
-          const q = document.createElement('div');
-          q.className = 'dt-question';
-          q.textContent = node.question;
-          wrap.appendChild(q);
-
-          const opts = document.createElement('div');
-          opts.className = 'dt-options';
-          node.options.forEach(opt => {
-            const b = document.createElement('button');
-            b.className = 'dt-option';
-            b.innerHTML = `<span>${esc(opt.label)}</span><span class="arrow">\u2192</span>`;
-            b.onclick = () => this.choose(opt);
-            opts.appendChild(b);
-          });
-          wrap.appendChild(opts);
-        }
-      }
-
-      this.mount.appendChild(wrap);
-    }
-    renderLeaf(leaf){
-      const box = document.createElement('div');
-      box.className = 'dt-result';
-      const label = document.createElement('div');
-      label.className = 'dt-result-label';
-      label.textContent = 'Recommended pathway';
-      box.appendChild(label);
-      const text = document.createElement('div');
-      text.className = 'dt-result-text';
-      text.textContent = leaf.text;
-      box.appendChild(text);
-      if(leaf.bullets){
-        box.appendChild(bulletsWithRichContent(leaf.bullets));
-      }
-      if(leaf.refs){
-        leaf.refs.forEach(r => { const el = renderRefBlock(r); if(el) box.appendChild(el); });
-      }
-      if(leaf.linkNote){
-        const p = document.createElement('div');
-        p.style.cssText = 'font-size:12.5px;color:var(--text-faint);margin-top:10px;';
-        p.textContent = leaf.linkNote;
-        box.appendChild(p);
-      }
-      if(leaf.linkTo && byId[leaf.linkTo]){
-        const a = document.createElement('a');
-        a.className = 'link-chip';
-        a.href = '#/lesion/' + leaf.linkTo;
-        a.innerHTML = `Continue: ${esc(byId[leaf.linkTo].name)} <span aria-hidden="true">\u2192</span>`;
-        box.appendChild(a);
-      }
-      return box;
-    }
-  }
-
-  function searchIndex(query){
-    const q = query.trim().toLowerCase();
-    if(q.length < 2) return [];
-    const results = [];
-    LESIONS.forEach(l => {
-      let score = 0;
-      const name = l.name.toLowerCase();
-      if(name.includes(q)) score += name.startsWith(q) ? 100 : 50;
-      if(l.short && l.short.toLowerCase().includes(q)) score += 10;
-      const haystacks = ['overview','preop','intraop','tee','postop','complications','associations'];
-      haystacks.forEach(k => {
-        if(Array.isArray(l[k])){
-          l[k].forEach(line => { if(line.toLowerCase().includes(q)) score += 3; });
-        }
-      });
-      if(score > 0) results.push({ lesion: l, score });
-    });
-    results.sort((a,b) => b.score - a.score);
-    return results.slice(0, 12);
-  }
-
-  function wireSearch(inputEl, resultsEl, onNavigate){
-    let blurTimeout;
-    inputEl.addEventListener('input', () => {
-      const q = inputEl.value;
-      const res = searchIndex(q);
-      if(q.trim().length < 2){ resultsEl.style.display='none'; resultsEl.innerHTML=''; return; }
-      if(!res.length){
-        resultsEl.innerHTML = `<div class="search-empty">No matches for "${esc(q)}"</div>`;
-        resultsEl.style.display='block';
-        return;
-      }
-      resultsEl.innerHTML = res.map(r => `
-        <a class="sr-item" href="#/lesion/${r.lesion.id}">
-          <span class="sr-cat">${esc(catById[r.lesion.category] ? catById[r.lesion.category].name : r.lesion.category)}</span>
-          <span class="sr-name">${esc(r.lesion.name)}</span>
-          <div class="sr-snip">${esc(r.lesion.short || '')}</div>
-        </a>`).join('');
-      resultsEl.style.display='block';
-    });
-    inputEl.addEventListener('focus', () => { if(inputEl.value.trim().length>=2) resultsEl.style.display='block'; });
-    inputEl.addEventListener('blur', () => { blurTimeout = setTimeout(()=>{ resultsEl.style.display='none'; }, 150); });
-    resultsEl.addEventListener('mousedown', e => e.preventDefault());
-  }
-
-  const contentEl = document.getElementById('content');
-
-  function renderSidebarNav(activeCat, activeLesion){
-    const list = document.getElementById('nav-list');
-    list.innerHTML = CATS.map(c => `
-      <li>
-        <a class="nav-link ${activeCat===c.id?'active':''}" href="#/category/${c.id}">
-          <span class="dot"></span>${esc(c.name)}
-        </a>
-      </li>`).join('');
-  }
-
-  function pageHeadHTML(title, short, tags){
-    return `<div class="page-head">
-      <h1>${esc(title)}</h1>
-      ${short ? `<p class="short">${esc(short)}</p>` : ''}
-      ${tags && tags.length ? `<div class="tag-row">${tags.map(t=>`<span class="tag${t.urgent?' urgent':''}">${esc(t.label)}</span>`).join('')}</div>` : ''}
-    </div>`;
-  }
-
-  function renderHome(){
-    renderSidebarNav(null, null);
-    contentEl.innerHTML = `
-      <div class="hero">
-        <div class="hero-heart pulse">${HEART_SVG}</div>
-        <div>
-          <span class="hero-eyebrow">Perioperative reference &middot; congenital heart disease</span>
-          <h1>Cor<em>Path</em></h1>
-          <p>A bedside decision-support reference for anesthesiologists managing congenital heart disease through surgery — built from a single working algorithm, organized lesion by lesion, with the shared protocols surfaced wherever they recur.</p>
-        </div>
-      </div>
-      <div class="home-search search-wrap">
-        <span class="search-icon">${searchIconSvg()}</span>
-        <input id="home-search-input" class="search-input" type="text" placeholder="Search lesions, e.g. \u201cEbstein\u201d, \u201cRVOT\u201d, \u201cduct-dependent\u201d\u2026" autocomplete="off"/>
-        <div id="home-search-results" class="search-results" style="display:none;"></div>
-      </div>
-
-      <div class="section-heading">Browse by category</div>
-      <div class="cat-grid">
-        ${CATS.filter(c=>c.id!=='protocols').map(catCardHTML).join('')}
-      </div>
-
-      <div class="section-heading">Core protocols</div>
-      <div class="protocols-strip">
-        ${LESIONS.filter(l=>l.category==='protocols').map(l=>`
-          <a class="proto-chip" href="#/lesion/${l.id}"><span class="dot"></span>${esc(l.name)}</a>
-        `).join('')}
-      </div>
-
-      <div class="footnote">CorPath is a personal reference tool for qualified clinicians, distilled from one institution's working algorithm. It is not a substitute for current institutional protocols, primary literature, or individualized clinical judgement — always correlate with the specific patient and surgical team.</div>
-    `;
-    wireSearch(document.getElementById('home-search-input'), document.getElementById('home-search-results'));
-  }
-
-  function searchIconSvg(){
-    return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
-  }
-
-  function catCardHTML(c){
-    const count = LESIONS.filter(l => l.category === c.id).length;
-    return `<a class="cat-card" href="#/category/${c.id}">
-      <div class="vessel"></div>
-      <svg class="cat-icon" viewBox="0 0 24 24" fill="none">${ICONS[c.icon] || ''}</svg>
-      <h3>${esc(c.name)}</h3>
-      <p>${esc(c.blurb)}</p>
-      <span class="cat-count">${count} ${count===1?'entry':'entries'}</span>
-    </a>`;
-  }
-
-  function renderCategory(catId){
-    const cat = catById[catId];
-    renderSidebarNav(catId, null);
-    if(!cat){ renderNotFound(); return; }
-    const lesions = LESIONS.filter(l => l.category === catId);
-    contentEl.innerHTML = `
-      <div class="crumb"><a href="#/">Home</a> <span>/</span> <span>${esc(cat.name)}</span></div>
-      ${pageHeadHTML(cat.name, cat.blurb)}
-      <div class="lesion-grid">
-        ${lesions.map(l => `
-          <a class="lesion-card" href="#/lesion/${l.id}">
-            <h4>${esc(l.name)}</h4>
-            <p>${esc(l.short || '')}</p>
-          </a>`).join('')}
-      </div>
-    `;
-  }
-
-  function renderSection(container, key, lesion){
-    const meta = SECTION_META[key];
-    const items = lesion[key];
-    const refs = lesion[key+'Refs'];
-    if((!items || !items.length) && (!refs || !refs.length)) return;
-
-    const card = document.createElement('div');
-    card.className = `card side-${meta.side}`;
-    const head = document.createElement('div');
-    head.className = 'card-head';
-    head.innerHTML = `<h3>${esc(meta.title)}</h3>`;
-    card.appendChild(head);
-
-    if(items && items.length){
-      card.appendChild(bulletsWithRichContent(items));
-    }
-    if(refs && refs.length){
-      refs.forEach(r => {
-        const block = renderRefBlock(r);
-        if(block) card.appendChild(block);
-      });
-    }
-    container.appendChild(card);
-  }
-
-  function renderLesion(id){
-    const lesion = byId[id];
-    if(!lesion){ renderNotFound(); return; }
-    const cat = catById[lesion.category];
-    renderSidebarNav(lesion.category, id);
-
-    contentEl.innerHTML = '';
-    const crumb = document.createElement('div');
-    crumb.className = 'crumb';
-    crumb.innerHTML = `<a href="#/">Home</a> <span>/</span> <a href="#/category/${cat.id}">${esc(cat.name)}</a> <span>/</span> <span>${esc(lesion.name)}</span>`;
-    contentEl.appendChild(crumb);
-
-    const head = document.createElement('div');
-    head.innerHTML = pageHeadHTML(lesion.name, lesion.short);
-    contentEl.appendChild(head);
-
-    (lesion.decisionTrees || []).forEach(dt => {
-      const mount = document.createElement('div');
-      contentEl.appendChild(mount);
-      new DecisionTree(mount, dt.tree, dt.title).render();
-    });
-
-    ['overview','preop','intraop','tee','postop','complications','associations'].forEach(key => {
-      renderSection(contentEl, key, lesion);
-    });
-
-    if(lesion.overview_extra){
-      const card = document.createElement('div');
-      card.className = 'card side-purple';
-      card.innerHTML = `<div class="card-head"><h3>Background</h3></div>`;
-      card.appendChild(bulletsWithRichContent(lesion.overview_extra));
-      contentEl.insertBefore(card, contentEl.children[3] || null);
-    }
-  }
-
-  function renderNotFound(){
-    contentEl.innerHTML = `<div class="page-head"><h1>Not found</h1><p class="short">That page doesn't exist. <a href="#/">Return home</a>.</p></div>`;
-  }
-
-  function route(){
-    const hash = location.hash.replace(/^#/, '') || '/';
-    const parts = hash.split('/').filter(Boolean);
-    closeSidebar();
-    window.scrollTo(0,0);
-    if(parts.length === 0){ renderHome(); return; }
-    if(parts[0] === 'category' && parts[1]){ renderCategory(parts[1]); return; }
-    if(parts[0] === 'lesion' && parts[1]){ renderLesion(parts[1]); return; }
-    renderNotFound();
-  }
-
-  function closeSidebar(){
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('overlay').classList.remove('show');
-  }
-  function toggleSidebar(){
-    document.getElementById('sidebar').classList.toggle('open');
-    document.getElementById('overlay').classList.toggle('show');
-  }
-
-  window.addEventListener('hashchange', route);
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('menu-btn').addEventListener('click', toggleSidebar);
-    document.getElementById('overlay').addEventListener('click', closeSidebar);
-    wireSearch(document.getElementById('sidebar-search-input'), document.getElementById('sidebar-search-results'));
-    route();
-  });
-})();
-</script>
-</body>
-</html>
+        cons
