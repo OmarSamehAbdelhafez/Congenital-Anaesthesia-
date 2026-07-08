@@ -7,55 +7,55 @@
 <meta name="description" content="A bedside decision-support reference for anesthesiologists managing congenital heart disease through surgery."/>
 <style>
 /* ============================================================
-CorPath — Congenital Heart Disease Perioperative Reference
-Design language: anatomical heart, arterial red / venous purple
-============================================================ */
+   CorPath — Congenital Heart Disease Perioperative Reference
+   Design language: anatomical heart, arterial red / venous purple
+   ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 :root{
---bg: #150810;
---bg-soft: #1b0c15;
---surface: #22111d;
---surface-2: #2a1524;
---surface-3: #34192c;
---line: #3c2032;
---line-soft: #2c1524;
---red-deep: #5c1428;
---red: #c22a41;
---red-bright: #ef4f63;
---red-glow: #ff6b7d;
---purple-deep: #351a45;
---purple: #7d3fa3;
---purple-bright: #a466cf;
---purple-glow: #c98bec;
---gold: #d1a23f;
---text: #f5e9f0;
---text-dim: #cbaec0;
---text-faint: #8d6c81;
---radius-sm: 8px;
---radius-md: 14px;
---radius-lg: 22px;
---shadow-card: 0 8px 30px -12px rgba(0,0,0,0.55);
---font-display: 'Fraunces', Georgia, serif;
---font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
---font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --bg:            #150810;
+  --bg-soft:       #1b0c15;
+  --surface:       #22111d;
+  --surface-2:     #2a1524;
+  --surface-3:     #34192c;
+  --line:          #3c2032;
+  --line-soft:     #2c1524;
+  --red-deep:      #5c1428;
+  --red:           #c22a41;
+  --red-bright:    #ef4f63;
+  --red-glow:      #ff6b7d;
+  --purple-deep:   #351a45;
+  --purple:        #7d3fa3;
+  --purple-bright: #a466cf;
+  --purple-glow:   #c98bec;
+  --gold:          #d1a23f;
+  --text:          #f5e9f0;
+  --text-dim:      #cbaec0;
+  --text-faint:    #8d6c81;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-card: 0 8px 30px -12px rgba(0,0,0,0.55);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 }
 
-,::before,*::after{ box-sizing:border-box; }
+*,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 body{
-margin:0;
-background:
-radial-gradient(ellipse 900px 500px at 15% -10%, rgba(125,63,163,0.20), transparent 60%),
-radial-gradient(ellipse 700px 600px at 100% 0%, rgba(194,42,65,0.14), transparent 55%),
-var(--bg);
-color:var(--text);
-font-family:var(--font-body);
-font-size:16px;
-line-height:1.55;
-min-height:100vh;
--webkit-font-smoothing:antialiased;
+  margin:0;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(125,63,163,0.20), transparent 60%),
+    radial-gradient(ellipse 700px 600px at 100% 0%, rgba(194,42,65,0.14), transparent 55%),
+    var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.55;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
 }
 h1,h2,h3,h4{ font-family:var(--font-display); font-weight:600; margin:0; color:var(--text); letter-spacing:-0.01em; }
 a{ color:inherit; }
@@ -63,17 +63,17 @@ button{ font-family:inherit; }
 ::selection{ background:var(--purple); color:#fff; }
 
 a:focus-visible, button:focus-visible, input:focus-visible{
-outline:2px solid var(--purple-glow);
-outline-offset:2px;
+  outline:2px solid var(--purple-glow);
+  outline-offset:2px;
 }
 .mono{ font-family:var(--font-mono); }
 
 #app{ display:flex; min-height:100vh; }
 
 .sidebar{
-width:272px; flex-shrink:0; background:linear-gradient(180deg, var(--bg-soft), var(--bg));
-border-right:1px solid var(--line-soft); padding:22px 18px 28px;
-position:sticky; top:0; height:100vh; overflow-y:auto;
+  width:272px; flex-shrink:0; background:linear-gradient(180deg, var(--bg-soft), var(--bg));
+  border-right:1px solid var(--line-soft); padding:22px 18px 28px;
+  position:sticky; top:0; height:100vh; overflow-y:auto;
 }
 .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; margin-bottom:22px; padding:2px 4px; }
 .brand svg{ width:34px; height:34px; flex-shrink:0; }
@@ -196,13 +196,13 @@ position:sticky; top:0; height:100vh; overflow-y:auto;
 .overlay.show{ display:block; }
 
 @media (max-width: 900px){
-.sidebar{ position:fixed; left:0; top:0; height:100vh; z-index:60; transform:translateX(-100%); transition:transform .22s ease; box-shadow:20px 0 40px rgba(0,0,0,0.4); }
-.sidebar.open{ transform:translateX(0); }
-.topbar{ display:flex; }
-.content{ padding:24px 18px 70px; }
-.hero{ flex-direction:column; align-items:flex-start; gap:16px; text-align:left; }
-.hero-heart{ width:96px; height:96px; }
-.hero h1{ font-size:26px; }
+  .sidebar{ position:fixed; left:0; top:0; height:100vh; z-index:60; transform:translateX(-100%); transition:transform .22s ease; box-shadow:20px 0 40px rgba(0,0,0,0.4); }
+  .sidebar.open{ transform:translateX(0); }
+  .topbar{ display:flex; }
+  .content{ padding:24px 18px 70px; }
+  .hero{ flex-direction:column; align-items:flex-start; gap:16px; text-align:left; }
+  .hero-heart{ width:96px; height:96px; }
+  .hero h1{ font-size:26px; }
 }
 @media (max-width: 480px){ .cat-grid, .lesion-grid{ grid-template-columns:1fr; } }
 @media print{ .sidebar, .topbar, .search-wrap, .back-link{ display:none !important; } body{ background:#fff; color:#000; } .card, .dt-widget{ background:#fff; border:1px solid #999; box-shadow:none; } }
@@ -211,442 +211,2070 @@ position:sticky; top:0; height:100vh; overflow-y:auto;
 <body>
 
 <div id="app">
-<aside class="sidebar" id="sidebar">
-<a class="brand" href="#/">
-<svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<clipPath id="heartClipSm"><path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z"/></clipPath>
-<linearGradient id="redGradSm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e35468"/><stop offset="100%" stop-color="#7a1530"/></linearGradient>
-<linearGradient id="purpleGradSm" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b06fe0"/><stop offset="100%" stop-color="#3c1a4d"/></linearGradient>
-</defs>
-<g clip-path="url(#heartClipSm)">
-<rect x="0" y="0" width="100" height="230" fill="url(#redGradSm)"/>
-<rect x="100" y="0" width="100" height="230" fill="url(#purpleGradSm)"/>
-</g>
-<path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z" fill="none" stroke="#f5e9f0" stroke-width="4"/>
-</svg>
-<span>
-<span class="brand-name">Cor<em style="font-style:normal;color:#ef4f63;">Path</em></span>
-<span class="brand-sub">CHD Perioperative Reference</span>
-</span>
-</a>
-<div class="search-wrap">
-<span class="search-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-<input id="sidebar-search-input" class="search-input" type="text" placeholder="Search…" autocomplete="off"/>
-<div id="sidebar-search-results" class="search-results" style="display:none;"></div>
-</div>
-<div class="nav-section-label">Categories</div>
-<ul class="nav-list" id="nav-list"></ul>
-<div class="sidebar-footer">Reference tool for qualified clinicians. Always correlate with institutional protocols and the individual patient.</div>
-</aside>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#/">
+      <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="heartClipSm"><path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z"/></clipPath>
+          <linearGradient id="redGradSm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e35468"/><stop offset="100%" stop-color="#7a1530"/></linearGradient>
+          <linearGradient id="purpleGradSm" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b06fe0"/><stop offset="100%" stop-color="#3c1a4d"/></linearGradient>
+        </defs>
+        <g clip-path="url(#heartClipSm)">
+          <rect x="0" y="0" width="100" height="230" fill="url(#redGradSm)"/>
+          <rect x="100" y="0" width="100" height="230" fill="url(#purpleGradSm)"/>
+        </g>
+        <path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z" fill="none" stroke="#f5e9f0" stroke-width="4"/>
+      </svg>
+      <span>
+        <span class="brand-name">Cor<em style="font-style:normal;color:#ef4f63;">Path</em></span>
+        <span class="brand-sub">CHD Perioperative Reference</span>
+      </span>
+    </a>
+    <div class="search-wrap">
+      <span class="search-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+      <input id="sidebar-search-input" class="search-input" type="text" placeholder="Search…" autocomplete="off"/>
+      <div id="sidebar-search-results" class="search-results" style="display:none;"></div>
+    </div>
+    <div class="nav-section-label">Categories</div>
+    <ul class="nav-list" id="nav-list"></ul>
+    <div class="sidebar-footer">Reference tool for qualified clinicians. Always correlate with institutional protocols and the individual patient.</div>
+  </aside>
 
-<div class="overlay" id="overlay"></div>
+  <div class="overlay" id="overlay"></div>
 
-<div class="main">
-<div class="topbar">
-<button class="icon-btn" id="menu-btn" aria-label="Open menu">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-</button>
-<a class="brand" href="#/">
-<span class="brand-name">Cor<em style="font-style:normal;color:#ef4f63;">Path</em></span>
-</a>
-</div>
-<main class="content" id="content"></main>
-</div>
+  <div class="main">
+    <div class="topbar">
+      <button class="icon-btn" id="menu-btn" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <a class="brand" href="#/">
+        <span class="brand-name">Cor<em style="font-style:normal;color:#ef4f63;">Path</em></span>
+      </a>
+    </div>
+    <main class="content" id="content"></main>
+  </div>
 </div>
 
-<script id="data-blob" type="application/json">{"categories":[{"id":"shunt","name":"Left-to-Right Shunts","icon":"shunt","blurb":"ASD, VSD, PDA, AV canal, truncus, anomalous pulmonary venous drainage"},{"id":"cyanotic","name":"Right Heart & Cyanotic Lesions","icon":"cyanotic","blurb":"Tetralogy of Fallot, pulmonary stenosis, pulmonary atresia, Ebstein anomaly"},{"id":"lvoto","name":"Left Heart Obstructive Lesions","icon":"lvoto","blurb":"Aortic stenosis, HOCM, coarctation, arch anomalies, mitral stenosis"},{"id":"transposition","name":"Transposition & Conotruncal","icon":"transposition","blurb":"D-TGA and ccTGA, arterial/atrial switch, Rastelli-type repairs"},{"id":"univentricular","name":"Single Ventricle Pathway","icon":"univentricular","blurb":"Staged palliation — banding, Glenn, Fontan — and heterotaxy syndromes"},{"id":"vascular","name":"Vascular & Coronary Anomalies","icon":"vascular","blurb":"Vascular rings, ALCAPA, coronary artery fistula"},{"id":"acquired","name":"Acquired & Structural Disease","icon":"acquired","blurb":"Pericardial effusion/tamponade, mitral regurgitation, aortic aneurysm"}],"shared":{},"lesions":[{"id":"asd","category":"shunt","name":"Atrial Septal Defect (ASD)","short":"Left to Right Shunt Lesions - ASD","overview":[],"associations":[],"decisionTrees":[{"title":"ASD dependant","tree":{"question":"ASD dependant?","options":[{"label":"Yes","result":{"text":"Leave +/- Atrial septectomy"}},{"label":"No","next":{"question":"Concider closure","options":[{"label":"Adequate rims","result":{"text":"Device closure"}},{"label":"Inadequate rims","next":{"question":"Type","options":[{"label":"PFO","result":{"text":"Direct"}},{"label":"ADS I/II","result":{"text":"Patch"}},{"label":"Sinus venosus","result":{"text":"Baffle +/- Warden"}}]}}]}}]}},{"title":"Pulmonary Hypertension","tree":{"question":"Pulmonary Hypertension","options":[{"label":"Severe","result":{"text":"Consider closure with residual","bullets":["1- Stops having recurrent chest infection with apparent improvement","2- Clear chest x-ray","3- Cyanosis during straining","4- Hemoptysis","5- Congested tender liver","6- Elevated liver enzymes","7- Anasarca and Cyanosis"]}},{"label":"Eisenmenger","result":{"text":"Leave + Pulm. vasodilators"}}]}}],"preop":["1- Recurrent chest infection, pulmonary edema","2- Congestive heart failure","3- Arrhythmia risks","4- Paradoxical emboli","5- Signs of Pulmonary hypertension","1- Size and direction of blood","2- Right side dilatation and TR"],"intraop":["1- Low FiO2","2- Permissive hypercapnea","3- Avoid alkalosis","4- PEEP","5- Avoid volume overload","If signs of PHTN present: 1- ↑FiO2","2- ↓PCO2","3- ↑ pH is more effective using NaHCO3","4- Good Analgesia & anesthesia","5- Avoid hypoglycemia – Avoid hypothermia","6- Inodilators – Pulmonary vasodilators"],"postop":["1- Check for residuals","2-Check right side","3-Check IVC into RA","4- Avoid volume overload and LV failure"],"complications":[]},{"id":"vsd","category":"shunt","name":"Ventricular Septal Defect (VSD)","short":"Left to Right Shunt Lesions - VSD","overview":[],"decisionTrees":[{"title":"Size, number, position","tree":{"question":"Size, number, position","options":[{"label":"Single muscular","result":{"text":"Device closure"}},{"label":"Perimembranous","result":{"text":"Device closure OR Surgical closure"}},{"label":"Inlet and Subpulmonic","result":{"text":"Surgical closure"}},{"label":"Multiple","result":{"text":"Single Ventricle Pathway","linkTo":"single_ventricle_pathway"}}]}}],"preop":["1- Recurrent chest infection, pulmonary edema","2- Congestive heart failure","3- Arrhythmia risks","4- Paradoxical emboli","5- Signs of Pulmonary hypertension (within 2y)","1- Size and direction of blood","2- Left side dilatation","3- RVOTO","4- RVSP","5- RCC prolapse and AR","6-Infundibular stenosis and DCRV"],"intraop":["1- Low FiO2","2- Permissive hypercapnea","3- Avoid alkalosis","4- PEEP","5- Avoid volume overload"],"postop":["1- Check for residuals & other VSDs","2-Check right side","3-Heart block","4- JET","5- LV function and inotropes"]},{"id":"pda","category":"shunt","name":"Patent Ductus Arteriosus (PDA)","short":"Left to Right Shunt Lesions - PDA","overview":[],"decisionTrees":[{"title":"PDA dependant","tree":{"question":"PDA dependant?","options":[{"label":"Yes","result":{"text":"1- Low FiO2 - room air, 2- PG E1, 3- Volume and Norad., 4- PDA stent -> Single ventricle pathway","linkTo":"single_ventricle_pathway"}},{"label":"No","next":{"question":"Size, gradient - Closure if Qp:Qs > 2","options":[{"label":"NSAID and Paracetamol","result":{"text":"NSAID and Paracetamol"}},{"label":"Device/coil closure","result":{"text":"Device/coil closure"}},{"label":"Surgical ligation","result":{"text":"Surgical ligation"}}]}}]}}],"preop":["Left to right shunts: 1- Recurrent chest infection, pulmonary edema","2- Congestive heart failure and failure to thrive","3- Arrhythmia risks","4- Paradoxical emboli","5- Signs of Pulmonary hypertension, early within 2y","1- Size and direction of blood","2- Left side dilatation","3- Low diastolic pressure","4- Coronary steal"],"intraop":["Thoracotomy: 1- Lateral position, ECG stickers","2− Secure ETT, no leak,","3− ETT is not endobronchial to the collapsed side.","4− Pressure points, good padding.","Lung collapse: 1- 100% O2 – Low TV – High RR","2- Watch airway pressure","3- Recruite at the end."],"complications":["Lung collapse complications: 1- Pneumothorax,","2- Chylothorax,","3- Vocal cord paralysis,","4- Ligation of PA or Descending Aorta.","Device complications: 1- Air embolism","2- Arrhythmias","3- Thrombus formation on device or applicator","4- Device Embolization","5- Pericardial hemorrhage and tamponade"]},{"id":"avsd","category":"shunt","name":"AV Canal (Atrioventricular Septal Defect)","short":"Left to Right Shunt Lesions - AV canal","overview":[],"decisionTrees":[{"title":"Partial, Transitional, Complete","tree":{"question":"Partial, Transitional, Complete?","options":[{"label":"Partial, Transitional, Complete","result":{"text":"Surgical closure"}},{"label":"Unbalanced","result":{"text":"Single Ventricle Pathway","linkTo":"single_ventricle_pathway"}}]}}],"preop":["Left to right shunts: 1- Recurrent chest infection, pulmonary edema","2- Congestive heart failure","3- Arrhythmia risks","4- Paradoxical emboli","5- Signs of Pulmonary hypertension (with 1y)","1- Isomerism","2- Bilateral SVC","3- Unroofed LSVC and coronary sinus","4- Malaligned IAS +- double outlet RA +- LA stenosis","5- Cleft","6- AVVR","7- Double orifice LAAV","8- Inter papillary distance -size of left mural leaflet","9- Longer and narrower LVOT","10- RVOT -fallot canal","11- Balanced or unbalanced ventricles","12- VSD type and gradient +- outlet extention"],"intraop":["1- Low FiO2","2- Permissive hypercapnea","3- Avoid alkalosis","4- PEEP","5- Avoid volume overload"],"postop":["1- Check for residuals","2- Check right side","3- AVVR and cleft","4- Gradient across AVV","5- Heart Block","6- Avoid volume overload and LV failure"]},{"id":"truncus","category":"shunt","name":"Truncus Arteriosus","short":"Left to Right Shunt Lesions - Truncus","overview":[],"decisionTrees":[{"title":"Surgical","tree":{"question":"Surgical","options":[{"label":"Surgical","result":{"text":"Surgical management indicated"}}]}}],"preop":["1- Recurrent chest infection, pulmonary edema","2- Congestive heart failure and failure to thrive","3- Signs of PHTN, very early","4- Cyanosis due to PHTN or bad chest","5- Coronary steal - low diastolic pressure","6- Worse with Truncal Regurge","7- Irradiated blood and calcium if DiGeorge S.","8- Difficult intubation if Velocardiofacial S."],"intraop":["1- Balance PVR:SVR","2- Low FiO2, Room air","3- Permissive hypercapnea","4- Avoid alkalosis","5- PEEP","6- Avoid Bradycardia","7- Surgical team ready for emergency sternotomy","8- Snare Pulmonary arteries"],"postop":["1-Check right side","2- LV function and inotropes","3- May leave residual ASD or VSA to vent","4- Check truncal valve regurge or stenosis"]},{"id":"apvd","category":"shunt","name":"Anomalous Pulmonary Venous Drainage (APVD)","short":"Left to Right Shunt Lesions - APVD","overview":[],"decisionTrees":[{"title":"Types of APVD","tree":{"question":"PAPVD or TAPVD?","options":[{"label":"PAPVD","result":{"text":"Surgical - Baffle veins to LA","bullets":["1- Degree of shunting depends on number of anomalous veins and LV:RV diastolic pressures","2- Usually associated with Sinus Venosus ASD"]}},{"label":"TAPVD","next":{"question":"Supracardiac, Cardiac, or Infracardiac?","options":[{"label":"Supracardiac","result":{"text":"Surgical (TEE contraindicated)"}},{"label":"Cardiac","result":{"text":"Surgical"}},{"label":"Infracardiac","next":{"question":"Usually obstructed - Surgical emergency","options":[{"label":"1- Obstructed single pulm. vein","result":{"text":"1- Rashkind or 2- Repair"}},{"label":"2- Closing PFO - ASD dependant","result":{"text":"1- Rashkind or 2- Repair"}}]}}]}}]}}],"preop":["1- Recurrent chest infection, pulmonary edema","2- Congestive heart failure","3- Arrhythmia risks","4- Paradoxical emboli","5- Signs of Pulmonary hypertension"],"intraop":[],"postop":["1- Check for residuals","2-Check right side","3- Avoid volume overload and LV failure in diastole +/- LA line"]},{"id":"tof","category":"cyanotic","name":"Tetralogy of Fallot","short":"Tetralogy of Fallot and Associations","overview":[],"associations":["1- Trisomies 18, 21 and 13,","2- VACTERL, CHARGE, Alagille syndromes","3- Chr 22q11 microdeletion-associated syndromes: DiGeorge, velocardiofacial and conotruncal anomaly face syndrom"],"decisionTrees":[{"title":"Variants and Associations","tree":{"question":"Variants and Assoiations","options":[{"label":"Anomalous coronaries in front of the RVOT","result":{"text":"Difficult transannular patch, so RV to PA cinduit"}},{"label":"Pulmonary Atresia","result":{"text":"PDA or MAPCA dependant"}},{"label":"Abscent PV","result":{"text":"Free PR, dilated PAs, bronchomalacia, stridor. 1- May be neonates, 2- High PEEP, 3- Prone position, 4- Inhalation induction, 5- TEE is relatively contraindicated, 6- Respiratory distress may persist after surgery"}}]}}],"preop":["1- Age & weight","2- Baseline SpO2","3- Spells: gets bluer, syncope, fits","4- Low CO, failure to thrive.","5- Severity depends on: RVOTO +/- dynamic obst., Other sources of pulmonary perfusion: PDA or MAPCAs","6- Polycythemia and risk of thrombosis.","7- Avoid Hg < 10 and postpone if > 20 and ask for phlebotomy.","8- Coagulation profile","9- Embolism.","Inv: 1- Chest X-ray: ‘Boot shaped’ heart and oligemia.","2- Usually needs a CT scan: aorta, great vessels, PAs, the coronaries, PDA and MAPCAs.","Spells triggers: 1- Pain and stress, 2- Dehydration, 3- Acidosis, 4- Fever, 5- Decreased SVR, 6- Severe Cyanosis causes more acidosis, a vicious cycle"],"intraop":["Surgical: 1- Total repair at infancy: 2- VSD patch, 3- PV repair, RVOT patch, pulmonary arteries repair, 4- Transannular patch if PV is unrepairable, 5- RV to MPA conduit if a coronary passes anterior to the PV., 6- Balloon dilatation, PDA stent, RVOT stent or MBTS in severe cyanosis or duct dependant., 7- MBTS may be done if the PAs are small, to allow increased flow and growth for later total repair., 8- IN PA with MAPCAs, Unifocalization","Before induction: 1- Avoid agitation by mild sedation in a monitored setting. 2- Use sugar drops and pacifiers, 3- Minimize fasting, 4- Continue beta blockers","Induction: 1-Ketamine IV or IM, 2- Avoid inhalation, 3- Vasopressors ready","1- Good preload","2- Maintain high SVR and low PVR","3- Avoid inotropes","4- Avoid tachycardia and arrhythmias","5- Good analgesia and anesthesia","6- Avoid hypothermia and hypoglycemia","7- Avoid sympathetic stimulation","8- Avoid anemia","Manage spells: ➢ First: Give Vasopressor, ➢ Then: 100% O2 and ensure adequate ventilation., ➢ Then: Fluids, ➢ Then: Check depth of anesthesia, ➢ And: ABG to correct PCO2, acidosis, hypoglycemia, ➢ And: warm the patient., ➢ Give: Propranolol 0.1 mg/kg or esmolol 50 micg/kg, ➢ If no response, ask the surgeon to manually compress the aorta and go on bypass or ECMO as soon as possible"],"tee":["1- Anterior and leftward deviation of the conal septum.","2- Check gradient across RVOT: valvular, sub. and supravalvular.","3- PV may be thick, dysplastic or bicuspid, measure the anulus and try to decide whether the valve is repairable or not.","4- VSD and the direction of flow across.","5- Other anomalies."],"postop":["1- SpO2","2- RVOT gradient","3- RV pressure by direct needle, < 0.7 LV is accepted","4- If Residual VSD is suspected do a “step up” of PaO2","5- Risk of coagulopathy, platelets may be thrombasthnic due to polycythemia","6- Inotropes and good filling to support the RV. The CVP is a good monitor of the RV function.","7- Free PR is usually tolerated for some years","If inotropes need: 1- Possibility of poor preservation of the hypertrophied RV on CPB, 2- Ventriculotomy., 3- Long cardioplegia time., 4- Coronary anomalies., 5- Conduction abnormalities and heart block - bundle of His courses at the posteroinferior edge of the VSD and near the anteroseptal leaflet of the TV","JET: 1- Overdrive pacing, 2- Sedation, 3- Electrolytes correction, 4- Cooling to 34-35, 5- Amiodarone, 6- Dexmadetomidine infusion","In cases of Pink Fallot with high RVOT gradient indicating the presence of MAPCAs, it is expected that post repair the lungs will congest","dealing with the MAPCAs surgically or percutaneously is essential, if possible."],"complications":["Residual infundibular stenosis if no inotropes needed"]},{"id":"pulm_stenosis","category":"cyanotic","name":"Pulmonary Stenosis","short":"Pulmonary Stenosis","overview":[],"associations":["Valvular associated: Noonan S.","Supravalvular associated: 1- Congenital rubella, 2- Williams S., 3- Noonan S., 4- Alagille S., 5- DiGeorge S., 6- Leopard S."],"decisionTrees":[{"title":"Manage","tree":{"question":"Manage","options":[{"label":"Balloon Valvuloplasty","result":{"text":"Balloon Valvuloplasty till gradient is < 30 mmHg"}},{"label":"Surgical Options","result":{"text":"1- PV repair or dilatation by Hegar dilators, 2- RVOT patch, 3- PAs repair, 4- Transannular patch if PV is unrepairable, 5- RV to MPA conduit if a coronary passes anterior to the PV., 6- If the valve is replaced, mechanical valves are avoided due to high risk of thrombosis., 7- In critical PS, urgent intervention is needed"}},{"label":"Transcatheter","result":{"text":"Transcatheter Pulmonary Valve Implantation"}}]}}],"preop":["1- Age and weight - symptoms increase with age in fixed stenosis","2. Baseline SpO2, may have cyanosis if an ASD, PDA or VSD is associated - Critical PS","3. History of low CO, CHF, failure to thrive.","4. Severity depends on gradient across the RVOT, and the presence of PDA or MAPCAs"],"intraop":["1- Good preload","2- Maintain high SVR and low PVR","3- Avoid inotropes","4- Avoid tachycardia and arrhythmias","5- Good analgesia and anesthesia","6- Avoid hypothermia and hypoglycemia","7- Avoid sympathetic stimulation","8- Avoid anemia"],"complications":["Balloon Valvuloplasty complications: 1- Transient bradycardia and hypotension with balloon inflation.","2- AV block","3- Tricuspid papillary muscle rupture.","4- Pulmonary artery rupture.","5- RVOTO due to infundibular hypertrophy - volume and beta-blockers","6- Reperfusion injury - needs high PEEP","7- PR"]},{"id":"pa_ivs","category":"cyanotic","name":"Pulmonary Atresia with Intact Septum","short":"Pulmonary Atresia with Intact Septum","overview":[],"decisionTrees":[{"title":"Sinusoids","tree":{"question":"Sinusoids present?","options":[{"label":"Yes","result":{"text":"1. High RV pressure may cause sinusoids, 2. TR prevents their development., 3. Myocardial perfusion may be sinusoid dependant, 4. RV dependent coronary circulation, 5. Cardiac catheterization is essential.","bullets":["1. RV decompression is avoided","2. MBTS is needed.","3. During CPB, the RV is pressurized by an arterial cannula passing through the TV","4. or surgery without full flow CPB"]}},{"label":"PDA dependant","result":{"text":"1. Room air, 2. Norad. & volume, 3. PGE1, 4. PDA stent"}},{"label":"Surgical","result":{"text":"1. PV repair, 2. Transannular patch., 3. Glenn shunt, specially if small RV., 4. Catheter based PV perforation, 5. Rashkind, PDA stenting,, 6. MBT, 7. Unifocalization"}}]}},{"title":"Circular shunt","tree":{"question":"Circular shunt","options":[{"label":"Surgical causes","result":{"text":". Transannular patch, . Free PR, . Coronary fistulae, . MBTS"}},{"label":"Other causes","result":{"text":". PR, .TR, . ASD, . PDA or MBTS"}}]}}],"preop":["1. Age and weight","2. Baseline SpO2, best be around 85%","3. Low CO, failure to thrive","4. Signs of myocardial ischemia.","5. May be associated with TV, RV or coronary anomalies.","6. There is always an ASD or PFO and a PDA, that may be restrictive, which is a neonatal emergency specially with a closing PDA","7. Embolism","Inv: 1. CT, 2. Hb"],"intraop":["1. Good preload","2. High SVR, low PVR","3. Avoid arrhythmias","4. Inodilators","5. RV may be ischemic"],"postop":["1. The lungs may get congested.","2. Balancing SVR:PVR is essential","3. Coronary steal and global ischemia.","4. Heparin and Aspirin for MBTS."]},{"id":"ebstein","category":"cyanotic","name":"Ebstein Anomaly","short":"Ebstein Anomaly","overview":[],"decisionTrees":[{"title":"Surgical","tree":{"question":"Surgical","options":[{"label":"Two ventricle","result":{"text":"1.Valvuloplasty, 2. Relocation of leaflets to the true annulus, 3. +/- annuloplasty, 4. Plication of the atrialized RV, Cone technique for sail like ant. leaflet, TV replacement"}},{"label":"Borderline RV","result":{"text":"One-and-half -> Glenn -> Two ventricle"}},{"label":"Small RV","result":{"text":"Single Ventricle","linkTo":"single_ventricle_pathway"}},{"label":"Electrophysiological ablation","result":{"text":"Electrophysiological ablation"}}]}}],"preop":["1. Age and weight","2. Baseline SpO2","3. History of low CO, CHF, failure to thrive.","4. Arrhythmias","Variable severity: 1. Degree of effective TV orifice displacement, 2. Degree of TR, 3. RV function, 4. Size of ASD or PFO","Arrhythmias: 1. Atrial due to enlarged RA, 2. Conduction abnormalities due to TV annular displacement., 3. WPW syndrome., 4. Ventricular arrhythmia from atrialized RV, 5. Sudden cardiac death"],"intraop":["1. Good preload","2. Avoid bradycardia","3. Maintain Sinus","4. Inodilators"],"postop":["1. RV plication may compromise the right coronary.","2. Conduction abnormalities","3. Jet","4. Ventricular arrhythmias.","5. RV support with inotropes.","6. RV is usually small with poor compliance","7. CVP is a good monitor"]},{"id":"aortic_stenosis","category":"lvoto","name":"Aortic Stenosis","short":"Aortic Stenosis","overview":[],"associations":[".Hunter's S., .Hurler's S., .Turner's S."],"decisionTrees":[{"title":"Intervention","tree":{"question":"Critical AS with duct dependent systemic circulation?","options":[{"label":"Yes","result":{"text":"The neonate is shocked and requires urgent intervention. PDA stent."}},{"label":"No/Intervention","next":{"question":"Intervention Type","options":[{"label":"Balloon Valvuloplasty for neonates","result":{"text":"1. Retrograde via femoral, carotod or umbilical a., 2. Antegrade via femoral or umbilical v. through PFO, 3. Rapid overdrive pacing, adenosin or esmolol"}},{"label":"Surgery","result":{"text":"1. Aortic valve repair, 2. Replacement, 3. ROSS, 4. Ozaki, 5. TAVR"}}]}}]}}],"preop":["1. Age and weight","2.History of low CO, CHF, failure to thrive.","3.Signs of LV ischemia, subendocardial fibroelastosis","4. LVH may cause DD and PHTN","5. Bleeding is expected so ensure adequate blood products"],"intraop":["1. Induction by Ketmaine IV or IM","2. Be very careful with inhalation induction and better avoid","3. Good preload","4. Maintain SVR","5. Avoid tachyarrhythmias","6. If congestive heart failure: Inotropes and diuretics","Balance supply and demand: 1. Avoid tachycardia, 2. Avoid profound bradycardia, 3. Avoid Anemia, 4. Avoid hypoglycemia and hypoxia"],"tee":["1. Mean gradient","2. AV area","3. Consider valve repairable or not","4. LV function","5. PV diameter and PR if ROSS is planned"],"postop":["1. LVOT gradient","2. Usually don’t need inotropes unless there is preoperative cardiomyopathy, CHF or LV dilatation or the TEE shows SWMA","3. Good filling for hypertrophied LV.","4. Bleeding is expected so avoid hypertension and without hypotension either, not to cause ischemia to the hypertrophied LV"]},{"id":"supravalvular_as","category":"lvoto","name":"Supravalvular Aortic Stenosis","short":"Supravalvular Aortic Stenosis","overview":[],"associations":["William S. +/- PS"],"decisionTrees":[{"title":"Surgery","tree":{"question":"Surgery","options":[{"label":"Surgery","result":{"text":"1. Patch aortoplasty, 2. Ross or Ross-Konno procedure, 3. Patch augmentation of the stenotic coronary or CABG., 4. BPV for PS"}}]}}],"preop":["1. Age and weight","2.History of low CO, CHF, failure to thrive.","3.Signs of LV ischemia, subendocardial fibroelastosis","4. LVH may cause DD and PHTN","5. Bleeding is expected so ensure adequate blood products","6. Coronary narrowing in William S. may cause further ischemia"],"intraop":["1. Induction by Ketmaine IV or IM","2. Be very careful with inhalation induction and better avoid","3. Good preload","4. Maintain SVR","5. Avoid tachyarrhythmias","6. If congestive heart failure: Inotropes and diuretics","Wiiliam S. may be: 1. Difficult intubation., 2. Abnormal skeletal muscles may need monitoring of neuromuscular blockade, 3. HTN and renal insufficiency, 4. Coronary stenosis may cause dangerous ischemia during induction., 5. Readily available CPB or ECMO is adviced since CPR may be challenging"],"tee":["1. Mean gradient","2. Concentric narrowing of the STJ - hour glass appearance,, 3. or diffuse narrowing of the ascending aorta.","4. LV function"],"postop":["1. LVOT gradient","2. Usually don’t need inotropes unless there is preoperative cardiomyopathy, CHF or LV dilatation or the TEE shows SWMA","3. Good filling for hypertrophied LV.","4. Bleeding is expected so avoid hypertension and without hypotension either, not to cause ischemia to the hypertrophied LV","5. Ischemia may be due to coronary orifice narrowing"]},{"id":"subvalvular_as","category":"lvoto","name":"Subvalvular Aortic Stenosis","short":"Subvalvular Aortic Stenosis","overview":[],"associations":[". Other CHD like Shone complex, . After VSD closure"],"decisionTrees":[{"title":"Surgical types","tree":{"question":"types","options":[{"label":"SAM","result":{"text":"Resection: . Recurrent, . May injure the AV cusps"}},{"label":"HOCM","result":{"text":"Myectomy"}},{"label":"Tubular","result":{"text":"Konno.s"}},{"label":"+ AS/AR","result":{"text":". AV repair, . replacement, . Ross-Konno"}}]}}],"preop":["1. Age and weight","2.History of low CO, CHF, failure to thrive.","3.Signs of LV ischemia, subendocardial fibroelastosis","4. LVH may cause DD and PHTN","5. Bleeding is expected so ensure adequate blood products","Accelerated flow across AV - Valvular AS and AR"],"intraop":["1. Induction by Ketmaine IV or IM","2. Be very careful with inhalation induction and better avoid","3. Good preload","4. Maintain SVR","5. Avoid tachyarrhythmias","6. If congestive heart failure: Inotropes and diuretics"],"tee":["1. Mean gradient","2. Static or Dynamic","3. LV function","4. PV diameter and PR if ROSS is planned","5. Ant MV leaflet attachment"],"postop":["1. LVOT gradient","2. Usually don’t need inotropes unless there is preoperative cardiomyopathy, CHF or LV dilatation or the TEE shows SWMA","3. Good filling for hypertrophied LV.","4. Bleeding is expected so avoid hypertension and without hypotension either, not to cause ischemia to the hypertrophied LV","Heart Block is common","TEE post: 1. Gradient across LVOT, 2. LV function, 3. SAM of AML, 4. Injury of AML and MR"]},{"id":"hocm","category":"lvoto","name":"HOCM","short":"HOCM","overview":[],"associations":["1. Insulin dependant mothers, 2. Mitochondrial diseases, 3. Pompe diseases, 4. Noonan S."],"decisionTrees":[{"title":"Surgery Indicated if","tree":{"question":"Surgery Indicated if:","options":[{"label":"1..Gradient > 60 mmHg, 2. Symptomatic, 3. Mitral Regurge","result":{"text":". Septal myectomy via aortotomy., . May need MV repair., . Deroofing of an intramural coronary or CABG, . May need an ICD for recurrent VT or VF"}}]}}],"preop":["1. Age and weight","2.History of low CO, CHF, failure to thrive.","3.Signs of LV ischemia, subendocardial fibroelastosis","4. Intramural coronaries may increase ischemia","5. Ventricular arrhythmias","6. Family history of sudden cardiac death","7. SAM of AML with MR"],"intraop":["1. Induction by Ketmaine IV or IM","2. Be very careful with inhalation induction and better avoid","3. Good preload","4. Maintain SVR","5. Avoid tachyarrhythmias","6. Avoid increased contractility"],"tee":["1. Gradient, dagger shaped wave","2. SAM of AML, check for MR.","3. Septal wall thickness: > 15 mm unexplained or SWT/PWT > 1.3 and > 1.5 in hypertensives","4. Distance between the aortic annulus and the point of contact of the septum with the AML - site of myectomy","5. Mid-cavitary obstruction in both ventricles.","6. LV hypertrophy and dilatation and LV function.","7. Later fibrosis and ischemia may cause LV wall thinning and dilatation.","8. Other anomalies."],"postop":["1. LVOT gradient","2. Usually don’t need inotropes unless there is preoperative cardiomyopathy, CHF or LV dilatation or the TEE shows SWMA","3. Good filling for hypertrophied LV.","4. Bleeding is expected so avoid hypertension and without hypotension either, not to cause ischemia to the hypertrophied LV","5. BBB and Heart Block are common","6. If deroofing of coronary artery, bleeding is expected","TEE post: 1. Gradient across LVOT, 2. LV function, 3. SAM of AML, 4. Iatrogenic VSD"]},{"id":"coarctation","category":"lvoto","name":"Coarctation of the Aorta","short":"Coarctation of the Aorta","overview":[],"decisionTrees":[{"title":"Types","tree":{"question":"types","options":[{"label":"short segment","result":{"text":"Resection via thoracotomy for neonates and infants"}},{"label":"long segment","result":{"text":"Balloon dilatation and stent for older patients, Recurrence is common."}},{"label":"+ Hypoplastic Ao Arch","result":{"text":"Aortic arch advancement in hypoplastic arch."}},{"label":"PDA dependant descending Ao","result":{"text":"PGs in PDA dependent systemic circulation."}}]}}],"preop":["1. Severe CoA in neonates, when PDA closes: LV failure, CHF and PHTN","2. Upper body HTN: coronary artery disease, Stroke, Heart failure, Ruptured aortic and cerebral aneurysms","3. Gradient assessment by TTE","4. Anatomy confirmation by CT","5. in severe cases patients may be on inotropic support and diuretics.","PGs in PDA dependent systemic circulation."],"intraop":["1. Position: Sternotomy vs Left Thoracotomy","2. Ensure no leak and no endobronchial intubation.","3. Arterial line: Right radial & Femoral","4. Lung collapse: 100% O2, - Low TV - High RR - Recruit after inflation","5. Permissive mild hypercapnia can be tolerated unless there is preexisting metabolic acidosis","6. Cerebral oximetry","7. Lower Body Hypotension! Renal or Spinal ischemia","8. Mild hypothermia is indicated to decrease spinal cord ischemia, don't use the Barehugger.","9. Avoid upper body HTN,","10. Inotropics during cross clamp may be needed in cases of impaired LV","11. Measure cross-clamp time.","Clamp off: . Reperfusion injury, . Correct metabolic acidosis."],"postop":[". Hypertension is expected, may need GTN, Na nitroprusside or esmolol.",". Consider Marcaine local injection in thoracotomy"]},{"id":"hypoplastic_arch","category":"lvoto","name":"Hypoplastic Aortic Arch / Interrupted Aortic Arch","short":"Hypoplastic Aortic Arch / Interrupted Aortic Arch","overview":[],"associations":[".VSD, .LVOTO"],"decisionTrees":[{"title":"Types","tree":{"question":"types","options":[{"label":"PDA dependant lower body","result":{"text":"PDA dependant lower body"}},{"label":"type A: distal to great vessels","result":{"text":"type A: distal to great vessels"}},{"label":"type B: between LCC and LSS","result":{"text":"type B: between LCC and LSS, most have DiGeorge S."}},{"label":"type C: between innominate and LCC","result":{"text":"type C: between innominate and LCC"}}]}},{"title":"Surgical","tree":{"question":"Surgical","options":[{"label":"Arch repair","result":{"text":"1. Arch repair using descending Ao advancement, deep hypothermic circulatory arrest with antegrade cerebral perfusion."}},{"label":"In cases of LVOT obstruction","result":{"text":"2. In cases of LVOT obstruction: . Yasui operation = Arch repair + DKS, . Norwood then later Yasui, . Ross-Konno"}}]}}],"preop":["1. Usually asymptomatic at birth","2. Then CHF when PDA closes","3. PGE1","4. Ressussitate","5. Urgent surgery","Irradiated blood and monitor calcium level if DiGeorge S."],"intraop":["1. Arterial line: Preductal","2. SCA may be anomalous from Desc. Ao. and Left SCA may by used during repair.","3. Umbilical artery my be needed.","4. Neonatal Cerebral Oximetry","5. Post CPB bleeding is expected"],"postop":["Transfer to ICU with open sternum and stents is common"]},{"id":"mitral_stenosis","category":"lvoto","name":"Mitral Stenosis","short":"Mitral Stenosis","overview":[],"associations":["Usually part of Shone's anomaly"],"decisionTrees":[{"title":"Types","tree":{"question":"types","options":[{"label":"Type A: normal papillary muscles","result":{"text":"1. Commissural fusion, 2. Valvular or supravalvular ring, or 3. Obstructive left SVC"}},{"label":"Type B: abnormal papillary muscles","result":{"text":"Parachute, or a hammock MV."}}]}},{"title":"Surgical","tree":{"question":"Surgical","options":[{"label":"Surgical options","result":{"text":"1. Resection of a supravalvular ring, 2. Commissurotomy, 3. Division or reconstruction of the papillary muscles, 4. Reconstruction of the chordae tendineae., 5. Balloon dilatation."}}]}}],"preop":["1. Lung congestion","2. PHTN","3. Low fixed COP"],"intraop":["1. Avoid Tachycardia","2. Avoid Hypovolemia and hypervolemia","3. Maintain afterload","4. Attempts to reduce PVR may paradoxically worsen the congestion.","5. Arrhythmogenic due to LA dilatation","PHTN Management: 1. 100% O2, 2. Low normal PCO2 and avoid acidosis,, 3. Avoid hypothermic, hypoglycemia, stress and pain., 4. Inodilators and pulmonary vasodilators."],"postop":["1. Deairing","2. Residual gradient","3. Iatrogenic significant MR"]},{"id":"tga","category":"transposition","name":"TGA","short":"TGA","overview":[],"decisionTrees":[{"title":"LV conditioning","tree":{"question":"LV conditioning","options":[{"label":"Conditioned","result":{"text":"ASO"}},{"label":"Borderline","result":{"text":"PAB +/- MBTS -> ASO"}},{"label":"Deconditioned (2-3wks IVS, 6-8wks VSD)","result":{"text":"Mustard"}},{"label":"Trained LV, Dynamic or resectable LVOTO","result":{"text":"ASO"}},{"label":"Fixed or unresectable LVOTO, IVS","result":{"text":"ASO + conduit OR Mustard + LV to PA conduit"}},{"label":"Fixed or unresectable LVOTO, VSD, Distant VSD","result":{"text":"Nikaidoh"}},{"label":"Fixed or unresectable LVOTO, VSD, Commited VSD","result":{"text":"Rastelli OR REV"}}]}},{"title":"Coronary anatomy","tree":{"question":"Coronary anatomy","options":[{"label":"Dangerous","result":{"text":"1. Single right, 2. Inverted coronaries, 3. Intramural"}}]}},{"title":"Mixing & Qp:Qs","tree":{"question":"Mixing & Qp:Qs","options":[{"label":"Mixing","result":{"text":"1. ASD- best balanced, 2. VSD - lung congestion, train LV, 3. PDA/MPCAs -lung congestion, differential cyanosis, +/- PHTN"}},{"label":"Qp:Qs Low - TGA + LVOTO","result":{"text":"Low effective pulm. flow"}},{"label":"Qp:Qs High - TGA + VSD","result":{"text":"Low effective systemic flow, +/- PHTN"}}]}}],"preop":["Severe cyanosis: 1. Fluid ressussitation and Norad., 2. Low FiO2, 3. Prostaglandin E1,, 4. Mechanical ventilation, 5. Urgent Balloon Atrial Septostomy - Rashkind’s","Rashkind: . Bed side of Cathlab., . Femoral or Umbilical v.","Side effects of PGE1: 1. fever,, 2. Apneas,, 3. Vasodilatation, hypotension,, 4. Hypertonicity, 5. CNS excitability.","Maintain HD goals: . Duct patency, . COP, . PVR < SVR, unless there is lung congestion, . Good hydration"],"intraop":["Neonate: 1. Hypoglycemia, 2. Variable pharmacodynamics and pharmacokinetics, 3. Lower MAC of volatiles","4. Respiratory: . Large head and narrow epiglottis, . Sniffing position Low FRC, easy hypoxia","5. CVS: . COP depends on HR, . DD, . Higher parasympathetic tone, . Immature cerebral autoregulation","7. Heamtological: . Hg level 14-20 g%, . Blood volume 85-95 ml/Kg, . Vit K clotting factors deficiency","8. The myocardium depends on extracellular calcium for inotropy.","9. Thermoregulation: . Easy hypothermia due to low S.C. fat, immature brown fat and large surface area : volume., . It affects metabolism, shifts O2 dissociation curve to the left, causes coagulopathy and increases PVR.","Induction: 1. IV peripheral cannula, 2. IV induction or IM ketamine, 3. Avoid high MAC inhalation, 4. Intubation by oral non cuffed ETT, leak test is done. It is expected that the leak may increase after CPB and MUF due to resolving airway edema., 5. Check the vitality of the limbs after femoral cannulation, 6. Cerebral oximetry","Maintenance: 1. Maintain HD goals, 2. Further doses of fentanyl as needed, 3. Morphine infusion, 4. Sevo < MAC","OFF CPB after: − No significant surgical bleeding., − Adequate reperfusion time, 1/3 Ischemic time, − Rewarming, - Deairing, − Good biventricular function and no ischemia in ECG, − No arrhythmia, − HR at least 140/min, − Inotropes: Milrionone and Norad, − LA line, − Dual Pacemaker wires","At separation: 1. At separation administer 2.3 ml Ca Gluconate, 2. Maintain Systolic pressure 55-75 mmHg, 3. Epicardial ECHO/ TEE, 4. UOP > 1 ml/Kg/h and serum lactate., 3. Volume is given carefully using a syringe and not by dripping","BP Troubleshooting: High BP +/- High LA & CVP - +/- tachy -> Stress +/- Hypervolemia -> 1. Sedation, 2. Decrease NE","BP Troubleshooting: Low BP -> Low LA -> Hypovolemia/ vasoplegia -> Volume +/- NE","BP Troubleshooting: Low BP -> High LA -> Low CVP -> LV FAILURE -> 1. Calcium, 2. Stop transfusion, 3. Raise the head, 4. Allow the baby to bleed to target conditions, 5. Withdraw blood if needed., 6. Adrenaline if al fails","BP Troubleshooting: Low BP -> High LA -> High CVP -> Global FAILURE/ hypervolemia -> 1. Calcium, 2. Stop transfusion, 3. Raise the head, 4. Allow the baby to bleed to target conditions, 5. Withdraw blood if needed., 6. Adrenaline if al fails","MUF: 1. Increases the hematocrit,, 2. concentrates clotting factors and platelets,, 3. Increases the blood pressure,, 4. Reduce the PVR, 5. Remove inflammatory mediators., 6. It has been shown to decrease bleeding significantly","Hemostasis: 1. fresh blood, 2. platelets,, 3. maintain normothermia,, 4. continue antifibrinolytics, 5. Recombinant factor VII - 90 mcg/Kg every 1-2 h till hemostasis","LV failure: 1. Deconditioned LV, 2. Coronary narrowing/kink, 3. Poor preservation on CPB","Chest closure is usually not possible due to myocardial edema and coagulopathy and the patients are often transferred stented."],"tee":["TEE post Mustard: 1. Biventricular function, 2. Baffle leak at suture lines, 3. Baffle stenosis that causes systemic or pulmonary venous congestion","TEE post Nikaidoh/REV/Rastelli: 1. Biventricular function., 2. No residual VSD., 3. Laminar flow across the LV to Ao baffle., 4. Laminar flow across the RV to PA conduit"],"complications":["Chest closure late complications: - PA and RVOT stenosis., - Neo-aortic valve insufficiency., - Coronary artery obstruction.","Mustard late complications: 1. RV failure, 2. Baffle issues such as leak or stenosis, 3. Intractable atrial arrhythmias: − Sick sinus syndrome - scarring of the SA node, − Atrial flutter - scarring around the baffle sutures"]},{"id":"cctga","category":"transposition","name":"L-TGA/cc-TGA","short":"L-TGA/cc-TGA","overview":[],"associations":["Assoicated anomalies almost all: - VSDs, − LVOTO, − TV anomalies"],"decisionTrees":[{"title":"Surgical Strategy","tree":{"question":"Surgical Strategy","options":[{"label":"No associated anomalies","result":{"text":"Conserve OR Double switch"}},{"label":"Correctable - No","result":{"text":"Single Vanetricle Management","linkTo":"single_ventricle_pathway"}},{"label":"Correctable - Yes","next":{"question":"Biventricle repair","options":[{"label":"Physiological repair","result":{"text":"Physiological repair"}},{"label":"Anatomical repair","next":{"question":"Anatomical repair","options":[{"label":"- VSD, - No PS","result":{"text":"PAB -> Double switch OR Double switch"}},{"label":"- VSD, - PS/PA","result":{"text":"MBTS -> Mustard + Rastelli OR Mustard + Rastelli"}}]}}]}}]}}],"preop":["- RV failure and TR","- Associated anomalies","- Prior PAB"],"intraop":["Induction: 1. IV peripheral cannula, 2. IV induction or IM ketamine, 3. Avoid high MAC inhalation, 4. Intubation by oral non cuffed ETT..."],"postop":["- LV failure, deconditioned","- Conduction anomalies.","- Coagulopathies, lung and kidney injury due to very long CPB time"]},{"id":"single_ventricle_pathway","category":"univentricular","name":"Single Vantricle Pathology","short":"Single Vantricle Pathology","overview":["Examples: - Rudimentary LV or RV, - Mitral or Tricuspid Atresia, - Pulmonary Atresia, - Hypoplastic left heart syndrome, - DILV, - Stradling of septal leaflet of the TV through a VSD, - Excessively complex procedure, e.g. TGA + CAVC + PS, -The case is too complex for the hospital or the surgeon, - The patient is too small"],"decisionTrees":[{"title":"Circulation","tree":{"question":"Circulation","options":[{"label":"Left to right","result":{"text":"Left to right"}},{"label":"Right to left","result":{"text":"Right to left"}},{"label":"Mixing","result":{"text":"Optimum: - SpO2 = 85%, - Qp:Qs = 1:1"}}]}},{"title":"Management","tree":{"question":"SpO2 at Birth (Consider the neonatal PHTN that resolves within 2-3 wks)","options":[{"label":"< 70%","result":{"text":"PDA stent OR MBTS -> 85%"}},{"label":"85%","result":{"text":"6 months -> Glenn","linkTo":"glenn"}},{"label":"100%","result":{"text":"PAB -> 85%"}}]}}],"preop":["PAB Preop: 1. Congested, 2. Tachypneic, 3. Poor feeding, 4. Stunted, 5. On diuretics, check electrolytes, 6. Make sure that the lungs are in their optimum conditions","PDA stent preop: 1. Neonates, 2. Severely cyanotic and debilitated with acidosis, AKI and impending arrest, 3. On PGE1, NE and fluids, 4. Ventilated on room air, 5. Difficult IV access due to young age and PG infusion that causes edema","MBTS preop: 1. Cyanotic, 2. High hematocrit, 3. Some patients are PDA dependent, 4. Optimize the lung condition"],"intraop":["PAB intraop: 1. Arterial line, 2. Femoral CVL, avoid SVC, 3. Avoid deep anesthesia, 4. FiO2 0.3-0.5, 5. PaCO2 ≈ 40","PAB placement: 1. Target SpO2 = 75-85% on FiO2 < 0.5, 2. A needle is placed distal to the band, 3. PA pressure is measured targeting the lowest pressure possible to give the target SpO2, 4. Optimize the lung condition: Good ventilation, suction and recruitment ± bronchodilators and furosemide, 5.ABG after > 5min of stable conditions to confirm the pulse oximeter, 6. Peak gradient across the band ≈ 36 mmHg, 7. After banding, the systemic blood pressure increases","PDA stent intraop: 1. Continue resuscitation, 2. The operator may request a right Internal Carotid sheath, 3. Inserting wires and catheters into PDA may arrest the patient","MBTS intraop: 1. Blood available in OR, 2. Arterial line NOT on side of shunt, 3. Avoid upper limb CVL","MBTS Off CPB: 1. During clamping of SCA the BP increases, 2. During clamping of the RPA or LPA, desaturation requiring resuscitation","MBTS On CPB: Half vs Full Protamine ± Hep. Infusion according to the hemostasis situation","MBTS Clamp off: 1. Ideal SpO2 = 85%, 2. ↓SpO2 = ↑size of shunt, 3. ↑SpO2 = congested and requires diuretics, 4. Hyperdynamic, low diastolic BP that may compromise the coronaries, 5. Keep high diastolic pressure for coronary perfusion: - Good filling, - Avoid bradycardia, - Vasopressors, - Low FiO2, - Premissive hypercapnia, - PEEP, 6. Keep high systemic blood pressure for the pulmonary perfusion"],"postop":["MBTS postop: 1. Diuretics, 2. Monitoring for myocardial ischemia, 3. Heparin infusion and later aspirin, 4. So hemorrhage is common, 5. Shunt thrombosis and desaturation may occur requiring urgent reopening and shunt revision."]},{"id":"glenn","category":"univentricular","name":"Glenn","short":"Glenn","overview":[],"decisionTrees":[{"title":"Desat","tree":{"question":"Desat?","options":[{"label":"1. High PVR","result":{"text":"High PVR"}},{"label":"2. Collateral from SVC to IVC or coronary sinus.","result":{"text":"Collateral from SVC to IVC or coronary sinus."}},{"label":"High Glenn pressure","next":{"question":"High Glenn pressure","options":[{"label":"High Femoral vein pressure","result":{"text":"Hypervolemia"}},{"label":"Low PAP","result":{"text":"Redo Glenn anastmosis"}},{"label":"High PAP","result":{"text":"High PVR"}}]}}]}}],"preop":["1. After resolve of Neonatal PHTN","2. At milestone of sitting","3. At 6 months the SVC venous return is 60-70% of the total","4. HD study is done - PAP < 16","5. SpO2","6. Hematocrit level","7. Good hydration to avoid desaturation and thromboembolic events","8. Patients with an mBTS may be on aspirin or heparin"],"intraop":["Surgery: 1. First or REDO after mBTS, 2. Done on CPB with no cross-clamp unless other procedures are done, e.g. PA augmentation or atrial septectomy, 3. Usually the PV is closed unless the One-and-a-half-ventricle repair, 4. Bilateral Glenn is done in cases of bilateral non communicating SVCs, 5. In interrupted IVC, Kawashima procedure.","1. Radial artery on the other side of the mBTS","2. Femora CVL,","3. IJV cannula for PAP monitoring post CBP","4. If REDO: PRBCs, DC pads and wide bore IV"],"postop":["1. Ensure low PVR","2. Good hydration","3. Head up position, neutral head position","4. MUF","low PVR: - Tracheal suction, - Recruitment, - PCO2 40-45 mmHg, low PCO2 decreases “cavopulmonary cerebral” circulation, - Low driving pressure and low PEEP, - Good oxygenation, - Avoid acidosis, hypothermia, hypoglycemia, - Good analgesia and anesthesia, - Milrinone may be need","SpO2 -> 90%","adolescent growth spurt -> < 70% -> Fontan"]},{"id":"fontan","category":"univentricular","name":"Fontan","short":"Fontan","overview":[],"decisionTrees":[{"title":"Low CO","tree":{"question":"Low CO","options":[{"label":"Low CO","result":{"text":"1. Obstructed Fontan, 2. High PVR, 3. Hypovolemia, 4. Poor single ventricle function, 5. AV regurge, 6. PA stenosis"}}]}}],"preop":["1. HD study is done - PAP < 16","2. SpO2","3. Hematocrit level","4. Good hydration to avoid desaturation and thromboembolic events"],"intraop":["Surgery: Extracardiac: 1. CPB without cross clamp, 2. Prosthetic tube, 3. RPA not opposite to the SVC to avoid collision of flow, 3. +/- Hepatic vein inclusion, 4. +/- Fenestrations","1. Radial artery on the other side of the mBTS","2. Femora CVL,","3. IJV cannula for PAP monitoring post CBP","4. REDO: PRBCs, DC pads and wide bore IV","5. Plan for early extubation: reduce opioids, use non opioid analgesia and nerve blocks"],"postop":["Low CO may be difficult to detect and may present with desaturation if fenestrstions are made","Ensure low PVR"],"complications":["Late Sequelae (Fontan Pathology): 1. Low CO symptoms","2. Arrhythmias, less with extracardiac Fontan","3. Thromboembolic events","4. Protein losing enteropathy of unknown cause","5. Plastic bronchitis: rare but serious and of unknown cause: proteinaceous casts in the tracheobronchial tree, resulting in chronic cough, wheezing, dyspnea, and hypoxemia","6. Pulmonary AV malformations causing right to left shunt and desaturation, ‘hepatic factor’"]},{"id":"heterotaxy","category":"univentricular","name":"Heterotaxy Syndromes","short":"Heterotaxy Syndromes","overview":[],"decisionTrees":[{"title":"Right vs Left Isomerism","tree":{"question":"Isomerism?","options":[{"label":"Right Isomerism","result":{"text":"1. Asplenia: Life long penicillin, Pneumococcal and Menincococcal vaccines and strict infection control., 2. Single ventricle > 50%, 3. DORV and unbalanced CAVC are common, 4. Pulmonary stenosis/atresia are common > 90%, 5. Bilateral SVC, 6. Extracardiac TAPVR common, 7. Bilateral SA nodes, 8. Bilateral trilobed lungs, 9. Midline liver, 10. Intestinal malrotation."}},{"label":"Left Isomerism","result":{"text":"1. Polysplenia, 2. Single ventricle < 50%, 3. Interrupted IVC, 4. Cardiac TAPVD, 5. Ascent SA node: sick sinus syndrome and bradyarrhythmias, 6. Bilateral bilobed lung"}}]}}]},{"id":"vascular_ring","category":"vascular","name":"Vascular ring","short":"Vascular ring","overview":["1. Complete or incomplete.","2. May compress the trachea or the oesophagus.","3. Anatomy is variable and presentation is variable."],"decisionTrees":[{"title":"Types","tree":{"question":"types","options":[{"label":"Double aortic arch, persistent 4th embryonic arch","result":{"text":"1. Right arch dominant, Lt subclavian may arise from Rt arch and pass retro-esophageal, 2. Left arch dominant, 3. Balanced arches"}},{"label":"Right aortic arch with left ligamentum arteriosum","result":{"text":"1. Retroesophageal left subclavian artery, 2. Mirror-image branching"}},{"label":"Partial vascular rings","result":{"text":"1. Innominate artery compression syndrome, usually resolves with growth, if severe symptoms, vascular suspension or reimplantation, 2. Pulmonary artery sling, 3. Left aortic arch, aberrant right subclavian artery"}}]}}],"preop":["1. Respiratory symptoms in the first year of life: stridor, recurrent respiratory infections, a barking cough, and apnea","2. Esophageal obstruction","3. Esophageal reflux may lead to pulmonary aspiration and episodes of apnea.","4. Pneumonia may increase the stridor","5. Surgery is indicated by symptoms and not the anatomy.","Inv.: 1. MRI and CT with 3D reconstruction., 2. Barium swallow, 3. Bronchoscopy for tracheobronchomalacia, 4. Echo to detect other cardiac anomalies., 5. Chest Xray"],"intraop":["Surgery: 1. Thoracotomy or median sternotomy, 2. The ring is transected, perfusion to the head and limbs should be confirmed","1. Difficult ventilation","2. ETT usually passes easily,","3. With thoracotomy and lung retraction: − 100% O2, − Low TV and high RR, − Monitor peak airway pressure and SpO2","4. Good communication with the surgeon, which arteries will be clamped","5. This decides position of: − Pulse oximeter, − Arterial line, − Cerebral oximetry","6. 100 units/kg heparin","7. CVL","8. Usually minimal bleeding due to clamping, but massive arterial bleeding may occur requiring emergent resuscitation.","9. Erector spinae block"],"postop":["1. Can be extubated on table, unless tracheobronchomalacia is expected or residual respiratory disease exists","2. Tracheobronchomalacia is not immediately cured, it takes time."]},{"id":"alcapa","category":"vascular","name":"ALCAPA","short":"ALCAPA","overview":["1. Die within the first year,","2. At birth PVR is high.","3. Later the PVR falls causing coronary steal","4. Dilated cardiomyopathy","5. Increase in LVEDP","6. MR","7. Arrhythmias.","early presenters: Worse symptoms but recover faster","late presenters: 1. Due to dominant RCA or stenotic ALCAPA,, 2. Recovery after surgery is however worse than the early presenters, 3. Long lasting ischemia and fibrosis."],"decisionTrees":[{"title":"Surgery","tree":{"question":"Surgery","options":[{"label":"Surgery","result":{"text":"1. Reimplantation, 2. If the artery is short, Takeuchi procedure, 3. Stand by ECMO, 4. MR improves later, but severe MR may be corrected my incomplete annuloplasty., 5. Cardioplegia is delivered by cross-clamping both aorta and pulmonary"}}]}}],"preop":["1. Varies from asymptomatic to severe congestive heart failure","2. May be on inotropes","3. Adequate blood pressure is needed from perfusion without increasing afterload","4. Tachycardia is poorly tolerated","history: 1. MI, exercise intolerance, including suckling,, 2. Syncope, 3. Arrhythmias, 4. Lung condition, 5. Renal and hepatic functions"],"intraop":["They are notorious to arrest in induction due to: 1. Decrease in PVR and increased coronary steal, 2. Anesthetics that cause myocardial depression and vasodilatation, 3. Derceasing sympathetic tone in patients depending on it, 4. Inadequate anesthesia causing stress and tachycardia","*Surgeons and perfusionists should be ready during induction for any collapse","1. Careful titration of anesthetics","2. Care with use of Ketamine in debilitated patients","3. Etomidate","4. Euvolemia is the target,","5. Avoid hypervolemia that increases congestion","6. Avoid hypovolemia caused by diuretics and fasting","7. Avoid Anemia and Hypoglycemia","Maintain PVR: 1. Low FiO2, Room air, 2. Permissive hypercapnia, 3. PEEP, also decreases congestion"],"postop":["1. Recovery of the cardiomyopathy may take time","2. Anemia is poorly tolerated","3. The patient often goes to ICU with an open sternum and stented to prevent compression of the heart and allow rapid intervention if collapse occurred.","4. ECMO may be needed"]},{"id":"coronary_fistula","category":"vascular","name":"Coronary Fistula","short":"Coronary Fistula","overview":["Coronary to RA"],"decisionTrees":[{"title":"Management","tree":{"question":"Management","options":[{"label":"Management","result":{"text":"1. Percutaneous closure, 2. Surgical, 3. Closure may compromise parts of the myocardium"}}]}}],"preop":["1. Coronary steal","2. Ischemic cardiomyopathy","3. Arrhythmia","4. PHTN"],"intraop":["1. Careful induction with titration of anesthetics","2. Euvolemia","3. Avoiod tachycardia, hypotension and anemia","4. Avoid reducing the CVP","5. Failure of cardioplegia may occur. This is specially dangerous if the fistula was not diagnosed in a patient undergoing open heart for another reason."]},{"id":"pericardial_effusion","category":"acquired","name":"Pericardial Effusion","short":"Pericardial Effusion","overview":["- Acute causes tamponade even with small volume","- Chronic allows pericardial dilatation to large volumes","causes: 1. Bleeding, most common., 2. Infections, autoimmune, uremia, malignancy, trauma, 3. Heart failure and poorly functioning Fontan, 4. Post pericardiotomy syndrome of immunological origin","Pericarditis may cause constrictive pericarditis and tamponade"],"decisionTrees":[{"title":"Managment","tree":{"question":"Managment","options":[{"label":"Managment","result":{"text":"1. Postoperative bleeding: sternal reopening or subxiphoid under TEE guidance., 2. Serous: subxiphoid under TEE guidance, 3. Recurrent: pleural window, 4. Chronic pericarditis: pericardiectomy which is a major operation with risk of bleeding, arrhythmias and injury of the coronaries."}}]}}],"preop":["1. Increased venous pressure.","2. Hypotension, low CO, tachycardia and high sympathetic tone","3. Rise in the heart chambers pressures and their equalization","4. Ischemia: hypotension, high LVEDP and tachycardia","5. Pulsus paradoxus","6. Beck’s triad: hypotension, high venous pressure and quiet sounds on auscultation"],"intraop":["1. Injury of the heart or the coronaries","2. Mild sedation and local anesthesia is possible in pericardiocentesis","3. Careful induction of anesthesia and avoid decreasing the sympathetic tone","4. Fixed cardiac output: vasopressors","5 Positive pressure ventilation may worsen the tamponade","6. Increase expiratory time and avoid PEEP","7. Subxyphoid drainage may be done before or during induction","8. If bleeding is severe blood can be reinfused to the patient from the pericardiocentesis line to the femoral line through a three-way stopcock","9. After relief of the tamponade, severe bleeding and hypertension may occur"],"tee":["1. Many view to ensure complete drainage specially for loculated effusion","2. Deep dependent areas in transgastric views","3. Cardiac function","4. Lack of IVC distensibility","5. Respiratory variation of VTI across the valves > 25%"]},{"id":"mitral_regurgitation","category":"acquired","name":"Mitral Regurge","short":"Mitral Regurge","overview":["- Type II MR may progress to Type I and IIIb due to LV dilatation","- Atrial arrythmia is common due to LA dilatation","- RV may be compromised due to rightwards septal shift and PHTN","- MR may resolve or decrease after correction of the cause in cases of LV ischaemia or Aortic stenosis"],"decisionTrees":[{"title":"Carpentier's classification","tree":{"question":"Carpentier's classification","options":[{"label":"Type I - Normal motion","result":{"text":"1. Annular dilatation with decreased coaptation and increased leflets tension, 2. Perforation"}},{"label":"Type II - excessive motion","result":{"text":"1. Congenital, connective tissue disease, inflammatory, rheumatic, 2. Elongated cords with prolapse or rupture and flail, 3. Increasing leaflet tension"}},{"label":"Type III - restrictive","result":{"text":"IIIa rheumatic restriction and fibrosis of leaflets and subvalvular apparatus, IIIb Tethering of leaflets by dilated cadiomyopathy with tenting"}}]}},{"title":"Surgery","tree":{"question":"Surgery","options":[{"label":"Surgery","result":{"text":"- Repair is much more preferred than replacement in Children, to allow growth and avoid anticoagulation., - Prosthetic values may impair LV function more, - Mitral clip, - Modified Melody"}}]}}],"preop":["1. Exercise tolerance","2. Dyspnoea, difficult feeding, failure to thrive","3. Lung congestion","4. Pansystolic murmur","5. Dilated cardiomyopathy","6. Usually on ACEI and diuretics","7. Avoid increase SVR"],"intraop":["- Avoid bradycardia","- Avoid hypervolemia","- PPV and PEEP improve the congestion"],"tee":["1. Vena contracta","2. Subjective assessment of regurgitant jet into LA","3. LA dilatation","4. LV size and function","5. In severe MR, the LV function is overestimated"],"postop":["1. System blood pressure may improve after repair","2. In cases of cardiomyopathy, LV function may worsen due to lack of venting through the MR","3. Residual MR should be assessed by TEE to determine if it is mechanical and needs revision of repair or dynamic and may improve with time my remodeling."]},{"id":"aortic_aneurysm","category":"acquired","name":"Aortic Aneurysm","short":"Aortic Aneurysm","overview":["1. True and Pseudo anneurysm","2. True aneurysms are fusiform or saccular due to a weak spot.","3. Most commonly congenital in origin caused by connective tissue disease like Marfan","4. Next are inflammatory causes like Takayasu arteritis and Kawasaki disease","5. Also associated with Bicuspid AV, AS - post stenotic dilatation, CoA, Fallot's tetralogy, PV as neo-aorta in ASO and ROSS","6. Aortic dissection or rupture may occur"],"decisionTrees":[{"title":"Marfan's disease","tree":{"question":"Marfan's disease","options":[{"label":"Marfan's disease","result":{"text":"1. Facies, tall with long thin limbs, hypermobile joints, 2. AR and MR, 3. On beta blockers and ARBS, 4. Avoid vigorous contact sports and valsalva maneuvers, 5. Pregnancy increase incidence of rupture"}},{"label":"D.D.","result":{"text":"1. Loeys-Dietz syndrome: similar to Marfan but with hypertelorism and bifid uvula, 2. Sphrintzen–Goldberg syndrome, 3. Ehlers–Danlos syndrome may associate with gastrointestinal rupture and uterine rupture"}},{"label":"Sinus Aneurysm","result":{"text":"1. Usually saccular,, 2. If the three are involved it is considered a root aneurysm, usually part of connective tissue disease, 3. Associated with supracristal VSD, AR and bicuspid AV, 4. RC Sinus aneurysm may rupture into any chambers except the LA, 5. LC and NC sinuses may rupture into any chamber except the PA, 6. Rupture causes fistula that may cause acute heart failure or Pericardial effusion"}}]}},{"title":"Surgery","tree":{"question":"Surgery","options":[{"label":"Surgery","result":{"text":"1 Valve sparing aortic root replacement, Yacoub operation, 2. It requires Coronary re-implantation"}}]}}],"preop":["1. Associated AR or MR","2. Other systemic comorbidities that may be the cause of the aneurysm or an association","3. CT angiography to determine the anatomy of the Aorta and major branches, and the presence of a compromised perfusion"],"intraop":["1. Postoperative bleeding is expected","2. In Marfan, avoid high ventilatory pressures to avoid pneumothorax"],"postop":["1. Bleeding is expected","2. Avoid hypertension to aid hemostasis","3. Beware of beta blockers withdrawal that may cause Hypertension","4. Inotropes: Crdiomyopathy, prolonged cross-clamping","5. Signs of ischaemia after Coronary reimplantaion, thrombus, stenosis, kink or air","6. Sometimes deep anesthesia, high dose analgesics and vasodilators to avoid Hypertension."]}]}</script>
+<script id="data-blob" type="application/json">
+{
+  "categories": [
+    { "id": "shunt", "name": "Left-to-Right Shunts", "icon": "shunt", "blurb": "ASD, VSD, PDA, AV canal, truncus, anomalous pulmonary venous drainage" },
+    { "id": "cyanotic", "name": "Right Heart & Cyanotic Lesions", "icon": "cyanotic", "blurb": "Tetralogy of Fallot, pulmonary stenosis, pulmonary atresia, Ebstein anomaly" },
+    { "id": "lvoto", "name": "Left Heart Obstructive Lesions", "icon": "lvoto", "blurb": "Aortic stenosis, HOCM, coarctation, arch anomalies, mitral stenosis" },
+    { "id": "transposition", "name": "Transposition & Conotruncal", "icon": "transposition", "blurb": "D-TGA and ccTGA, arterial/atrial switch, Rastelli-type repairs" },
+    { "id": "univentricular", "name": "Single Ventricle Pathway", "icon": "univentricular", "blurb": "Staged palliation — banding, Glenn, Fontan — and heterotaxy syndromes" },
+    { "id": "vascular", "name": "Vascular & Coronary Anomalies", "icon": "vascular", "blurb": "Vascular rings, ALCAPA, coronary artery fistula" },
+    { "id": "acquired", "name": "Acquired & Structural Disease", "icon": "acquired", "blurb": "Pericardial effusion/tamponade, mitral regurgitation, aortic aneurysm" }
+  ],
+  "shared": {},
+  "lesions": [
+    {
+      "id": "asd",
+      "category": "shunt",
+      "name": "Atrial Septal Defect (ASD)",
+      "short": "Left to Right Shunt Lesions - ASD",
+      "overview": [],
+      "associations": [],
+      "decisionTrees": [
+        {
+          "title": "ASD dependant",
+          "tree": {
+            "question": "ASD dependant?",
+            "options": [
+              { "label": "Yes", "result": { "text": "Leave +/- Atrial septectomy" } },
+              {
+                "label": "No",
+                "next": {
+                  "question": "Concider closure",
+                  "options": [
+                    { "label": "Adequate rims", "result": { "text": "Device closure" } },
+                    {
+                      "label": "Inadequate rims",
+                      "next": {
+                        "question": "Type",
+                        "options": [
+                          { "label": "PFO", "result": { "text": "Direct" } },
+                          { "label": "ADS I/II", "result": { "text": "Patch" } },
+                          { "label": "Sinus venosus", "result": { "text": "Baffle +/- Warden" } }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "title": "Pulmonary Hypertension",
+          "tree": {
+            "question": "Pulmonary Hypertension",
+            "options": [
+              { "label": "Severe", "result": { "text": "Consider closure with residual", "bullets": ["1- Stops having recurrent chest infection with apparent improvement", "2- Clear chest x-ray", "3- Cyanosis during straining", "4- Hemoptysis", "5- Congested tender liver", "6- Elevated liver enzymes", "7- Anasarca and Cyanosis"] } },
+              { "label": "Eisenmenger", "result": { "text": "Leave + Pulm. vasodilators" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1- Recurrent chest infection, pulmonary edema",
+        "2- Congestive heart failure",
+        "3- Arrhythmia risks",
+        "4- Paradoxical emboli",
+        "5- Signs of Pulmonary hypertension",
+        "1- Size and direction of blood",
+        "2- Right side dilatation and TR"
+      ],
+      "intraop": [
+        "1- Low FiO2",
+        "2- Permissive hypercapnea",
+        "3- Avoid alkalosis",
+        "4- PEEP",
+        "5- Avoid volume overload",
+        "If signs of PHTN present: 1- ↑FiO2",
+        "2- ↓PCO2",
+        "3- ↑ pH is more effective using NaHCO3",
+        "4- Good Analgesia & anesthesia",
+        "5- Avoid hypoglycemia – Avoid hypothermia",
+        "6- Inodilators – Pulmonary vasodilators"
+      ],
+      "postop": [
+        "1- Check for residuals",
+        "2-Check right side",
+        "3-Check IVC into RA",
+        "4- Avoid volume overload and LV failure"
+      ],
+      "complications": []
+    },
+    {
+      "id": "vsd",
+      "category": "shunt",
+      "name": "Ventricular Septal Defect (VSD)",
+      "short": "Left to Right Shunt Lesions - VSD",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Size, number, position",
+          "tree": {
+            "question": "Size, number, position",
+            "options": [
+              { "label": "Single muscular", "result": { "text": "Device closure" } },
+              { "label": "Perimembranous", "result": { "text": "Device closure OR Surgical closure" } },
+              { "label": "Inlet and Subpulmonic", "result": { "text": "Surgical closure" } },
+              { "label": "Multiple", "result": { "text": "Single Ventricle Pathway", "linkTo": "single_ventricle_pathway" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1- Recurrent chest infection, pulmonary edema",
+        "2- Congestive heart failure",
+        "3- Arrhythmia risks",
+        "4- Paradoxical emboli",
+        "5- Signs of Pulmonary hypertension (within 2y)",
+        "1- Size and direction of blood",
+        "2- Left side dilatation",
+        "3- RVOTO",
+        "4- RVSP",
+        "5- RCC prolapse and AR",
+        "6-Infundibular stenosis and DCRV"
+      ],
+      "intraop": [
+        "1- Low FiO2",
+        "2- Permissive hypercapnea",
+        "3- Avoid alkalosis",
+        "4- PEEP",
+        "5- Avoid volume overload"
+      ],
+      "postop": [
+        "1- Check for residuals & other VSDs",
+        "2-Check right side",
+        "3-Heart block",
+        "4- JET",
+        "5- LV function and inotropes"
+      ]
+    },
+    {
+      "id": "pda",
+      "category": "shunt",
+      "name": "Patent Ductus Arteriosus (PDA)",
+      "short": "Left to Right Shunt Lesions - PDA",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "PDA dependant",
+          "tree": {
+            "question": "PDA dependant?",
+            "options": [
+              { "label": "Yes", "result": { "text": "1- Low FiO2 - room air, 2- PG E1, 3- Volume and Norad., 4- PDA stent -> Single ventricle pathway", "linkTo": "single_ventricle_pathway" } },
+              {
+                "label": "No",
+                "next": {
+                  "question": "Size, gradient - Closure if Qp:Qs >2",
+                  "options": [
+                    { "label": "NSAID and Paracetamol", "result": { "text": "NSAID and Paracetamol" } },
+                    { "label": "Device/coil closure", "result": { "text": "Device/coil closure" } },
+                    { "label": "Surgical ligation", "result": { "text": "Surgical ligation" } }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "Left to right shunts: 1- Recurrent chest infection, pulmonary edema",
+        "2- Congestive heart failure and failure to thrive",
+        "3- Arrhythmia risks",
+        "4- Paradoxical emboli",
+        "5- Signs of Pulmonary hypertension, early within 2y",
+        "1- Size and direction of blood",
+        "2- Left side dilatation",
+        "3- Low diastolic pressure",
+        "4- Coronary steal"
+      ],
+      "intraop": [
+        "Thoracotomy: 1- Lateral position, ECG stickers",
+        "2− Secure ETT, no leak,",
+        "3− ETT is not endobronchial to the collapsed side.",
+        "4− Pressure points, good padding.",
+        "Lung collapse: 1- 100% O2 – Low TV – High RR",
+        "2- Watch airway pressure",
+        "3- Recruite at the end."
+      ],
+      "complications": [
+        "Lung collapse complications: 1- Pneumothorax,",
+        "2- Chylothorax,",
+        "3- Vocal cord paralysis,",
+        "4- Ligation of PA or Descending Aorta.",
+        "Device complications: 1- Air embolism",
+        "2- Arrhythmias",
+        "3- Thrombus formation on device or applicator",
+        "4- Device Embolization",
+        "5- Pericardial hemorrhage and tamponade"
+      ]
+    },
+    {
+      "id": "avsd",
+      "category": "shunt",
+      "name": "AV Canal (Atrioventricular Septal Defect)",
+      "short": "Left to Right Shunt Lesions - AV canal",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Partial, Transitional, Complete",
+          "tree": {
+            "question": "Partial, Transitional, Complete?",
+            "options": [
+              { "label": "Partial, Transitional, Complete", "result": { "text": "Surgical closure" } },
+              { "label": "Unbalanced", "result": { "text": "Single Ventricle Pathway", "linkTo": "single_ventricle_pathway" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "Left to right shunts: 1- Recurrent chest infection, pulmonary edema",
+        "2- Congestive heart failure",
+        "3- Arrhythmia risks",
+        "4- Paradoxical emboli",
+        "5- Signs of Pulmonary hypertension (with 1y)",
+        "1- Isomerism",
+        "2- Bilateral SVC",
+        "3- Unroofed LSVC and coronary sinus",
+        "4- Malaligned IAS +- double outlet RA +- LA stenosis",
+        "5- Cleft",
+        "6- AVVR",
+        "7- Double orifice LAAV",
+        "8- Inter papillary distance -size of left mural leaflet",
+        "9- Longer and narrower LVOT",
+        "10- RVOT -fallot canal",
+        "11- Balanced or unbalanced ventricles",
+        "12- VSD type and gradient +- outlet extention"
+      ],
+      "intraop": [
+        "1- Low FiO2",
+        "2- Permissive hypercapnea",
+        "3- Avoid alkalosis",
+        "4- PEEP",
+        "5- Avoid volume overload"
+      ],
+      "postop": [
+        "1- Check for residuals",
+        "2- Check right side",
+        "3- AVVR and cleft",
+        "4- Gradient across AVV",
+        "5- Heart Block",
+        "6- Avoid volume overload and LV failure"
+      ]
+    },
+    {
+      "id": "truncus",
+      "category": "shunt",
+      "name": "Truncus Arteriosus",
+      "short": "Left to Right Shunt Lesions - Truncus",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Surgical",
+          "tree": {
+            "question": "Surgical",
+            "options": [
+              { "label": "Surgical", "result": { "text": "Surgical management indicated" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1- Recurrent chest infection, pulmonary edema",
+        "2- Congestive heart failure and failure to thrive",
+        "3- Signs of PHTN, very early",
+        "4- Cyanosis due to PHTN or bad chest",
+        "5- Coronary steal - low diastolic pressure",
+        "6- Worse with Truncal Regurge",
+        "7- Irradiated blood and calcium if DiGeorge S.",
+        "8- Difficult intubation if Velocardiofacial S."
+      ],
+      "intraop": [
+        "1- Balance PVR:SVR",
+        "2- Low FiO2, Room air",
+        "3- Permissive hypercapnea",
+        "4- Avoid alkalosis",
+        "5- PEEP",
+        "6- Avoid Bradycardia",
+        "7- Surgical team ready for emergency sternotomy",
+        "8- Snare Pulmonary arteries"
+      ],
+      "postop": [
+        "1-Check right side",
+        "2- LV function and inotropes",
+        "3- May leave residual ASD or VSA to vent",
+        "4- Check truncal valve regurge or stenosis"
+      ]
+    },
+    {
+      "id": "apvd",
+      "category": "shunt",
+      "name": "Anomalous Pulmonary Venous Drainage (APVD)",
+      "short": "Left to Right Shunt Lesions - APVD",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Types of APVD",
+          "tree": {
+            "question": "PAPVD or TAPVD?",
+            "options": [
+              {
+                "label": "PAPVD",
+                "result": {
+                  "text": "Surgical - Baffle veins to LA",
+                  "bullets": [
+                    "1- Degree of shunting depends on number of anomalous veins and LV:RV diastolic pressures",
+                    "2- Usually associated with Sinus Venosus ASD"
+                  ]
+                }
+              },
+              {
+                "label": "TAPVD",
+                "next": {
+                  "question": "Supracardiac, Cardiac, or Infracardiac?",
+                  "options": [
+                    { "label": "Supracardiac", "result": { "text": "Surgical (TEE contraindicated)" } },
+                    { "label": "Cardiac", "result": { "text": "Surgical" } },
+                    {
+                      "label": "Infracardiac",
+                      "next": {
+                        "question": "Usually obstructed - Surgical emergency",
+                        "options": [
+                          { "label": "1- Obstructed single pulm. vein", "result": { "text": "1- Rashkind or 2- Repair" } },
+                          { "label": "2- Closing PFO - ASD dependant", "result": { "text": "1- Rashkind or 2- Repair" } }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1- Recurrent chest infection, pulmonary edema",
+        "2- Congestive heart failure",
+        "3- Arrhythmia risks",
+        "4- Paradoxical emboli",
+        "5- Signs of Pulmonary hypertension"
+      ],
+      "intraop": [],
+      "postop": [
+        "1- Check for residuals",
+        "2-Check right side",
+        "3- Avoid volume overload and LV failure in diastole +/- LA line"
+      ]
+    },
+    {
+      "id": "tof",
+      "category": "cyanotic",
+      "name": "Tetralogy of Fallot",
+      "short": "Tetralogy of Fallot and Associations",
+      "overview": [],
+      "associations": [
+        "1- Trisomies 18, 21 and 13,",
+        "2- VACTERL, CHARGE, Alagille syndromes",
+        "3- Chr 22q11 microdeletion-associated syndromes: DiGeorge, velocardiofacial and conotruncal anomaly face syndrom"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Variants and Associations",
+          "tree": {
+            "question": "Variants and Assoiations",
+            "options": [
+              { "label": "Anomalous coronaries in front of the RVOT", "result": { "text": "Difficult transannular patch, so RV to PA cinduit" } },
+              { "label": "Pulmonary Atresia", "result": { "text": "PDA or MAPCA dependant" } },
+              { "label": "Abscent PV", "result": { "text": "Free PR, dilated PAs, bronchomalacia, stridor. 1- May be neonates, 2- High PEEP, 3- Prone position, 4- Inhalation induction, 5- TEE is relatively contraindicated, 6- Respiratory distress may persist after surgery" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1- Age & weight",
+        "2- Baseline SpO2",
+        "3- Spells: gets bluer, syncope, fits",
+        "4- Low CO, failure to thrive.",
+        "5- Severity depends on: RVOTO +/- dynamic obst., Other sources of pulmonary perfusion: PDA or MAPCAs",
+        "6- Polycythemia and risk of thrombosis.",
+        "7- Avoid Hg <10 and postpone if >20 and ask for phlebotomy.",
+        "8- Coagulation profile",
+        "9- Embolism.",
+        "Inv: 1- Chest X-ray: ‘Boot shaped’ heart and oligemia.",
+        "2- Usually needs a CT scan: aorta, great vessels, PAs, the coronaries, PDA and MAPCAs.",
+        "Spells triggers: 1- Pain and stress, 2- Dehydration, 3- Acidosis, 4- Fever, 5- Decreased SVR, 6- Severe Cyanosis causes more acidosis, a vicious cycle"
+      ],
+      "intraop": [
+        "Surgical: 1- Total repair at infancy: 2- VSD patch, 3- PV repair, RVOT patch, pulmonary arteries repair, 4- Transannular patch if PV is unrepairable, 5- RV to MPA conduit if a coronary passes anterior to the PV., 6- Balloon dilatation, PDA stent, RVOT stent or MBTS in severe cyanosis or duct dependant., 7- MBTS may be done if the PAs are small, to allow increased flow and growth for later total repair., 8- IN PA with MAPCAs, Unifocalization",
+        "Before induction: 1- Avoid agitation by mild sedation in a monitored setting. 2- Use sugar drops and pacifiers, 3- Minimize fasting, 4- Continue beta blockers",
+        "Induction: 1-Ketamine IV or IM, 2- Avoid inhalation, 3- Vasopressors ready",
+        "1- Good preload",
+        "2- Maintain high SVR and low PVR",
+        "3- Avoid inotropes",
+        "4- Avoid tachycardia and arrhythmias",
+        "5- Good analgesia and anesthesia",
+        "6- Avoid hypothermia and hypoglycemia",
+        "7- Avoid sympathetic stimulation",
+        "8- Avoid anemia",
+        "Manage spells: ➢ First: Give Vasopressor, ➢ Then: 100% O2 and ensure adequate ventilation., ➢ Then: Fluids, ➢ Then: Check depth of anesthesia, ➢ And: ABG to correct PCO2, acidosis, hypoglycemia, ➢ And: warm the patient., ➢ Give: Propranolol 0.1 mg/kg or esmolol 50 micg/kg, ➢ If no response, ask the surgeon to manually compress the aorta and go on bypass or ECMO as soon as possible"
+      ],
+      "tee": [
+        "1- Anterior and leftward deviation of the conal septum.",
+        "2- Check gradient across RVOT: valvular, sub. and supravalvular.",
+        "3- PV may be thick, dysplastic or bicuspid, measure the anulus and try to decide whether the valve is repairable or not.",
+        "4- VSD and the direction of flow across.",
+        "5- Other anomalies."
+      ],
+      "postop": [
+        "1- SpO2",
+        "2- RVOT gradient",
+        "3- RV pressure by direct needle, <0.7 LV is accepted",
+        "4- If Residual VSD is suspected do a “step up” of PaO2",
+        "5- Risk of coagulopathy, platelets may be thrombasthnic due to polycythemia",
+        "6- Inotropes and good filling to support the RV. The CVP is a good monitor of the RV function.",
+        "7- Free PR is usually tolerated for some years",
+        "If inotropes need: 1- Possibility of poor preservation of the hypertrophied RV on CPB, 2- Ventriculotomy., 3- Long cardioplegia time., 4- Coronary anomalies., 5- Conduction abnormalities and heart block - bundle of His courses at the posteroinferior edge of the VSD and near the anteroseptal leaflet of the TV",
+        "JET: 1- Overdrive pacing, 2- Sedation, 3- Electrolytes correction, 4- Cooling to 34-35, 5- Amiodarone, 6- Dexmadetomidine infusion",
+        "In cases of Pink Fallot with high RVOT gradient indicating the presence of MAPCAs, it is expected that post repair the lungs will congest",
+        "dealing with the MAPCAs surgically or percutaneously is essential, if possible."
+      ],
+      "complications": [
+        "Residual infundibular stenosis if no inotropes needed"
+      ]
+    },
+    {
+      "id": "pulm_stenosis",
+      "category": "cyanotic",
+      "name": "Pulmonary Stenosis",
+      "short": "Pulmonary Stenosis",
+      "overview": [],
+      "associations": [
+        "Valvular associated: Noonan S.",
+        "Supravalvular associated: 1- Congenital rubella, 2- Williams S., 3- Noonan S., 4- Alagille S., 5- DiGeorge S., 6- Leopard S."
+      ],
+      "decisionTrees": [
+        {
+          "title": "Manage",
+          "tree": {
+            "question": "Manage",
+            "options": [
+              { "label": "Balloon Valvuloplasty", "result": { "text": "Balloon Valvuloplasty till gradient is <30 mmHg" } },
+              { "label": "Surgical Options", "result": { "text": "1- PV repair or dilatation by Hegar dilators, 2- RVOT patch, 3- PAs repair, 4- Transannular patch if PV is unrepairable, 5- RV to MPA conduit if a coronary passes anterior to the PV., 6- If the valve is replaced, mechanical valves are avoided due to high risk of thrombosis., 7- In critical PS, urgent intervention is needed" } },
+              { "label": "Transcatheter", "result": { "text": "Transcatheter Pulmonary Valve Implantation" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1- Age and weight - symptoms increase with age in fixed stenosis",
+        "2. Baseline SpO2, may have cyanosis if an ASD, PDA or VSD is associated - **Critical PS**",
+        "3. History of low CO, CHF, failure to thrive.",
+        "4. Severity depends on gradient across the RVOT, and the presence of PDA or MAPCAs"
+      ],
+      "intraop": [
+        "1- Good preload",
+        "2- Maintain high SVR and low PVR",
+        "3- Avoid inotropes",
+        "4- Avoid tachycardia and arrhythmias",
+        "5- Good analgesia and anesthesia",
+        "6- Avoid hypothermia and hypoglycemia",
+        "7- Avoid sympathetic stimulation",
+        "8- Avoid anemia"
+      ],
+      "complications": [
+        "Balloon Valvuloplasty complications: 1- Transient bradycardia and hypotension with balloon inflation.",
+        "2- AV block",
+        "3- Tricuspid papillary muscle rupture.",
+        "4- Pulmonary artery rupture.",
+        "5- RVOTO due to infundibular hypertrophy - volume and beta-blockers",
+        "6- Reperfusion injury - needs high PEEP",
+        "7- PR"
+      ]
+    },
+    {
+      "id": "pa_ivs",
+      "category": "cyanotic",
+      "name": "Pulmonary Atresia with Intact Septum",
+      "short": "Pulmonary Atresia with Intact Septum",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Sinusoids",
+          "tree": {
+            "question": "Sinusoids present?",
+            "options": [
+              {
+                "label": "Yes",
+                "result": {
+                  "text": "1. High RV pressure may cause **sinusoids**, 2. TR prevents their development., 3. Myocardial perfusion may be sinusoid dependant, 4. RV dependent coronary circulation, 5. Cardiac catheterization is essential.",
+                  "bullets": [
+                    "1. RV decompression is avoided",
+                    "2. MBTS is needed.",
+                    "3. During CPB, the RV is pressurized by an arterial cannula passing through the TV",
+                    "4. or surgery without full flow CPB"
+                  ]
+                }
+              },
+              {
+                "label": "PDA dependant",
+                "result": { "text": "1. Room air, 2. Norad. & volume, 3. PGE1, 4. PDA stent" }
+              },
+              {
+                "label": "Surgical",
+                "result": { "text": "1. PV repair, 2. Transannular patch., 3. Glenn shunt, specially if small RV., 4. Catheter based PV perforation, 5. Rashkind, PDA stenting,, 6. MBT, 7. Unifocalization" }
+              }
+            ]
+          }
+        },
+        {
+          "title": "Circular shunt",
+          "tree": {
+            "question": "Circular shunt",
+            "options": [
+              { "label": "Surgical causes", "result": { "text": ". Transannular patch, . Free PR, . Coronary fistulae, . MBTS" } },
+              { "label": "Other causes", "result": { "text": ". PR, .TR, . ASD, . PDA or MBTS" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Age and weight",
+        "2. Baseline SpO2, best be around 85%",
+        "3. Low CO, failure to thrive",
+        "4. Signs of myocardial ischemia.",
+        "5. May be associated with TV, RV or coronary anomalies.",
+        "6. There is always an ASD or PFO and a PDA, that may be restrictive, which is a **neonatal emergency** specially with a closing PDA",
+        "7. Embolism",
+        "Inv: 1. CT, 2. Hb"
+      ],
+      "intraop": [
+        "1. Good preload",
+        "2. High SVR, low PVR",
+        "3. Avoid arrhythmias",
+        "4. Inodilators",
+        "5. RV may be ischemic"
+      ],
+      "postop": [
+        "1. The lungs may get congested.",
+        "2. Balancing SVR:PVR is essential",
+        "3. Coronary steal and global ischemia.",
+        "4. Heparin and Aspirin for MBTS."
+      ]
+    },
+    {
+      "id": "ebstein",
+      "category": "cyanotic",
+      "name": "Ebstein Anomaly",
+      "short": "Ebstein Anomaly",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Surgical",
+          "tree": {
+            "question": "Surgical",
+            "options": [
+              {
+                "label": "Two ventricle",
+                "result": { "text": "1.Valvuloplasty, 2. Relocation of leaflets to the true annulus, 3. +/- annuloplasty, 4. Plication of the atrialized RV, Cone technique for sail like ant. leaflet, TV replacement" }
+              },
+              {
+                "label": "Borderline RV",
+                "result": { "text": "One-and-half -> Glenn -> Two ventricle" }
+              },
+              {
+                "label": "Small RV",
+                "result": { "text": "Single Ventricle", "linkTo": "single_ventricle_pathway" }
+              },
+              {
+                "label": "Electrophysiological ablation",
+                "result": { "text": "Electrophysiological ablation" }
+              }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Age and weight",
+        "2. Baseline SpO2",
+        "3. History of low CO, CHF, failure to thrive.",
+        "4. Arrhythmias",
+        "Variable severity: 1. Degree of effective TV orifice displacement, 2. Degree of TR, 3. RV function, 4. Size of ASD or PFO",
+        "Arrhythmias: 1. Atrial due to enlarged RA, 2. Conduction abnormalities due to TV annular displacement., 3. WPW syndrome., 4. Ventricular arrhythmia from atrialized RV, 5. Sudden cardiac death"
+      ],
+      "intraop": [
+        "1. Good preload",
+        "2. Avoid bradycardia",
+        "3. Maintain Sinus",
+        "4. Inodilators"
+      ],
+      "postop": [
+        "1. RV plication may compromise the right coronary.",
+        "2. Conduction abnormalities",
+        "3. Jet",
+        "4. Ventricular arrhythmias.",
+        "5. RV support with inotropes.",
+        "6. RV is usually small with poor compliance",
+        "7. CVP is a good monitor"
+      ]
+    },
+    {
+      "id": "aortic_stenosis",
+      "category": "lvoto",
+      "name": "Aortic Stenosis",
+      "short": "Aortic Stenosis",
+      "overview": [],
+      "associations": [
+        ".Hunter's S., .Hurler's S., .Turner's S."
+      ],
+      "decisionTrees": [
+        {
+          "title": "Intervention",
+          "tree": {
+            "question": "Critical AS with duct dependent systemic circulation?",
+            "options": [
+              {
+                "label": "Yes",
+                "result": { "text": "The neonate is shocked and requires urgent intervention. PDA stent." }
+              },
+              {
+                "label": "No/Intervention",
+                "next": {
+                  "question": "Intervention Type",
+                  "options": [
+                    { "label": "Balloon Valvuloplasty for neonates", "result": { "text": "1. Retrograde via femoral, carotod or umbilical a., 2. Antegrade via femoral or umbilical v. through PFO, 3. Rapid overdrive pacing, adenosin or esmolol" } },
+                    { "label": "Surgery", "result": { "text": "1. Aortic valve repair, 2. Replacement, 3. ROSS, 4. Ozaki, 5. TAVR" } }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Age and weight",
+        "2.History of low CO, CHF, failure to thrive.",
+        "3.Signs of LV ischemia, subendocardial fibroelastosis",
+        "4. LVH may cause DD and PHTN",
+        "5. Bleeding is expected so ensure adequate blood products"
+      ],
+      "intraop": [
+        "1. Induction by Ketmaine IV or IM",
+        "2. Be very careful with inhalation induction and better avoid",
+        "3. Good preload",
+        "4. Maintain SVR",
+        "5. Avoid tachyarrhythmias",
+        "6. If congestive heart failure: Inotropes and diuretics",
+        "Balance supply and demand: 1. Avoid tachycardia, 2. Avoid profound bradycardia, 3. Avoid Anemia, 4. Avoid hypoglycemia and hypoxia"
+      ],
+      "tee": [
+        "1. Mean gradient",
+        "2. AV area",
+        "3. Consider valve repairable or not",
+        "4. LV function",
+        "5. PV diameter and PR if ROSS is planned"
+      ],
+      "postop": [
+        "1. LVOT gradient",
+        "2. Usually don’t need inotropes unless there is preoperative cardiomyopathy, CHF or LV dilatation or the TEE shows SWMA",
+        "3. Good filling for hypertrophied LV.",
+        "4. Bleeding is expected so avoid hypertension and without hypotension either, not to cause ischemia to the hypertrophied LV"
+      ]
+    },
+    {
+      "id": "supravalvular_as",
+      "category": "lvoto",
+      "name": "Supravalvular Aortic Stenosis",
+      "short": "Supravalvular Aortic Stenosis",
+      "overview": [],
+      "associations": [
+        "William S. +/- PS"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Surgery",
+          "tree": {
+            "question": "Surgery",
+            "options": [
+              { "label": "Surgery", "result": { "text": "1. Patch aortoplasty, 2. Ross or Ross-Konno procedure, 3. Patch augmentation of the stenotic coronary or CABG., 4. BPV for PS" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Age and weight",
+        "2.History of low CO, CHF, failure to thrive.",
+        "3.Signs of LV ischemia, subendocardial fibroelastosis",
+        "4. LVH may cause DD and PHTN",
+        "5. Bleeding is expected so ensure adequate blood products",
+        "6. **Coronary narrowing** in William S. may cause further ischemia"
+      ],
+      "intraop": [
+        "1. Induction by Ketmaine IV or IM",
+        "2. Be very careful with inhalation induction and better avoid",
+        "3. Good preload",
+        "4. Maintain SVR",
+        "5. Avoid tachyarrhythmias",
+        "6. If congestive heart failure: Inotropes and diuretics",
+        "Wiiliam S. may be: 1. Difficult intubation., 2. Abnormal skeletal muscles may need monitoring of neuromuscular blockade, 3. HTN and renal insufficiency, 4. Coronary stenosis may cause dangerous ischemia during induction., 5. Readily available CPB or ECMO is adviced since CPR may be challenging"
+      ],
+      "tee": [
+        "1. Mean gradient",
+        "2. Concentric narrowing of the STJ - hour glass appearance,, 3. or diffuse narrowing of the ascending aorta.",
+        "4. LV function"
+      ],
+      "postop": [
+        "1. LVOT gradient",
+        "2. Usually don’t need inotropes unless there is preoperative cardiomyopathy, CHF or LV dilatation or the TEE shows SWMA",
+        "3. Good filling for hypertrophied LV.",
+        "4. Bleeding is expected so avoid hypertension and without hypotension either, not to cause ischemia to the hypertrophied LV",
+        "5. Ischemia may be due to coronary orifice narrowing"
+      ]
+    },
+    {
+      "id": "subvalvular_as",
+      "category": "lvoto",
+      "name": "Subvalvular Aortic Stenosis",
+      "short": "Subvalvular Aortic Stenosis",
+      "overview": [],
+      "associations": [
+        ". Other CHD like Shone complex, . After VSD closure"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Surgical types",
+          "tree": {
+            "question": "types",
+            "options": [
+              { "label": "SAM", "result": { "text": "Resection: . Recurrent, . May injure the AV cusps" } },
+              { "label": "HOCM", "result": { "text": "Myectomy" } },
+              { "label": "Tubular", "result": { "text": "Konno.s" } },
+              { "label": "+ AS/AR", "result": { "text": ". AV repair, . replacement, . Ross-Konno" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Age and weight",
+        "2.History of low CO, CHF, failure to thrive.",
+        "3.Signs of LV ischemia, subendocardial fibroelastosis",
+        "4. LVH may cause DD and PHTN",
+        "5. Bleeding is expected so ensure adequate blood products",
+        "Accelerated flow across AV - Valvular AS and AR"
+      ],
+      "intraop": [
+        "1. Induction by Ketmaine IV or IM",
+        "2. Be very careful with inhalation induction and better avoid",
+        "3. Good preload",
+        "4. Maintain SVR",
+        "5. Avoid tachyarrhythmias",
+        "6. If congestive heart failure: Inotropes and diuretics"
+      ],
+      "tee": [
+        "1. Mean gradient",
+        "2. Static or Dynamic",
+        "3. LV function",
+        "4. PV diameter and PR if ROSS is planned",
+        "5. Ant MV leaflet attachment"
+      ],
+      "postop": [
+        "1. LVOT gradient",
+        "2. Usually don’t need inotropes unless there is preoperative cardiomyopathy, CHF or LV dilatation or the TEE shows SWMA",
+        "3. Good filling for hypertrophied LV.",
+        "4. Bleeding is expected so avoid hypertension and without hypotension either, not to cause ischemia to the hypertrophied LV",
+        "Heart Block is common",
+        "TEE post: 1. Gradient across LVOT, 2. LV function, 3. SAM of AML, 4. Injury of AML and MR"
+      ]
+    },
+    {
+      "id": "hocm",
+      "category": "lvoto",
+      "name": "HOCM",
+      "short": "HOCM",
+      "overview": [],
+      "associations": [
+        "1. Insulin dependant mothers, 2. Mitochondrial diseases, 3. Pompe diseases, 4. Noonan S."
+      ],
+      "decisionTrees": [
+        {
+          "title": "Surgery Indicated if",
+          "tree": {
+            "question": "Surgery Indicated if:",
+            "options": [
+              { "label": "1..Gradient >60 mmHg, 2. Symptomatic, 3. Mitral Regurge", "result": { "text": ". Septal myectomy via aortotomy., . May need MV repair., . Deroofing of an intramural coronary or CABG, . May need an ICD for recurrent VT or VF" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Age and weight",
+        "2.History of low CO, CHF, failure to thrive.",
+        "3.Signs of LV ischemia, subendocardial fibroelastosis",
+        "4. Intramural coronaries may increase ischemia",
+        "5. Ventricular arrhythmias",
+        "6. Family history of sudden cardiac death",
+        "7. SAM of AML with MR"
+      ],
+      "intraop": [
+        "1. Induction by Ketmaine IV or IM",
+        "2. Be very careful with inhalation induction and better avoid",
+        "3. Good preload",
+        "4. Maintain SVR",
+        "5. Avoid tachyarrhythmias",
+        "6. Avoid increased contractility"
+      ],
+      "tee": [
+        "1. Gradient, dagger shaped wave",
+        "2. SAM of AML, check for MR.",
+        "3. Septal wall thickness: >15 mm unexplained or SWT/PWT >1.3 and >1.5 in hypertensives",
+        "4. Distance between the aortic annulus and the point of contact of the septum with the AML - site of myectomy",
+        "5. Mid-cavitary obstruction in both ventricles.",
+        "6. LV hypertrophy and dilatation and LV function.",
+        "7. Later fibrosis and ischemia may cause LV wall thinning and dilatation.",
+        "8. Other anomalies."
+      ],
+      "postop": [
+        "1. LVOT gradient",
+        "2. Usually don’t need inotropes unless there is preoperative cardiomyopathy, CHF or LV dilatation or the TEE shows SWMA",
+        "3. Good filling for hypertrophied LV.",
+        "4. Bleeding is expected so avoid hypertension and without hypotension either, not to cause ischemia to the hypertrophied LV",
+        "5. BBB and Heart Block are common",
+        "6. If deroofing of coronary artery, bleeding is expected",
+        "TEE post: 1. Gradient across LVOT, 2. LV function, 3. SAM of AML, 4. Iatrogenic VSD"
+      ]
+    },
+    {
+      "id": "coarctation",
+      "category": "lvoto",
+      "name": "Coarctation of the Aorta",
+      "short": "Coarctation of the Aorta",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Types",
+          "tree": {
+            "question": "types",
+            "options": [
+              { "label": "short segment", "result": { "text": "Resection via thoracotomy for neonates and infants" } },
+              { "label": "long segment", "result": { "text": "Balloon dilatation and stent for older patients, Recurrence is common." } },
+              { "label": "+ Hypoplastic Ao Arch", "result": { "text": "Aortic arch advancement in hypoplastic arch." } },
+              { "label": "PDA dependant descending Ao", "result": { "text": "PGs in PDA dependent systemic circulation." } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Severe CoA in neonates, when PDA closes: LV failure, CHF and PHTN",
+        "2. Upper body HTN: coronary artery disease, Stroke, Heart failure, Ruptured aortic and cerebral aneurysms",
+        "3. Gradient assessment by TTE",
+        "4. Anatomy confirmation by CT",
+        "5. in severe cases patients may be on inotropic support and diuretics.",
+        "PGs in PDA dependent systemic circulation."
+      ],
+      "intraop": [
+        "1. Position: Sternotomy vs Left Thoracotomy",
+        "2. Ensure no leak and no endobronchial intubation.",
+        "3. Arterial line: Right radial & Femoral",
+        "4. Lung collapse: 100% O2, - Low TV - High RR - Recruit after inflation",
+        "5. Permissive mild hypercapnia can be tolerated unless there is preexisting metabolic acidosis",
+        "6. Cerebral oximetry",
+        "7. Lower Body Hypotension! Renal or Spinal ischemia",
+        "8. Mild hypothermia is indicated to decrease spinal cord ischemia, don't use the Barehugger.",
+        "9. Avoid upper body HTN,",
+        "10. Inotropics during cross clamp may be needed in cases of impaired LV",
+        "11. Measure cross-clamp time.",
+        "Clamp off: . Reperfusion injury, . Correct metabolic acidosis."
+      ],
+      "postop": [
+        ". Hypertension is expected, may need GTN, Na nitroprusside or esmolol.",
+        ". Consider Marcaine local injection in thoracotomy"
+      ]
+    },
+    {
+      "id": "hypoplastic_arch",
+      "category": "lvoto",
+      "name": "Hypoplastic Aortic Arch / Interrupted Aortic Arch",
+      "short": "Hypoplastic Aortic Arch / Interrupted Aortic Arch",
+      "overview": [],
+      "associations": [
+        ".VSD, .LVOTO"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Types",
+          "tree": {
+            "question": "types",
+            "options": [
+              { "label": "PDA dependant lower body", "result": { "text": "PDA dependant lower body" } },
+              { "label": "type A: distal to great vessels", "result": { "text": "type A: distal to great vessels" } },
+              { "label": "type B: between LCC and LSS", "result": { "text": "type B: between LCC and LSS, most have DiGeorge S." } },
+              { "label": "type C: between innominate and LCC", "result": { "text": "type C: between innominate and LCC" } }
+            ]
+          }
+        },
+        {
+          "title": "Surgical",
+          "tree": {
+            "question": "Surgical",
+            "options": [
+              { "label": "Arch repair", "result": { "text": "1. Arch repair using descending Ao advancement, deep hypothermic circulatory arrest with antegrade cerebral perfusion." } },
+              { "label": "In cases of LVOT obstruction", "result": { "text": "2. In cases of LVOT obstruction: . Yasui operation = Arch repair + DKS, . Norwood then later Yasui, . Ross-Konno" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Usually asymptomatic at birth",
+        "2. Then CHF when PDA closes",
+        "3. PGE1",
+        "4. Ressussitate",
+        "5. Urgent surgery",
+        "Irradiated blood and monitor calcium level if DiGeorge S."
+      ],
+      "intraop": [
+        "1. Arterial line: Preductal",
+        "2. SCA may be anomalous from Desc. Ao. and Left SCA may by used during repair.",
+        "3. Umbilical artery my be needed.",
+        "4. Neonatal Cerebral Oximetry",
+        "5. Post CPB bleeding is expected"
+      ],
+      "postop": [
+        "Transfer to ICU with open sternum and stents is common"
+      ]
+    },
+    {
+      "id": "mitral_stenosis",
+      "category": "lvoto",
+      "name": "Mitral Stenosis",
+      "short": "Mitral Stenosis",
+      "overview": [],
+      "associations": [
+        "Usually part of Shone's anomaly"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Types",
+          "tree": {
+            "question": "types",
+            "options": [
+              { "label": "Type A: normal papillary muscles", "result": { "text": "1. Commissural fusion, 2. Valvular or supravalvular ring, or 3. Obstructive left SVC" } },
+              { "label": "Type B: abnormal papillary muscles", "result": { "text": "Parachute, or a hammock MV." } }
+            ]
+          }
+        },
+        {
+          "title": "Surgical",
+          "tree": {
+            "question": "Surgical",
+            "options": [
+              { "label": "Surgical options", "result": { "text": "1. Resection of a supravalvular ring, 2. Commissurotomy, 3. Division or reconstruction of the papillary muscles, 4. Reconstruction of the chordae tendineae., 5. Balloon dilatation." } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Lung congestion",
+        "2. PHTN",
+        "3. Low fixed COP"
+      ],
+      "intraop": [
+        "1. Avoid Tachycardia",
+        "2. Avoid Hypovolemia and hypervolemia",
+        "3. Maintain afterload",
+        "4. Attempts to reduce PVR may paradoxically worsen the congestion.",
+        "5. Arrhythmogenic due to LA dilatation",
+        "PHTN Management: 1. 100% O2, 2. Low normal PCO2 and avoid acidosis,, 3. Avoid hypothermic, hypoglycemia, stress and pain., 4. Inodilators and pulmonary vasodilators."
+      ],
+      "postop": [
+        "1. Deairing",
+        "2. Residual gradient",
+        "3. Iatrogenic significant MR"
+      ]
+    },
+    {
+      "id": "tga",
+      "category": "transposition",
+      "name": "TGA",
+      "short": "TGA",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "LV conditioning",
+          "tree": {
+            "question": "LV conditioning",
+            "options": [
+              { "label": "Conditioned", "result": { "text": "ASO" } },
+              { "label": "Borderline", "result": { "text": "PAB +/- MBTS -> ASO" } },
+              { "label": "Deconditioned (2-3wks IVS, 6-8wks VSD)", "result": { "text": "Mustard" } },
+              { "label": "Trained LV, Dynamic or resectable LVOTO", "result": { "text": "ASO" } },
+              { "label": "Fixed or unresectable LVOTO, IVS", "result": { "text": "ASO + conduit OR Mustard + LV to PA conduit" } },
+              { "label": "Fixed or unresectable LVOTO, VSD, Distant VSD", "result": { "text": "Nikaidoh" } },
+              { "label": "Fixed or unresectable LVOTO, VSD, Commited VSD", "result": { "text": "Rastelli OR REV" } }
+            ]
+          }
+        },
+        {
+          "title": "Coronary anatomy",
+          "tree": {
+            "question": "Coronary anatomy",
+            "options": [
+              { "label": "Dangerous", "result": { "text": "1. Single right, 2. Inverted coronaries, 3. Intramural" } }
+            ]
+          }
+        },
+        {
+          "title": "Mixing & Qp:Qs",
+          "tree": {
+            "question": "Mixing & Qp:Qs",
+            "options": [
+              { "label": "Mixing", "result": { "text": "1. ASD- best balanced, 2. VSD - lung congestion, train LV, 3. PDA/MPCAs -lung congestion, differential cyanosis, +/- PHTN" } },
+              { "label": "Qp:Qs Low - TGA + LVOTO", "result": { "text": "Low effective pulm. flow" } },
+              { "label": "Qp:Qs High - TGA + VSD", "result": { "text": "Low effective systemic flow, +/- PHTN" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "Severe cyanosis: 1. Fluid ressussitation and Norad., 2. Low FiO2, 3. Prostaglandin E1,, 4. Mechanical ventilation, 5. Urgent Balloon Atrial Septostomy - Rashkind’s",
+        "Rashkind: . Bed side of Cathlab., . Femoral or Umbilical v.",
+        "Side effects of PGE1: 1. fever,, 2. Apneas,, 3. Vasodilatation, hypotension,, 4. Hypertonicity, 5. CNS excitability.",
+        "Maintain HD goals: . Duct patency, . COP, . PVR < SVR, unless there is lung congestion, . Good hydration"
+      ],
+      "intraop": [
+        "Neonate: 1. Hypoglycemia, 2. Variable pharmacodynamics and pharmacokinetics, 3. Lower MAC of volatiles",
+        "4. Respiratory: . Large head and narrow epiglottis, . Sniffing position Low FRC, easy hypoxia",
+        "5. CVS: . COP depends on HR, . DD, . Higher parasympathetic tone, . Immature cerebral autoregulation",
+        "7. Heamtological: . Hg level 14-20 g%, . Blood volume 85-95 ml/Kg, . Vit K clotting factors deficiency",
+        "8. The myocardium depends on extracellular calcium for inotropy.",
+        "9. Thermoregulation: . Easy hypothermia due to low S.C. fat, immature brown fat and large surface area : volume., . It affects metabolism, shifts O2 dissociation curve to the left, causes coagulopathy and increases PVR.",
+        "Induction: 1. IV peripheral cannula, 2. IV induction or IM ketamine, 3. Avoid high MAC inhalation, 4. Intubation by oral non cuffed ETT, leak test is done. It is expected that the leak may increase after CPB and MUF due to resolving airway edema., 5. Check the vitality of the limbs after femoral cannulation, 6. Cerebral oximetry",
+        "Maintenance: 1. Maintain HD goals, 2. Further doses of fentanyl as needed, 3. Morphine infusion, 4. Sevo < MAC",
+        "OFF CPB after: − No significant surgical bleeding., − Adequate reperfusion time, 1/3 Ischemic time, − Rewarming, - Deairing, − Good biventricular function and no ischemia in ECG, − No arrhythmia, − HR at least 140/min, − Inotropes: Milrionone and Norad, − LA line, − Dual Pacemaker wires",
+        "At separation: 1. At separation administer 2.3 ml Ca Gluconate, 2. Maintain Systolic pressure 55-75 mmHg, 3. Epicardial ECHO/ TEE, 4. UOP >1 ml/Kg/h and serum lactate., 3. Volume is given *carefully* using a syringe and not by dripping",
+        "BP Troubleshooting: High BP +/- High LA & CVP - +/- tachy -> Stress +/- Hypervolemia -> 1. Sedation, 2. Decrease NE",
+        "BP Troubleshooting: Low BP -> Low LA -> Hypovolemia/ vasoplegia -> Volume +/- NE",
+        "BP Troubleshooting: Low BP -> High LA -> Low CVP -> LV FAILURE -> 1. Calcium, 2. Stop transfusion, 3. Raise the head, 4. Allow the baby to bleed to target conditions, 5. Withdraw blood if needed., 6. Adrenaline if al fails",
+        "BP Troubleshooting: Low BP -> High LA -> High CVP -> Global FAILURE/ hypervolemia -> 1. Calcium, 2. Stop transfusion, 3. Raise the head, 4. Allow the baby to bleed to target conditions, 5. Withdraw blood if needed., 6. Adrenaline if al fails",
+        "MUF: 1. Increases the hematocrit,, 2. concentrates clotting factors and platelets,, 3. Increases the blood pressure,, 4. Reduce the PVR, 5. Remove inflammatory mediators., 6. It has been shown to decrease bleeding significantly",
+        "Hemostasis: 1. fresh blood, 2. platelets,, 3. maintain normothermia,, 4. continue antifibrinolytics, 5. Recombinant factor VII - 90 mcg/Kg every 1-2 h till hemostasis",
+        "LV failure: 1. Deconditioned LV, 2. Coronary narrowing/kink, 3. Poor preservation on CPB",
+        "Chest closure is usually not possible due to myocardial edema and coagulopathy and the patients are often transferred stented."
+      ],
+      "tee": [
+        "TEE post Mustard: 1. Biventricular function, 2. Baffle leak at suture lines, 3. Baffle stenosis that causes systemic or pulmonary venous congestion",
+        "TEE post Nikaidoh/REV/Rastelli: 1. Biventricular function., 2. No residual VSD., 3. Laminar flow across the LV to Ao baffle., 4. Laminar flow across the RV to PA conduit"
+      ],
+      "complications": [
+        "Chest closure late complications: - PA and RVOT stenosis., - Neo-aortic valve insufficiency., - Coronary artery obstruction.",
+        "Mustard late complications: 1. RV failure, 2. Baffle issues such as leak or stenosis, 3. Intractable atrial arrhythmias: − Sick sinus syndrome - scarring of the SA node, − Atrial flutter - scarring around the baffle sutures"
+      ]
+    },
+    {
+      "id": "cctga",
+      "category": "transposition",
+      "name": "L-TGA/cc-TGA",
+      "short": "L-TGA/cc-TGA",
+      "overview": [],
+      "associations": [
+        "Assoicated anomalies almost all: - VSDs, − LVOTO, − TV anomalies"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Surgical Strategy",
+          "tree": {
+            "question": "Surgical Strategy",
+            "options": [
+              { "label": "No associated anomalies", "result": { "text": "Conserve OR Double switch" } },
+              { "label": "Correctable - No", "result": { "text": "Single Vanetricle Management", "linkTo": "single_ventricle_pathway" } },
+              { "label": "Correctable - Yes", "next": {
+                  "question": "Biventricle repair",
+                  "options": [
+                    { "label": "Physiological repair", "result": { "text": "Physiological repair" } },
+                    { "label": "Anatomical repair", "next": {
+                        "question": "Anatomical repair",
+                        "options": [
+                          { "label": "- VSD, - No PS", "result": { "text": "PAB -> Double switch OR Double switch" } },
+                          { "label": "- VSD, - PS/PA", "result": { "text": "MBTS -> Mustard + Rastelli OR Mustard + Rastelli" } }
+                        ]
+                    } }
+                  ]
+              } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "- RV failure and TR",
+        "- Associated anomalies",
+        "- Prior PAB"
+      ],
+      "intraop": [
+        "Induction: 1. IV peripheral cannula, 2. IV induction or IM ketamine, 3. Avoid high MAC inhalation, 4. Intubation by oral non cuffed ETT..."
+      ],
+      "postop": [
+        "- LV failure, deconditioned",
+        "- Conduction anomalies.",
+        "- Coagulopathies, lung and kidney injury due to very long CPB time"
+      ]
+    },
+    {
+      "id": "single_ventricle_pathway",
+      "category": "univentricular",
+      "name": "Single Vantricle Pathology",
+      "short": "Single Vantricle Pathology",
+      "overview": [
+        "Examples: - Rudimentary LV or RV, - Mitral or Tricuspid Atresia, - Pulmonary Atresia, - Hypoplastic left heart syndrome, - DILV, - Stradling of septal leaflet of the TV through a VSD, - Excessively complex procedure, e.g. TGA + CAVC + PS, -The case is too complex for the hospital or the surgeon, - The patient is too small"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Circulation",
+          "tree": {
+            "question": "Circulation",
+            "options": [
+              { "label": "Left to right", "result": { "text": "Left to right" } },
+              { "label": "Right to left", "result": { "text": "Right to left" } },
+              { "label": "Mixing", "result": { "text": "Optimum: - SpO2 = 85%, - Qp:Qs = 1:1" } }
+            ]
+          }
+        },
+        {
+          "title": "Management",
+          "tree": {
+            "question": "SpO2 at Birth (Consider the neonatal PHTN that resolves within 2-3 wks)",
+            "options": [
+              { "label": "<70%", "result": { "text": "PDA stent OR MBTS -> 85%" } },
+              { "label": "85%", "result": { "text": "6 months -> Glenn", "linkTo": "glenn" } },
+              { "label": "100%", "result": { "text": "PAB -> 85%" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "PAB Preop: 1. Congested, 2. Tachypneic, 3. Poor feeding, 4. Stunted, 5. On diuretics, check electrolytes, 6. Make sure that the lungs are in their optimum conditions",
+        "PDA stent preop: 1. Neonates, 2. Severely cyanotic and debilitated with acidosis, AKI and impending arrest, 3. On PGE1, NE and fluids, 4. Ventilated on room air, 5. Difficult IV access due to young age and PG infusion that causes edema",
+        "MBTS preop: 1. Cyanotic, 2. High hematocrit, 3. Some patients are PDA dependent, 4. Optimize the lung condition"
+      ],
+      "intraop": [
+        "PAB intraop: 1. Arterial line, 2. Femoral CVL, avoid SVC, 3. Avoid deep anesthesia, 4. FiO2 0.3-0.5, 5. PaCO2 ≈ 40",
+        "PAB placement: 1. Target SpO2 = 75-85% on FiO2 <0.5, 2. A needle is placed distal to the band, 3. PA pressure is measured targeting the lowest pressure possible to give the target SpO2, 4. Optimize the lung condition: Good ventilation, suction and recruitment ± bronchodilators and furosemide, 5.ABG after > 5min of stable conditions to confirm the pulse oximeter, 6. Peak gradient across the band ≈ 36 mmHg, 7. After banding, the systemic blood pressure increases",
+        "PDA stent intraop: 1. Continue resuscitation, 2. The operator may request a right Internal Carotid sheath, 3. Inserting wires and catheters into PDA may arrest the patient",
+        "MBTS intraop: 1. Blood available in OR, 2. Arterial line NOT on side of shunt, 3. Avoid upper limb CVL",
+        "MBTS Off CPB: 1. During clamping of SCA the BP increases, 2. During clamping of the RPA or LPA, desaturation requiring resuscitation",
+        "MBTS On CPB: Half vs Full Protamine ± Hep. Infusion according to the hemostasis situation",
+        "MBTS Clamp off: 1. Ideal SpO2 = 85%, 2. ↓SpO2 = ↑size of shunt, 3. ↑SpO2 = congested and requires diuretics, 4. Hyperdynamic, low diastolic BP that may compromise the coronaries, 5. Keep high diastolic pressure for coronary perfusion: - Good filling, - Avoid bradycardia, - Vasopressors, - Low FiO2, - Premissive hypercapnia, - PEEP, 6. Keep high systemic blood pressure for the pulmonary perfusion"
+      ],
+      "postop": [
+        "MBTS postop: 1. Diuretics, 2. Monitoring for myocardial ischemia, 3. Heparin infusion and later aspirin, 4. So hemorrhage is common, 5. Shunt thrombosis and desaturation may occur requiring urgent reopening and shunt revision."
+      ]
+    },
+    {
+      "id": "glenn",
+      "category": "univentricular",
+      "name": "Glenn",
+      "short": "Glenn",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Desat",
+          "tree": {
+            "question": "Desat?",
+            "options": [
+              { "label": "1. High PVR", "result": { "text": "High PVR" } },
+              { "label": "2. Collateral from SVC to IVC or coronary sinus.", "result": { "text": "Collateral from SVC to IVC or coronary sinus." } },
+              { "label": "High Glenn pressure", "next": {
+                  "question": "High Glenn pressure",
+                  "options": [
+                    { "label": "High Femoral vein pressure", "result": { "text": "Hypervolemia" } },
+                    { "label": "Low PAP", "result": { "text": "Redo Glenn anastmosis" } },
+                    { "label": "High PAP", "result": { "text": "High PVR" } }
+                  ]
+              } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. After resolve of Neonatal PHTN",
+        "2. At milestone of sitting",
+        "3. At 6 months the SVC venous return is 60-70% of the total",
+        "4. HD study is done - PAP <16",
+        "5. SpO2",
+        "6. Hematocrit level",
+        "7. Good hydration to avoid desaturation and thromboembolic events",
+        "8. Patients with an mBTS may be on aspirin or heparin"
+      ],
+      "intraop": [
+        "Surgery: 1. First or REDO after mBTS, 2. Done on CPB with no cross-clamp unless other procedures are done, e.g. PA augmentation or atrial septectomy, 3. Usually the PV is closed unless the One-and-a-half-ventricle repair, 4. Bilateral Glenn is done in cases of bilateral non communicating SVCs, 5. In interrupted IVC, Kawashima procedure.",
+        "1. Radial artery on the other side of the mBTS",
+        "2. Femora CVL,",
+        "3. IJV cannula for PAP monitoring post CBP",
+        "4. If REDO: PRBCs, DC pads and wide bore IV"
+      ],
+      "postop": [
+        "1. Ensure low PVR",
+        "2. Good hydration",
+        "3. Head up position, neutral head position",
+        "4. MUF",
+        "low PVR: - Tracheal suction, - Recruitment, - PCO2 40-45 mmHg, low PCO2 decreases “cavopulmonary cerebral” circulation, - Low driving pressure and low PEEP, - Good oxygenation, - Avoid acidosis, hypothermia, hypoglycemia, - Good analgesia and anesthesia, - Milrinone may be need",
+        "SpO2 -> 90%",
+        "adolescent growth spurt -> <70% -> Fontan"
+      ]
+    },
+    {
+      "id": "fontan",
+      "category": "univentricular",
+      "name": "Fontan",
+      "short": "Fontan",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Low CO",
+          "tree": {
+            "question": "Low CO",
+            "options": [
+              { "label": "Low CO", "result": { "text": "1. Obstructed Fontan, 2. High PVR, 3. Hypovolemia, 4. Poor single ventricle function, 5. AV regurge, 6. PA stenosis" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. HD study is done - PAP <16",
+        "2. SpO2",
+        "3. Hematocrit level",
+        "4. Good hydration to avoid desaturation and thromboembolic events"
+      ],
+      "intraop": [
+        "Surgery: Extracardiac: 1. CPB without cross clamp, 2. Prosthetic tube, 3. RPA not opposite to the SVC to avoid collision of flow, 3. +/- Hepatic vein inclusion, 4. +/- Fenestrations",
+        "1. Radial artery on the other side of the mBTS",
+        "2. Femora CVL,",
+        "3. IJV cannula for PAP monitoring post CBP",
+        "4. REDO: PRBCs, DC pads and wide bore IV",
+        "5. Plan for early extubation: reduce opioids, use non opioid analgesia and nerve blocks"
+      ],
+      "postop": [
+        "Low CO may be difficult to detect and may present with desaturation if fenestrstions are made",
+        "Ensure low PVR"
+      ],
+      "complications": [
+        "Late Sequelae (Fontan Pathology): 1. Low CO symptoms",
+        "2. Arrhythmias, less with extracardiac Fontan",
+        "3. Thromboembolic events",
+        "4. Protein losing enteropathy of unknown cause",
+        "5. Plastic bronchitis: rare but serious and of unknown cause: proteinaceous casts in the tracheobronchial tree, resulting in chronic cough, wheezing, dyspnea, and hypoxemia",
+        "6. Pulmonary AV malformations causing right to left shunt and desaturation, ‘hepatic factor’"
+      ]
+    },
+    {
+      "id": "heterotaxy",
+      "category": "univentricular",
+      "name": "Heterotaxy Syndromes",
+      "short": "Heterotaxy Syndromes",
+      "overview": [],
+      "decisionTrees": [
+        {
+          "title": "Right vs Left Isomerism",
+          "tree": {
+            "question": "Isomerism?",
+            "options": [
+              {
+                "label": "Right Isomerism",
+                "result": { "text": "1. Asplenia: Life long penicillin, Pneumococcal and Menincococcal vaccines and strict infection control., 2. Single ventricle >50%, 3. DORV and unbalanced CAVC are common, 4. Pulmonary stenosis/atresia are common >90%, 5. Bilateral SVC, 6. Extracardiac TAPVR common, 7. Bilateral SA nodes, 8. Bilateral trilobed lungs, 9. Midline liver, 10. Intestinal malrotation." }
+              },
+              {
+                "label": "Left Isomerism",
+                "result": { "text": "1. Polysplenia, 2. Single ventricle <50%, 3. Interrupted IVC, 4. Cardiac TAPVD, 5. Ascent SA node: sick sinus syndrome and bradyarrhythmias, 6. Bilateral bilobed lung" }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "vascular_ring",
+      "category": "vascular",
+      "name": "Vascular ring",
+      "short": "Vascular ring",
+      "overview": [
+        "1. Complete or incomplete.",
+        "2. May compress the trachea or the oesophagus.",
+        "3. Anatomy is variable and presentation is variable."
+      ],
+      "decisionTrees": [
+        {
+          "title": "Types",
+          "tree": {
+            "question": "types",
+            "options": [
+              { "label": "Double aortic arch, persistent 4th embryonic arch", "result": { "text": "1. Right arch dominant, Lt subclavian may arise from Rt arch and pass retro-esophageal, 2. Left arch dominant, 3. Balanced arches" } },
+              { "label": "Right aortic arch with left ligamentum arteriosum", "result": { "text": "1. Retroesophageal left subclavian artery, 2. Mirror-image branching" } },
+              { "label": "Partial vascular rings", "result": { "text": "1. Innominate artery compression syndrome, usually resolves with growth, if severe symptoms, vascular suspension or reimplantation, 2. Pulmonary artery sling, 3. Left aortic arch, aberrant right subclavian artery" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Respiratory symptoms in the first year of life: stridor, recurrent respiratory infections, a barking cough, and apnea",
+        "2. Esophageal obstruction",
+        "3. Esophageal reflux may lead to pulmonary aspiration and episodes of apnea.",
+        "4. Pneumonia may increase the stridor",
+        "5. Surgery is indicated by symptoms and not the anatomy.",
+        "Inv.: 1. MRI and CT with 3D reconstruction., 2. Barium swallow, 3. Bronchoscopy for tracheobronchomalacia, 4. Echo to detect other cardiac anomalies., 5. Chest Xray"
+      ],
+      "intraop": [
+        "Surgery: 1. Thoracotomy or median sternotomy, 2. The ring is transected, perfusion to the head and limbs should be confirmed",
+        "1. Difficult ventilation",
+        "2. ETT usually passes easily,",
+        "3. With thoracotomy and lung retraction: − 100% O2, − Low TV and high RR, − Monitor peak airway pressure and SpO2",
+        "4. Good communication with the surgeon, which arteries will be clamped",
+        "5. This decides position of: − Pulse oximeter, − Arterial line, − Cerebral oximetry",
+        "6. 100 units/kg heparin",
+        "7. CVL",
+        "8. Usually minimal bleeding due to clamping, but massive arterial bleeding may occur requiring emergent resuscitation.",
+        "9. Erector spinae block"
+      ],
+      "postop": [
+        "1. Can be extubated on table, unless tracheobronchomalacia is expected or residual respiratory disease exists",
+        "2. Tracheobronchomalacia is not immediately cured, it takes time."
+      ]
+    },
+    {
+      "id": "alcapa",
+      "category": "vascular",
+      "name": "ALCAPA",
+      "short": "ALCAPA",
+      "overview": [
+        "1. Die within the first year,",
+        "2. At birth PVR is high.",
+        "3. Later the PVR falls causing coronary steal",
+        "4. Dilated cardiomyopathy",
+        "5. Increase in LVEDP",
+        "6. MR",
+        "7. Arrhythmias.",
+        "early presenters: Worse symptoms but recover faster",
+        "late presenters: 1. Due to dominant RCA or stenotic ALCAPA,, 2. Recovery after surgery is however worse than the early presenters, 3. Long lasting ischemia and fibrosis."
+      ],
+      "decisionTrees": [
+        {
+          "title": "Surgery",
+          "tree": {
+            "question": "Surgery",
+            "options": [
+              { "label": "Surgery", "result": { "text": "1. Reimplantation, 2. If the artery is short, Takeuchi procedure, 3. Stand by ECMO, 4. MR improves later, but severe MR may be corrected my incomplete annuloplasty., 5. Cardioplegia is delivered by cross-clamping both aorta and pulmonary" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Varies from asymptomatic to severe congestive heart failure",
+        "2. May be on inotropes",
+        "3. Adequate blood pressure is needed from perfusion without increasing afterload",
+        "4. Tachycardia is poorly tolerated",
+        "history: 1. MI, exercise intolerance, including suckling,, 2. Syncope, 3. Arrhythmias, 4. Lung condition, 5. Renal and hepatic functions"
+      ],
+      "intraop": [
+        "They are notorious to arrest in induction due to: 1. Decrease in PVR and increased coronary steal, 2. Anesthetics that cause myocardial depression and vasodilatation, 3. Derceasing sympathetic tone in patients depending on it, 4. Inadequate anesthesia causing stress and tachycardia",
+        "*Surgeons and perfusionists should be ready during induction for any collapse",
+        "1. Careful titration of anesthetics",
+        "2. Care with use of Ketamine in debilitated patients",
+        "3. Etomidate",
+        "4. Euvolemia is the target,",
+        "5. Avoid hypervolemia that increases congestion",
+        "6. Avoid hypovolemia caused by diuretics and fasting",
+        "7. Avoid Anemia and Hypoglycemia",
+        "Maintain PVR: 1. Low FiO2, Room air, 2. Permissive hypercapnia, 3. PEEP, also decreases congestion"
+      ],
+      "postop": [
+        "1. Recovery of the cardiomyopathy may take time",
+        "2. Anemia is poorly tolerated",
+        "3. The patient often goes to ICU with an open sternum and stented to prevent compression of the heart and allow rapid intervention if collapse occurred.",
+        "4. ECMO may be needed"
+      ]
+    },
+    {
+      "id": "coronary_fistula",
+      "category": "vascular",
+      "name": "Coronary Fistula",
+      "short": "Coronary Fistula",
+      "overview": [
+        "Coronary to RA"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Management",
+          "tree": {
+            "question": "Management",
+            "options": [
+              { "label": "Management", "result": { "text": "1. Percutaneous closure, 2. Surgical, 3. Closure may compromise parts of the myocardium" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Coronary steal",
+        "2. Ischemic cardiomyopathy",
+        "3. Arrhythmia",
+        "4. PHTN"
+      ],
+      "intraop": [
+        "1. Careful induction with titration of anesthetics",
+        "2. Euvolemia",
+        "3. Avoiod tachycardia, hypotension and anemia",
+        "4. Avoid reducing the CVP",
+        "5. Failure of cardioplegia may occur. This is specially dangerous if the fistula was not diagnosed in a patient undergoing open heart for another reason."
+      ]
+    },
+    {
+      "id": "pericardial_effusion",
+      "category": "acquired",
+      "name": "Pericardial Effusion",
+      "short": "Pericardial Effusion",
+      "overview": [
+        "- Acute causes tamponade even with small volume",
+        "- Chronic allows pericardial dilatation to large volumes",
+        "causes: 1. Bleeding, most common., 2. Infections, autoimmune, uremia, malignancy, trauma, 3. Heart failure and poorly functioning Fontan, 4. Post pericardiotomy syndrome of immunological origin",
+        "Pericarditis may cause constrictive pericarditis and tamponade"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Managment",
+          "tree": {
+            "question": "Managment",
+            "options": [
+              { "label": "Managment", "result": { "text": "1. Postoperative bleeding: sternal reopening or subxiphoid under TEE guidance., 2. Serous: subxiphoid under TEE guidance, 3. Recurrent: pleural window, 4. Chronic pericarditis: pericardiectomy which is a major operation with risk of bleeding, arrhythmias and injury of the coronaries." } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Increased venous pressure.",
+        "2. Hypotension, low CO, tachycardia and high sympathetic tone",
+        "3. Rise in the heart chambers pressures and their equalization",
+        "4. Ischemia: hypotension, high LVEDP and tachycardia",
+        "5. Pulsus paradoxus",
+        "6. Beck’s triad: hypotension, high venous pressure and quiet sounds on auscultation"
+      ],
+      "intraop": [
+        "1. Injury of the heart or the coronaries",
+        "2. Mild sedation and local anesthesia is possible in pericardiocentesis",
+        "3. Careful induction of anesthesia and avoid decreasing the sympathetic tone",
+        "4. Fixed cardiac output: vasopressors",
+        "5 Positive pressure ventilation may worsen the tamponade",
+        "6. Increase expiratory time and avoid PEEP",
+        "7. Subxyphoid drainage may be done before or during induction",
+        "8. If bleeding is severe blood can be reinfused to the patient from the pericardiocentesis line to the femoral line through a three-way stopcock",
+        "9. After relief of the tamponade, severe bleeding and hypertension may occur"
+      ],
+      "tee": [
+        "1. Many view to ensure complete drainage specially for loculated effusion",
+        "2. Deep dependent areas in transgastric views",
+        "3. Cardiac function",
+        "4. Lack of IVC distensibility",
+        "5. Respiratory variation of VTI across the valves >25%"
+      ]
+    },
+    {
+      "id": "mitral_regurgitation",
+      "category": "acquired",
+      "name": "Mitral Regurge",
+      "short": "Mitral Regurge",
+      "overview": [
+        "- Type II MR may progress to Type I and IIIb due to LV dilatation",
+        "- Atrial arrythmia is common due to LA dilatation",
+        "- RV may be compromised due to rightwards septal shift and PHTN",
+        "- MR may resolve or decrease after correction of the cause in cases of LV ischaemia or Aortic stenosis"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Carpentier's classification",
+          "tree": {
+            "question": "Carpentier's classification",
+            "options": [
+              { "label": "Type I - Normal motion", "result": { "text": "1. Annular dilatation with decreased coaptation and increased leflets tension, 2. Perforation" } },
+              { "label": "Type II - excessive motion", "result": { "text": "1. Congenital, connective tissue disease, inflammatory, rheumatic, 2. Elongated cords with prolapse or rupture and flail, 3. Increasing leaflet tension" } },
+              { "label": "Type III - restrictive", "result": { "text": "IIIa rheumatic restriction and fibrosis of leaflets and subvalvular apparatus, IIIb Tethering of leaflets by dilated cadiomyopathy with tenting" } }
+            ]
+          }
+        },
+        {
+          "title": "Surgery",
+          "tree": {
+            "question": "Surgery",
+            "options": [
+              { "label": "Surgery", "result": { "text": "- Repair is much more preferred than replacement in Children, to allow growth and avoid anticoagulation., - Prosthetic values may impair LV function more, - Mitral clip, - Modified Melody" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Exercise tolerance",
+        "2. Dyspnoea, difficult feeding, failure to thrive",
+        "3. Lung congestion",
+        "4. Pansystolic murmur",
+        "5. Dilated cardiomyopathy",
+        "6. Usually on ACEI and diuretics",
+        "7. Avoid increase SVR"
+      ],
+      "intraop": [
+        "- Avoid bradycardia",
+        "- Avoid hypervolemia",
+        "- PPV and PEEP improve the congestion"
+      ],
+      "tee": [
+        "1. Vena contracta",
+        "2. Subjective assessment of regurgitant jet into LA",
+        "3. LA dilatation",
+        "4. LV size and function",
+        "5. In severe MR, the LV function is overestimated"
+      ],
+      "postop": [
+        "1. System blood pressure may improve after repair",
+        "2. In cases of cardiomyopathy, LV function may worsen due to lack of venting through the MR",
+        "3. Residual MR should be assessed by TEE to determine if it is mechanical and needs revision of repair or dynamic and may improve with time my remodeling."
+      ]
+    },
+    {
+      "id": "aortic_aneurysm",
+      "category": "acquired",
+      "name": "Aortic Aneurysm",
+      "short": "Aortic Aneurysm",
+      "overview": [
+        "1. True and Pseudo anneurysm",
+        "2. True aneurysms are fusiform or saccular due to a weak spot.",
+        "3. Most commonly congenital in origin caused by connective tissue disease like Marfan",
+        "4. Next are inflammatory causes like Takayasu arteritis and Kawasaki disease",
+        "5. Also associated with Bicuspid AV, AS - post stenotic dilatation, CoA, Fallot's tetralogy, PV as neo-aorta in ASO and ROSS",
+        "6. Aortic dissection or rupture may occur"
+      ],
+      "decisionTrees": [
+        {
+          "title": "Marfan's disease",
+          "tree": {
+            "question": "Marfan's disease",
+            "options": [
+              { "label": "Marfan's disease", "result": { "text": "1. Facies, tall with long thin limbs, hypermobile joints, 2. AR and MR, 3. On beta blockers and ARBS, 4. Avoid vigorous contact sports and valsalva maneuvers, 5. Pregnancy increase incidence of rupture" } },
+              { "label": "D.D.", "result": { "text": "1. Loeys-Dietz syndrome: similar to Marfan but with hypertelorism and bifid uvula, 2. Sphrintzen–Goldberg syndrome, 3. Ehlers–Danlos syndrome may associate with gastrointestinal rupture and uterine rupture" } },
+              { "label": "Sinus Aneurysm", "result": { "text": "1. Usually saccular,, 2. If the three are involved it is considered a root aneurysm, usually part of connective tissue disease, 3. Associated with supracristal VSD, AR and bicuspid AV, 4. RC Sinus aneurysm may rupture into any chambers except the LA, 5. LC and NC sinuses may rupture into any chamber except the PA, 6. Rupture causes fistula that may cause acute heart failure or Pericardial effusion" } }
+            ]
+          }
+        },
+        {
+          "title": "Surgery",
+          "tree": {
+            "question": "Surgery",
+            "options": [
+              { "label": "Surgery", "result": { "text": "1  Valve sparing aortic root replacement, Yacoub operation, 2. It requires Coronary re-implantation" } }
+            ]
+          }
+        }
+      ],
+      "preop": [
+        "1. Associated AR or MR",
+        "2. Other systemic comorbidities that may be the cause of the aneurysm or an association",
+        "3. CT angiography to determine the anatomy of the Aorta and major branches, and the presence of a compromised perfusion"
+      ],
+      "intraop": [
+        "1. Postoperative bleeding is expected",
+        "2. In Marfan, avoid high ventilatory pressures to avoid pneumothorax"
+      ],
+      "postop": [
+        "1. Bleeding is expected",
+        "2. Avoid hypertension to aid hemostasis",
+        "3. Beware of beta blockers withdrawal that may cause Hypertension",
+        "4. Inotropes: Crdiomyopathy, prolonged cross-clamping",
+        "5. Signs of ischaemia after Coronary reimplantaion, thrombus, stenosis, kink or air",
+        "6. Sometimes deep anesthesia, high dose analgesics and vasodilators to avoid Hypertension."
+      ]
+    }
+  ]
+}
+</script>
 <script>
 /* ============================================================
-CorPath — application logic (vanilla JS, hash router)
-============================================================ */
+   CorPath — application logic (vanilla JS, hash router)
+   ============================================================ */
 (function(){
-"use strict";
+  "use strict";
 
-const DATA = JSON.parse(document.getElementById('data-blob').textContent);
-const CATS = DATA.categories;
-const SHARED = DATA.shared;
-const LESIONS = DATA.lesions;
-const byId = {};
-LESIONS.forEach(l => byId[l.id] = l);
-const catById = {};
-CATS.forEach(c => catById[c.id] = c);
+  const DATA = JSON.parse(document.getElementById('data-blob').textContent);
+  const CATS = DATA.categories;
+  const SHARED = DATA.shared;
+  const LESIONS = DATA.lesions;
+  const byId = {};
+  LESIONS.forEach(l => byId[l.id] = l);
+  const catById = {};
+  CATS.forEach(c => catById[c.id] = c);
 
-const SECTION_META = {
-overview: { title: "Overview & Types", side: "purple" },
-preop: { title: "Preoperative", side: "purple" },
-intraop: { title: "Intraoperative", side: "red" },
-tee: { title: "TEE / Echocardiography", side: "purple" },
-postop: { title: "Postoperative", side: "purple" },
-complications: { title: "Complications", side: "alert" },
-associations: { title: "Associations", side: "purple" },
-};
+  const SECTION_META = {
+    overview:      { title: "Overview & Types",        side: "purple" },
+    preop:         { title: "Preoperative",            side: "purple" },
+    intraop:       { title: "Intraoperative",           side: "red" },
+    tee:           { title: "TEE / Echocardiography",   side: "purple" },
+    postop:        { title: "Postoperative",            side: "purple" },
+    complications: { title: "Complications",            side: "alert" },
+    associations:  { title: "Associations",             side: "purple" },
+  };
 
-const ICONS = {
-shunt: <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/&gt;&lt;circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" fill="none"/>,
-cyanotic: <path d="M7 4c-2 3-3 6-3 9a8 8 0 0016 0c0-3-1-6-3-9M9 20v-3M15 20v-3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>,
-lvoto: <path d="M6 4h12l-4 8v8h-4v-8L6 4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>,
-transposition: <path d="M5 6l14 12M19 6L5 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;&lt;circle cx="5" cy="6" r="1.7" fill="currentColor"/&gt;&lt;circle cx="19" cy="18" r="1.7" fill="currentColor"/>,
-univentricular: <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7" fill="none"/&gt;&lt;path d="M12 3.5v17" stroke="currentColor" stroke-width="1.2" opacity=".5"/>,
-vascular: <path d="M12 3v6M12 9c-5 0-6 3-6 6M12 9c5 0 6 3 6 6M6 15v6M18 15v6" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/>,
-acquired: <path d="M12 3c4 5 7 8.5 7 12.5A7 7 0 015 15.5C5 11.5 8 8 12 3z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>,
-protocols: <path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>,
-};
+  const ICONS = {
+    shunt: `<path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" fill="none"/>`,
+    cyanotic: `<path d="M7 4c-2 3-3 6-3 9a8 8 0 0016 0c0-3-1-6-3-9M9 20v-3M15 20v-3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    lvoto: `<path d="M6 4h12l-4 8v8h-4v-8L6 4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>`,
+    transposition: `<path d="M5 6l14 12M19 6L5 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="5" cy="6" r="1.7" fill="currentColor"/><circle cx="19" cy="18" r="1.7" fill="currentColor"/>`,
+    univentricular: `<circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7" fill="none"/><path d="M12 3.5v17" stroke="currentColor" stroke-width="1.2" opacity=".5"/>`,
+    vascular: `<path d="M12 3v6M12 9c-5 0-6 3-6 6M12 9c5 0 6 3 6 6M6 15v6M18 15v6" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/>`,
+    acquired: `<path d="M12 3c4 5 7 8.5 7 12.5A7 7 0 015 15.5C5 11.5 8 8 12 3z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>`,
+    protocols: `<path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+  };
 
-const HEART_SVG = &lt;svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg"&gt; &lt;defs&gt; &lt;clipPath id="heartClip"&gt; &lt;path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z"/&gt; &lt;/clipPath&gt; &lt;linearGradient id="redGrad" x1="0" y1="0" x2="1" y2="1"&gt; &lt;stop offset="0%" stop-color="#e35468"/&gt;&lt;stop offset="100%" stop-color="#7a1530"/&gt; &lt;/linearGradient&gt; &lt;linearGradient id="purpleGrad" x1="1" y1="0" x2="0" y2="1"&gt; &lt;stop offset="0%" stop-color="#b06fe0"/&gt;&lt;stop offset="100%" stop-color="#3c1a4d"/&gt; &lt;/linearGradient&gt; &lt;/defs&gt; &lt;g clip-path="url(#heartClip)"&gt; &lt;rect x="0" y="0" width="100" height="230" fill="url(#redGrad)"/&gt; &lt;rect x="100" y="0" width="100" height="230" fill="url(#purpleGrad)"/&gt; &lt;path d="M100,80 C97,120 96,160 100,208" fill="none" stroke="#150810" stroke-width="2" stroke-linecap="round" opacity="0.55"/&gt; &lt;path d="M40,95 C60,105 70,120 72,140" fill="none" stroke="#150810" stroke-width="1.4" opacity="0.35"/&gt; &lt;path d="M160,95 C140,105 130,120 128,140" fill="none" stroke="#150810" stroke-width="1.4" opacity="0.35"/&gt; &lt;/g&gt; &lt;path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z" fill="none" stroke="#f5e9f0" stroke-width="2.5" stroke-linejoin="round"/&gt; &lt;path d="M108,52 C108,34 106,22 100,14 M100,14 C90,6 74,4 62,10 M100,14 C112,6 130,6 142,14" fill="none" stroke="#c98bec" stroke-width="7" stroke-linecap="round"/&gt; &lt;path d="M92,50 C92,30 96,16 108,8 C 122,0 140,2 150,12" fill="none" stroke="#ef4f63" stroke-width="7" stroke-linecap="round"/&gt; &lt;circle cx="44" cy="70" r="8.5" fill="#e35468" opacity="0.95"/&gt; &lt;circle cx="156" cy="70" r="8.5" fill="#a466cf" opacity="0.95"/&gt; &lt;/svg>;
+  const HEART_SVG = `
+  <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="heartClip">
+        <path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z"/>
+      </clipPath>
+      <linearGradient id="redGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#e35468"/><stop offset="100%" stop-color="#7a1530"/>
+      </linearGradient>
+      <linearGradient id="purpleGrad" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#b06fe0"/><stop offset="100%" stop-color="#3c1a4d"/>
+      </linearGradient>
+    </defs>
+    <g clip-path="url(#heartClip)">
+      <rect x="0" y="0" width="100" height="230" fill="url(#redGrad)"/>
+      <rect x="100" y="0" width="100" height="230" fill="url(#purpleGrad)"/>
+      <path d="M100,80 C97,120 96,160 100,208" fill="none" stroke="#150810" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+      <path d="M40,95 C60,105 70,120 72,140" fill="none" stroke="#150810" stroke-width="1.4" opacity="0.35"/>
+      <path d="M160,95 C140,105 130,120 128,140" fill="none" stroke="#150810" stroke-width="1.4" opacity="0.35"/>
+    </g>
+    <path d="M100,215 C 38,178 16,124 22,86 C 26,54 54,33 76,44 C 90,51 97,64 100,80 C 103,64 110,51 124,44 C 146,33 174,54 178,86 C 184,124 162,178 100,215 Z"
+          fill="none" stroke="#f5e9f0" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M108,52 C108,34 106,22 100,14 M100,14 C90,6 74,4 62,10 M100,14 C112,6 130,6 142,14"
+          fill="none" stroke="#c98bec" stroke-width="7" stroke-linecap="round"/>
+    <path d="M92,50 C92,30 96,16 108,8 C 122,0 140,2 150,12"
+          fill="none" stroke="#ef4f63" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="44" cy="70" r="8.5" fill="#e35468" opacity="0.95"/>
+    <circle cx="156" cy="70" r="8.5" fill="#a466cf" opacity="0.95"/>
+  </svg>`;
 
-function esc(s){
-if(s===undefined||s===null) return "";
-return String(s).replace(/[&<>"']/g, c => ({'&':'&','<':'<','>':'>','"':'"',"'":'''}[c]));
-}
-function h(strings, ...vals){ return strings.reduce((a,s,i)=>a+s+(vals[i]!==undefined?vals[i]:''),''); }
+  function esc(s){
+    if(s===undefined||s===null) return "";
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function h(strings, ...vals){ return strings.reduce((a,s,i)=>a+s+(vals[i]!==undefined?vals[i]:''),''); }
 
-function renderRefBlock(refId){
-const block = SHARED[refId];
-if(!block) return '';
-let inner = <div class="ref-title"&gt;${esc(block.title)}</div>; if(block.subtitle) inner +=<div style="font-size:12px;color:var(--text-faint);margin:-4px 0 8px;">${esc(block.subtitle)}&lt;/div>;
-if(block.bullets){
-inner += <ul class="bullets"&gt;${block.bullets.map(b=><li&gt;${esc(b)}</li>).join('')}&lt;/ul>;
-}
-if(block.tree){
-inner += <div class="dt-mount" data-embedded="1"&gt;&lt;/div>;
-}
-const wrap = document.createElement('div');
-wrap.className = 'ref-inline';
-wrap.innerHTML = inner;
-if(block.tree){
-const mount = wrap.querySelector('.dt-mount');
-new DecisionTree(mount, block.tree, block.title).render();
-}
-return wrap;
-}
+  function renderRefBlock(refId){
+    const block = SHARED[refId];
+    if(!block) return '';
+    let inner = `<div class="ref-title">${esc(block.title)}</div>`;
+    if(block.subtitle) inner += `<div style="font-size:12px;color:var(--text-faint);margin:-4px 0 8px;">${esc(block.subtitle)}</div>`;
+    if(block.bullets){
+      inner += `<ul class="bullets">${block.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`;
+    }
+    if(block.tree){
+      inner += `<div class="dt-mount" data-embedded="1"></div>`;
+    }
+    const wrap = document.createElement('div');
+    wrap.className = 'ref-inline';
+    wrap.innerHTML = inner;
+    if(block.tree){
+      const mount = wrap.querySelector('.dt-mount');
+      new DecisionTree(mount, block.tree, block.title).render();
+    }
+    return wrap;
+  }
 
-function bulletsWithRichContent(items){
-const ul = document.createElement('ul');
-ul.className = 'bullets';
-items.forEach(it => {
-const li = document.createElement('li');
-li.textContent = it;
-ul.appendChild(li);
-});
-return ul;
-}
+  function bulletsWithRichContent(items){
+    const ul = document.createElement('ul');
+    ul.className = 'bullets';
+    items.forEach(it => {
+      const li = document.createElement('li');
+      li.textContent = it;
+      ul.appendChild(li);
+    });
+    return ul;
+  }
 
-class DecisionTree {
-constructor(mount, tree, title){
-this.mount = mount;
-this.root = tree;
-this.title = title;
-this.path = [];
-}
-current(){
-let node = this.root;
-for(const step of this.path){ node = step.nextNode; }
-return node;
-}
-reset(){ this.path = []; this.render(); }
-choose(option, idx){
-const node = this.current();
-this.path.push({ label: option.label, nextNode: option.next || null, leaf: option.result || null });
-this.render();
-}
-jumpTo(i){
-this.path = this.path.slice(0, i);
-this.render();
-}
-render(){
-this.mount.innerHTML = '';
-const wrap = document.createElement('div');
-wrap.className = 'dt-widget';
+  class DecisionTree {
+    constructor(mount, tree, title){
+      this.mount = mount;
+      this.root = tree;
+      this.title = title;
+      this.path = [];
+    }
+    current(){
+      let node = this.root;
+      for(const step of this.path){ node = step.nextNode; }
+      return node;
+    }
+    reset(){ this.path = []; this.render(); }
+    choose(option, idx){
+      const node = this.current();
+      this.path.push({ label: option.label, nextNode: option.next || null, leaf: option.result || null });
+      this.render();
+    }
+    jumpTo(i){
+      this.path = this.path.slice(0, i);
+      this.render();
+    }
+    render(){
+      this.mount.innerHTML = '';
+      const wrap = document.createElement('div');
+      wrap.className = 'dt-widget';
 
-if(this.title){
-const t = document.createElement('div');
-t.className = 'dt-title';
-t.textContent = this.title;
-wrap.appendChild(t);
-}
+      if(this.title){
+        const t = document.createElement('div');
+        t.className = 'dt-title';
+        t.textContent = this.title;
+        wrap.appendChild(t);
+      }
 
-if(this.path.length){
-const reset = document.createElement('button');
-reset.className = 'dt-reset';
-reset.textContent = '\u21ba Start over';
-reset.onclick = () => this.reset();
-wrap.appendChild(reset);
+      if(this.path.length){
+        const reset = document.createElement('button');
+        reset.className = 'dt-reset';
+        reset.textContent = '\u21ba Start over';
+        reset.onclick = () => this.reset();
+        wrap.appendChild(reset);
 
-const crumbs = document.createElement('div');
-crumbs.className = 'dt-crumbs';
-this.path.forEach((step, i) => {
-const c = document.createElement('button');
-c.className = 'dt-crumb';
-c.style.cursor = 'pointer';
-c.innerHTML = <span class="n"&gt;${i+1}</span> ${esc(step.label)};
-c.onclick = () => this.jumpTo(i);
-crumbs.appendChild(c);
-});
-wrap.appendChild(crumbs);
-}
+        const crumbs = document.createElement('div');
+        crumbs.className = 'dt-crumbs';
+        this.path.forEach((step, i) => {
+          const c = document.createElement('button');
+          c.className = 'dt-crumb';
+          c.style.cursor = 'pointer';
+          c.innerHTML = `<span class="n">${i+1}</span> ${esc(step.label)}`;
+          c.onclick = () => this.jumpTo(i);
+          crumbs.appendChild(c);
+        });
+        wrap.appendChild(crumbs);
+      }
 
-const last = this.path[this.path.length - 1];
-if(last && last.leaf){
-wrap.appendChild(this.renderLeaf(last.leaf));
-} else {
-const node = this.path.length ? last.nextNode : this.root;
-if(!node){
-} else {
-const q = document.createElement('div');
-q.className = 'dt-question';
-q.textContent = node.question;
-wrap.appendChild(q);
+      const last = this.path[this.path.length - 1];
+      if(last && last.leaf){
+        wrap.appendChild(this.renderLeaf(last.leaf));
+      } else {
+        const node = this.path.length ? last.nextNode : this.root;
+        if(!node){
+        } else {
+          const q = document.createElement('div');
+          q.className = 'dt-question';
+          q.textContent = node.question;
+          wrap.appendChild(q);
 
-const opts = document.createElement('div');
-opts.className = 'dt-options';
-node.options.forEach(opt => {
-const b = document.createElement('button');
-b.className = 'dt-option';
-b.innerHTML = <span&gt;${esc(opt.label)}</span><span class="arrow">\u2192</span>`;
-b.onclick = () => this.choose(opt);
-opts.appendChild(b);
-});
-wrap.appendChild(opts);
-}
-}
+          const opts = document.createElement('div');
+          opts.className = 'dt-options';
+          node.options.forEach(opt => {
+            const b = document.createElement('button');
+            b.className = 'dt-option';
+            b.innerHTML = `<span>${esc(opt.label)}</span><span class="arrow">\u2192</span>`;
+            b.onclick = () => this.choose(opt);
+            opts.appendChild(b);
+          });
+          wrap.appendChild(opts);
+        }
+      }
 
-this.mount.appendChild(wrap);
-}
-renderLeaf(leaf){
-const box = document.createElement('div');
-box.className = 'dt-result';
-const label = document.createElement('div');
-label.className = 'dt-result-label';
-label.textContent = 'Recommended pathway';
-box.appendChild(label);
-const text = document.createElement('div');
-text.className = 'dt-result-text';
-text.textContent = leaf.text;
-box.appendChild(text);
-if(leaf.bullets){
-box.appendChild(bulletsWithRichContent(leaf.bullets));
-}
-if(leaf.refs){
-leaf.refs.forEach(r => { const el = renderRefBlock(r); if(el) box.appendChild(el); });
-}
-if(leaf.linkNote){
-const p = document.createElement('div');
-p.style.cssText = 'font-size:12.5px;color:var(--text-faint);margin-top:10px;';
-p.textContent = leaf.linkNote;
-box.appendChild(p);
-}
-if(leaf.linkTo && byId[leaf.linkTo]){
-const a = document.createElement('a');
-a.className = 'link-chip';
-a.href = '#/lesion/' + leaf.linkTo;
-a.innerHTML = Continue:${esc(byId[leaf.linkTo].name)} <span aria-hidden="true">\u2192</span>`;
-box.appendChild(a);
-}
-return box;
-}
-}
+      this.mount.appendChild(wrap);
+    }
+    renderLeaf(leaf){
+      const box = document.createElement('div');
+      box.className = 'dt-result';
+      const label = document.createElement('div');
+      label.className = 'dt-result-label';
+      label.textContent = 'Recommended pathway';
+      box.appendChild(label);
+      const text = document.createElement('div');
+      text.className = 'dt-result-text';
+      text.textContent = leaf.text;
+      box.appendChild(text);
+      if(leaf.bullets){
+        box.appendChild(bulletsWithRichContent(leaf.bullets));
+      }
+      if(leaf.refs){
+        leaf.refs.forEach(r => { const el = renderRefBlock(r); if(el) box.appendChild(el); });
+      }
+      if(leaf.linkNote){
+        const p = document.createElement('div');
+        p.style.cssText = 'font-size:12.5px;color:var(--text-faint);margin-top:10px;';
+        p.textContent = leaf.linkNote;
+        box.appendChild(p);
+      }
+      if(leaf.linkTo && byId[leaf.linkTo]){
+        const a = document.createElement('a');
+        a.className = 'link-chip';
+        a.href = '#/lesion/' + leaf.linkTo;
+        a.innerHTML = `Continue: ${esc(byId[leaf.linkTo].name)} <span aria-hidden="true">\u2192</span>`;
+        box.appendChild(a);
+      }
+      return box;
+    }
+  }
 
-function searchIndex(query){
-const q = query.trim().toLowerCase();
-if(q.length < 2) return [];
-const results = [];
-LESIONS.forEach(l => {
-let score = 0;
-const name = l.name.toLowerCase();
-if(name.includes(q)) score += name.startsWith(q) ? 100 : 50;
-if(l.short && l.short.toLowerCase().includes(q)) score += 10;
-const haystacks = ['overview','preop','intraop','tee','postop','complications','associations'];
-haystacks.forEach(k => {
-if(Array.isArray(l[k])){
-l[k].forEach(line => { if(line.toLowerCase().includes(q)) score += 3; });
-}
-});
-if(score > 0) results.push({ lesion: l, score });
-});
-results.sort((a,b) => b.score - a.score);
-return results.slice(0, 12);
-}
+  function searchIndex(query){
+    const q = query.trim().toLowerCase();
+    if(q.length < 2) return [];
+    const results = [];
+    LESIONS.forEach(l => {
+      let score = 0;
+      const name = l.name.toLowerCase();
+      if(name.includes(q)) score += name.startsWith(q) ? 100 : 50;
+      if(l.short && l.short.toLowerCase().includes(q)) score += 10;
+      const haystacks = ['overview','preop','intraop','tee','postop','complications','associations'];
+      haystacks.forEach(k => {
+        if(Array.isArray(l[k])){
+          l[k].forEach(line => { if(line.toLowerCase().includes(q)) score += 3; });
+        }
+      });
+      if(score > 0) results.push({ lesion: l, score });
+    });
+    results.sort((a,b) => b.score - a.score);
+    return results.slice(0, 12);
+  }
 
-function wireSearch(inputEl, resultsEl, onNavigate){
-let blurTimeout;
-inputEl.addEventListener('input', () => {
-const q = inputEl.value;
-const res = searchIndex(q);
-if(q.trim().length < 2){ resultsEl.style.display='none'; resultsEl.innerHTML=''; return; }
-if(!res.length){
-resultsEl.innerHTML = <div class="search-empty"&gt;No matches for "${esc(q)}"</div>; resultsEl.style.display='block'; return; } resultsEl.innerHTML = res.map(r =&gt;
-<a class="sr-item" href="#/lesion/${r.lesion.id}"&gt; &lt;span class="sr-cat"&gt;${esc(catById[r.lesion.category] ? catById[r.lesion.category].name : r.lesion.category)}</span>
-<span class="sr-name">${esc(r.lesion.name)}&lt;/span&gt; &lt;div class="sr-snip"&gt;${esc(r.lesion.short || '')}</div>
-</a>`).join('');
-resultsEl.style.display='block';
-});
-inputEl.addEventListener('focus', () => { if(inputEl.value.trim().length>=2) resultsEl.style.display='block'; });
-inputEl.addEventListener('blur', () => { blurTimeout = setTimeout(()=>{ resultsEl.style.display='none'; }, 150); });
-resultsEl.addEventListener('mousedown', e => e.preventDefault());
-}
+  function wireSearch(inputEl, resultsEl, onNavigate){
+    let blurTimeout;
+    inputEl.addEventListener('input', () => {
+      const q = inputEl.value;
+      const res = searchIndex(q);
+      if(q.trim().length < 2){ resultsEl.style.display='none'; resultsEl.innerHTML=''; return; }
+      if(!res.length){
+        resultsEl.innerHTML = `<div class="search-empty">No matches for "${esc(q)}"</div>`;
+        resultsEl.style.display='block';
+        return;
+      }
+      resultsEl.innerHTML = res.map(r => `
+        <a class="sr-item" href="#/lesion/${r.lesion.id}">
+          <span class="sr-cat">${esc(catById[r.lesion.category] ? catById[r.lesion.category].name : r.lesion.category)}</span>
+          <span class="sr-name">${esc(r.lesion.name)}</span>
+          <div class="sr-snip">${esc(r.lesion.short || '')}</div>
+        </a>`).join('');
+      resultsEl.style.display='block';
+    });
+    inputEl.addEventListener('focus', () => { if(inputEl.value.trim().length>=2) resultsEl.style.display='block'; });
+    inputEl.addEventListener('blur', () => { blurTimeout = setTimeout(()=>{ resultsEl.style.display='none'; }, 150); });
+    resultsEl.addEventListener('mousedown', e => e.preventDefault());
+  }
 
-const contentEl = document.getElementById('content');
+  const contentEl = document.getElementById('content');
 
-function renderSidebarNav(activeCat, activeLesion){
-const list = document.getElementById('nav-list');
-list.innerHTML = CATS.map(c => &lt;li&gt; &lt;a class="nav-link${activeCat===c.id?'active':''}" href="#/category/{esc(c.name)}
-</a>
-</li>`).join('');
-}
+  function renderSidebarNav(activeCat, activeLesion){
+    const list = document.getElementById('nav-list');
+    list.innerHTML = CATS.map(c => `
+      <li>
+        <a class="nav-link ${activeCat===c.id?'active':''}" href="#/category/${c.id}">
+          <span class="dot"></span>${esc(c.name)}
+        </a>
+      </li>`).join('');
+  }
 
-function pageHeadHTML(title, short, tags){
-return <div class="page-head"&gt; &lt;h1&gt;${esc(title)}</h1>
-${short ?<p class="short">latex
-{esc(short)}&lt;/p>` : ''} 
+  function pageHeadHTML(title, short, tags){
+    return `<div class="page-head">
+      <h1>${esc(title)}</h1>
+      ${short ? `<p class="short">${esc(short)}</p>` : ''}
+      ${tags && tags.length ? `<div class="tag-row">${tags.map(t=>`<span class="tag${t.urgent?' urgent':''}">${esc(t.label)}</span>`).join('')}</div>` : ''}
+    </div>`;
+  }
 
-{tags && tags.length ? <div class="tag-row"&gt;${tags.map(t=><span class="tag${t.urgent?' urgent':''}">${esc(t.label)}&lt;/span>).join('')}</div>: ''} &lt;/div>;
-}
+  function renderHome(){
+    renderSidebarNav(null, null);
+    contentEl.innerHTML = `
+      <div class="hero">
+        <div class="hero-heart pulse">${HEART_SVG}</div>
+        <div>
+          <span class="hero-eyebrow">Perioperative reference &middot; congenital heart disease</span>
+          <h1>Cor<em>Path</em></h1>
+          <p>A bedside decision-support reference for anesthesiologists managing congenital heart disease through surgery — built from a single working algorithm, organized lesion by lesion, with the shared protocols surfaced wherever they recur.</p>
+        </div>
+      </div>
+      <div class="home-search search-wrap">
+        <span class="search-icon">${searchIconSvg()}</span>
+        <input id="home-search-input" class="search-input" type="text" placeholder="Search lesions, e.g. \u201cEbstein\u201d, \u201cRVOT\u201d, \u201cduct-dependent\u201d\u2026" autocomplete="off"/>
+        <div id="home-search-results" class="search-results" style="display:none;"></div>
+      </div>
 
-function renderHome(){
-renderSidebarNav(null, null);
-contentEl.innerHTML = &lt;div class="hero"&gt; &lt;div class="hero-heart pulse"&gt;${HEART_SVG}</div>
-<div>
-<span class="hero-eyebrow">Perioperative reference · congenital heart disease</span>
-<h1>Cor<em>Path</em></h1>
-<p>A bedside decision-support reference for anesthesiologists managing congenital heart disease through surgery — built from a single working algorithm, organized lesion by lesion, with the shared protocols surfaced wherever they recur.</p>
-</div>
-</div>
-<div class="home-search search-wrap">
-<span class="search-icon">$`{searchIconSvg()}</span>
-<input id="home-search-input" class="search-input" type="text" placeholder="Search lesions, e.g. \u201cEbstein\u201d, \u201cRVOT\u201d, \u201cduct-dependent\u201d\u2026" autocomplete="off"/>
-<div id="home-search-results" class="search-results" style="display:none;"></div>
-</div>
+      <div class="section-heading">Browse by category</div>
+      <div class="cat-grid">
+        ${CATS.filter(c=>c.id!=='protocols').map(catCardHTML).join('')}
+      </div>
 
-<div class="section-heading">Browse by category</div>
-<div class="cat-grid">
-`${CATS.filter(c=>c.id!=='protocols').map(catCardHTML).join('')}
-</div>
+      <div class="section-heading">Core protocols</div>
+      <div class="protocols-strip">
+        ${LESIONS.filter(l=>l.category==='protocols').map(l=>`
+          <a class="proto-chip" href="#/lesion/${l.id}"><span class="dot"></span>${esc(l.name)}</a>
+        `).join('')}
+      </div>
 
-<div class="section-heading">Core protocols</div>
-<div class="protocols-strip">
-latex
-{LESIONS.filter(l=&gt;l.category==='protocols').map(l=>` &lt;a class="proto-chip" href="#/lesion/
+      <div class="footnote">CorPath is a personal reference tool for qualified clinicians, distilled from one institution's working algorithm. It is not a substitute for current institutional protocols, primary literature, or individualized clinical judgement — always correlate with the specific patient and surgical team.</div>
+    `;
+    wireSearch(document.getElementById('home-search-input'), document.getElementById('home-search-results'));
+  }
 
-{l.id}"><span class="dot"></span>${esc(l.name)}&lt;/a&gt;).join('')}
-</div>
+  function searchIconSvg(){
+    return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+  }
 
-<div class="footnote">CorPath is a personal reference tool for qualified clinicians, distilled from one institution's working algorithm. It is not a substitute for current institutional protocols, primary literature, or individualized clinical judgement — always correlate with the specific patient and surgical team.</div>
-`;
-wireSearch(document.getElementById('home-search-input'), document.getElementById('home-search-results'));
-}
+  function catCardHTML(c){
+    const count = LESIONS.filter(l => l.category === c.id).length;
+    return `<a class="cat-card" href="#/category/${c.id}">
+      <div class="vessel"></div>
+      <svg class="cat-icon" viewBox="0 0 24 24" fill="none">${ICONS[c.icon] || ''}</svg>
+      <h3>${esc(c.name)}</h3>
+      <p>${esc(c.blurb)}</p>
+      <span class="cat-count">${count} ${count===1?'entry':'entries'}</span>
+    </a>`;
+  }
 
-function searchIconSvg(){
-return <svg width="16" height="16" viewBox="0 0 24 24" fill="none"&gt;&lt;circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;&lt;/svg>;
-}
+  function renderCategory(catId){
+    const cat = catById[catId];
+    renderSidebarNav(catId, null);
+    if(!cat){ renderNotFound(); return; }
+    const lesions = LESIONS.filter(l => l.category === catId);
+    contentEl.innerHTML = `
+      <div class="crumb"><a href="#/">Home</a> <span>/</span> <span>${esc(cat.name)}</span></div>
+      ${pageHeadHTML(cat.name, cat.blurb)}
+      <div class="lesion-grid">
+        ${lesions.map(l => `
+          <a class="lesion-card" href="#/lesion/${l.id}">
+            <h4>${esc(l.name)}</h4>
+            <p>${esc(l.short || '')}</p>
+          </a>`).join('')}
+      </div>
+    `;
+  }
 
-function catCardHTML(c){
-const count = LESIONS.filter(l => l.category === c.id).length;
-return <a class="cat-card" href="#/category/${c.id}">
-<div class="vessel"></div>
-<svg class="cat-icon" viewBox="0 0 24 24" fill="none">{esc(c.name)}</h3>
-<p>{count} ${count===1?'entry':'entries'}&lt;/span&gt; &lt;/a>;
-}
+  function renderSection(container, key, lesion){
+    const meta = SECTION_META[key];
+    const items = lesion[key];
+    const refs = lesion[key+'Refs'];
+    if((!items || !items.length) && (!refs || !refs.length)) return;
 
-function renderCategory(catId){
-const cat = catById[catId];
-renderSidebarNav(catId, null);
-if(!cat){ renderNotFound(); return; }
-const lesions = LESIONS.filter(l => l.category === catId);
-contentEl.innerHTML = &lt;div class="crumb"&gt;&lt;a href="#/"&gt;Home&lt;/a&gt; &lt;span&gt;/&lt;/span&gt; &lt;span&gt;${esc(cat.name)}</span></div>
-{lesions.map(l => &lt;a class="lesion-card" href="#/lesion/${l.id}">
-<h4>${esc(l.name)}&lt;/h4&gt; &lt;p&gt;${esc(l.short || '')}</p>
-</a>).join('')} &lt;/div&gt;;
-}
+    const card = document.createElement('div');
+    card.className = `card side-${meta.side}`;
+    const head = document.createElement('div');
+    head.className = 'card-head';
+    head.innerHTML = `<h3>${esc(meta.title)}</h3>`;
+    card.appendChild(head);
 
-function renderSection(container, key, lesion){
-const meta = SECTION_META[key];
-const items = lesion[key];
-const refs = lesion[key+'Refs'];
-if((!items || !items.length) && (!refs || !refs.length)) return;
+    if(items && items.length){
+      card.appendChild(bulletsWithRichContent(items));
+    }
+    if(refs && refs.length){
+      refs.forEach(r => {
+        const block = renderRefBlock(r);
+        if(block) card.appendChild(block);
+      });
+    }
+    container.appendChild(card);
+  }
 
-const card = document.createElement('div');
-card.className = card side-${meta.side}; const head = document.createElement('div'); head.className = 'card-head'; head.innerHTML =<h3>${esc(meta.title)}&lt;/h3>;
-card.appendChild(head);
+  function renderLesion(id){
+    const lesion = byId[id];
+    if(!lesion){ renderNotFound(); return; }
+    const cat = catById[lesion.category];
+    renderSidebarNav(lesion.category, id);
 
-if(items && items.length){
-card.appendChild(bulletsWithRichContent(items));
-}
-if(refs && refs.length){
-refs.forEach(r => {
-const block = renderRefBlock(r);
-if(block) card.appendChild(block);
-});
-}
-container.appendChild(card);
-}
+    contentEl.innerHTML = '';
+    const crumb = document.createElement('div');
+    crumb.className = 'crumb';
+    crumb.innerHTML = `<a href="#/">Home</a> <span>/</span> <a href="#/category/${cat.id}">${esc(cat.name)}</a> <span>/</span> <span>${esc(lesion.name)}</span>`;
+    contentEl.appendChild(crumb);
 
-function renderLesion(id){
-const lesion = byId[id];
-if(!lesion){ renderNotFound(); return; }
-const cat = catById[lesion.category];
-renderSidebarNav(lesion.category, id);
+    const head = document.createElement('div');
+    head.innerHTML = pageHeadHTML(lesion.name, lesion.short);
+    contentEl.appendChild(head);
 
-contentEl.innerHTML = '';
-const crumb = document.createElement('div');
-crumb.className = 'crumb';
-crumb.innerHTML = <a href="#/"&gt;Home&lt;/a&gt; &lt;span&gt;/&lt;/span&gt; &lt;a href="#/category/${cat.id}">{esc(lesion.name)}</span>`;
-contentEl.appendChild(crumb);
+    (lesion.decisionTrees || []).forEach(dt => {
+      const mount = document.createElement('div');
+      contentEl.appendChild(mount);
+      new DecisionTree(mount, dt.tree, dt.title).render();
+    });
 
-const head = document.createElement('div');
-head.innerHTML = pageHeadHTML(lesion.name, lesion.short);
-contentEl.appendChild(head);
+    ['overview','preop','intraop','tee','postop','complications','associations'].forEach(key => {
+      renderSection(contentEl, key, lesion);
+    });
 
-(lesion.decisionTrees || []).forEach(dt => {
-const mount = document.createElement('div');
-contentEl.appendChild(mount);
-new DecisionTree(mount, dt.tree, dt.title).render();
-});
+    if(lesion.overview_extra){
+      const card = document.createElement('div');
+      card.className = 'card side-purple';
+      card.innerHTML = `<div class="card-head"><h3>Background</h3></div>`;
+      card.appendChild(bulletsWithRichContent(lesion.overview_extra));
+      contentEl.insertBefore(card, contentEl.children[3] || null);
+    }
+  }
 
-['overview','preop','intraop','tee','postop','complications','associations'].forEach(key => {
-renderSection(contentEl, key, lesion);
-});
+  function renderNotFound(){
+    contentEl.innerHTML = `<div class="page-head"><h1>Not found</h1><p class="short">That page doesn't exist. <a href="#/">Return home</a>.</p></div>`;
+  }
 
-if(lesion.overview_extra){
-const card = document.createElement('div');
-card.className = 'card side-purple';
-card.innerHTML = <div class="card-head"&gt;&lt;h3&gt;Background&lt;/h3&gt;&lt;/div>;
-card.appendChild(bulletsWithRichContent(lesion.overview_extra));
-contentEl.insertBefore(card, contentEl.children[3] || null);
-}
-}
+  function route(){
+    const hash = location.hash.replace(/^#/, '') || '/';
+    const parts = hash.split('/').filter(Boolean);
+    closeSidebar();
+    window.scrollTo(0,0);
+    if(parts.length === 0){ renderHome(); return; }
+    if(parts[0] === 'category' && parts[1]){ renderCategory(parts[1]); return; }
+    if(parts[0] === 'lesion' && parts[1]){ renderLesion(parts[1]); return; }
+    renderNotFound();
+  }
 
-function renderNotFound(){
-contentEl.innerHTML = <div class="page-head"&gt;&lt;h1&gt;Not found&lt;/h1&gt;&lt;p class="short"&gt;That page doesn't exist. &lt;a href="#/"&gt;Return home&lt;/a&gt;.&lt;/p&gt;&lt;/div>;
-}
+  function closeSidebar(){
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+  }
+  function toggleSidebar(){
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+  }
 
-function route(){
-const hash = location.hash.replace(/^#/, '') || '/';
-const parts = hash.split('/').filter(Boolean);
-closeSidebar();
-window.scrollTo(0,0);
-if(parts.length === 0){ renderHome(); return; }
-if(parts[0] === 'category' && parts[1]){ renderCategory(parts[1]); return; }
-if(parts[0] === 'lesion' && parts[1]){ renderLesion(parts[1]); return; }
-renderNotFound();
-}
-
-function closeSidebar(){
-document.getElementById('sidebar').classList.remove('open');
-document.getElementById('overlay').classList.remove('show');
-}
-function toggleSidebar(){
-document.getElementById('sidebar').classList.toggle('open');
-document.getElementById('overlay').classList.toggle('show');
-}
-
-window.addEventListener('hashchange', route);
-document.addEventListener('DOMContentLoaded', () => {
-document.getElementById('menu-btn').addEventListener('click', toggleSidebar);
-document.getElementById('overlay').addEventListener('click', closeSidebar);
-wireSearch(document.getElementById('sidebar-search-input'), document.getElementById('sidebar-search-results'));
-route();
-});
+  window.addEventListener('hashchange', route);
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('menu-btn').addEventListener('click', toggleSidebar);
+    document.getElementById('overlay').addEventListener('click', closeSidebar);
+    wireSearch(document.getElementById('sidebar-search-input'), document.getElementById('sidebar-search-results'));
+    route();
+  });
 })();
 </script>
 </body>
